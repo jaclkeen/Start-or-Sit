@@ -11,9 +11,11 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory){
     console.log('register clicked')
     AuthFactory.createUser({
       email: $scope.account.email,
-      password: $scope.account.password
+      password: $scope.account.password,
+      name: $scope.account.name
     })
     .then(function(userInfo){
+      console.log($scope.account)
       console.log('userInfo', userInfo)
       if(userInfo){
         $scope.login()
