@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="/lib/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
 <link rel="stylesheet" type="text/css" href="css/main.css">
   <title>Start or Sit</title>
 </head>
-<body>
-  <h1>Start or Sit</h1>
+<body ng-app="StartOrSit">
+  <div ng-include="'partials/nav.html'"></div>
+  <div ng-view></div>
   <!-- third party -->
   <script type="text/javascript" src="/lib/bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="/lib/bower_components/angular-route/angular-route.min.js"></script>
@@ -14,10 +15,12 @@
   <script type="text/javascript" src="/lib/bower_components/firebase/firebase.js"></script>
   <script type="text/javascript" src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
   <!-- app related scripts -->
-  <script type="text/javascript" src="app/app.js"></script>
+  <script type="text/javascript" src="app/main.js"></script>
   <!-- controllers -->
   <script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
+  <script type="text/javascript" src="app/controllers/LoginCtrl.js"></script>
   <!-- factories -->
   <script type="text/javascript" src="app/factories/AuthFactory.js"></script>
+  <script type="text/javascript" src="app/values/FBCreds.js"></script>
 </body>
 </html>
