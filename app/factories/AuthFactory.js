@@ -53,6 +53,10 @@ app.factory('AuthFactory', function($window){
     return currentUserId
   }
 
+  let setUser = function(user){
+    currentUserId = user
+  }
+
   let getUserInfo = function(){
     return userInfo
   }
@@ -64,7 +68,8 @@ app.factory('AuthFactory', function($window){
     isAuthenticated,
     authWithProvider,
     getUser,
-    getUserInfo
+    getUserInfo,
+    setUser
   };
 
 })

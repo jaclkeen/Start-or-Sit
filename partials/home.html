@@ -2,7 +2,7 @@
   <div class="homeNav">
     <ul>
       <li class="homeNavCrumbs">Start or Sit > <span>Crumbs go here</span></li>
-      <li class="addNewQ"><span>Add New Q</span></li>
+      <li class="addNewQ"><a href='#/newTicket'>Add New Q</a></li>
     </ul>
   </div>
 
@@ -13,26 +13,53 @@
   </div>
 
   <div class="homeMain">
-    <div class="allQ" ng-show='showAllQ'>
-      <p>All Q's Div</p>
+<!-- ALL Q'S AREA -->
+    <div ng-controller="AllQCtrl">
+      <div class="allQ" ng-show='showAllQ'>
+        <p>All Q's Div</p>
+      </div>
     </div>
 
-    <div class="myQ" ng-show='showMyQ'>
-      <p>My Q's Div</p>
+<!-- MY Q'S AREA/ -->
+    <div ng-controller="MyQCtrl">
+      <div class="myQ" ng-show='showMyQ'>
+        <p>My Q's Div</p>
+      </div>
     </div>
 
-    <div class="searchResults" ng-show='showSearch'>
-      <p>Player Search Div</p>
-      <div class="playerSearchArea">
-        <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
-        <div ng-repeat="player in players">
-          <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
-            <span>{{player.FirstName}}</span>
-            <span>{{player.LastName}}</span>
-            <span>{{player.Position}}</span>
+<!-- PLAYER SEARCH AREA -->
+    <div ng-controller="SearchCtrl">
+      <div class="searchResults" ng-show='showSearch'>
+        <p>Player Search Div</p>
+        <div class="playerSearchArea">
+          <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
+          <div ng-repeat="player in players">
+            <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
+              <span>{{player.FirstName}}</span>
+              <span>{{player.LastName}}</span>
+              <span>{{player.Position}}</span>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- SHOW SEARCH RESULTS AREA -->
+      <div class="playerSearchResults">
+        <img src='{{imgSrc}}'>
+        <p>{{pName}}</p><span>{{position}}</span>
+        <span>{{teamAbbr}}</span>
+        <p>{{seasonProjectedPts}}</p>
+        <p>{{seasonPts}}</p>
+      </div>
+
     </div>
   </div>
 </div>
+
+<!--   $scope.esbid = ""
+  $scope.pName = ""
+  $scope.imgSrc = ""
+  $scope.teamAbbr = ""
+  $scope.position = ""
+  $scope.seasonProjectedPts = ""
+  $scope.seasonPts = "" -->

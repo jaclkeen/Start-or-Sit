@@ -13,6 +13,10 @@ let app = angular.module("StartOrSit", ["ngRoute"])
         templateUrl: 'partials/home',
         controller: 'HomeCtrl'
       })
+      .when('/newTicket', {
+        templateUrl: 'partials/newTicket',
+        controller: 'NewTicketCtrl'
+      })
       .otherwise('/login')
   })
 
