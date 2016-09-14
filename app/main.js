@@ -9,6 +9,10 @@ let app = angular.module("StartOrSit", ["ngRoute"])
         templateUrl: 'partials/login',
         controller: 'LoginCtrl'
       })
+      .when('/home', {
+        templateUrl: 'partials/home',
+        controller: 'HomeCtrl'
+      })
       .otherwise('/login')
   })
 

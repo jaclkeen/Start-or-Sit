@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller('LoginCtrl', function($scope, $window, AuthFactory){
+app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
   $scope.account = {
     email: "",
     password: "",
@@ -19,6 +19,10 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory){
       console.log('userInfo', userInfo)
       if(userInfo){
         $scope.login()
+        DbFactory.storeUser($scope.account)
+        .then(function(firebaseObj){
+          console.log(firebaseObj)
+        })
       }
     })
     .catch(function(error){

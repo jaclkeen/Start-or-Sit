@@ -1,0 +1,8 @@
+<div class="home">
+  <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-keypress="playerSearch()">
+  <div ng-repeat="player in players">
+    <span>{{player.FirstName}}</span>
+    <span>{{player.LastName}}</span>
+    <span>{{player.team.Name}}</span>
+  </div>
+</div>
