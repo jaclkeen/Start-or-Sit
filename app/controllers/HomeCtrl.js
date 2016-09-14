@@ -5,6 +5,27 @@ app.controller('HomeCtrl', function($scope, ApiFactory){
   $scope.playerInput = ""
   $scope.players = []
   $scope.teams = []
+  $scope.showAllQ = false
+  $scope.showMyQ = false
+  $scope.showSearch = false
+
+  $scope.showAllQs = function(){
+    $scope.showAllQ = true
+    $scope.showMyQ = false
+    $scope.showSearch = false
+  }
+
+  $scope.showMyQs = function(){
+    $scope.showAllQ = false
+    $scope.showMyQ = true
+    $scope.showSearch = false
+  }
+
+  $scope.showPlayerSearch = function(){
+    $scope.showAllQ = false
+    $scope.showMyQ = false
+    $scope.showSearch = true
+  }
 
   $scope.playerSearch = function(){
     $scope.players = []
@@ -27,6 +48,10 @@ app.controller('HomeCtrl', function($scope, ApiFactory){
         }
       })
     })
+  }
+
+  $scope.getPlayerInfo = function(fName, lName){
+    console.log('NAME', fName + " " + lName)
   }
 
 })

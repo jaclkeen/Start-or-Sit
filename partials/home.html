@@ -1,8 +1,38 @@
 <div class="home">
-  <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-keypress="playerSearch()">
-  <div ng-repeat="player in players">
-    <span>{{player.FirstName}}</span>
-    <span>{{player.LastName}}</span>
-    <span>{{player.team.Name}}</span>
+  <div class="homeNav">
+    <ul>
+      <li class="homeNavCrumbs">Start or Sit > <span>Crumbs go here</span></li>
+      <li class="addNewQ"><span>Add New Q</span></li>
+    </ul>
+  </div>
+
+  <div class="SubNavSelection">
+    <span><a href="#/home" ng-click="showAllQs()">All Q's Nav</a></span>
+    <span><a href="#/home" ng-click="showMyQs()">My Q's Nav</a></span>
+    <span><a href="#/home" ng-click="showPlayerSearch()">Player Search Nav</a></span>
+  </div>
+
+  <div class="homeMain">
+    <div class="allQ" ng-show='showAllQ'>
+      <p>All Q's Div</p>
+    </div>
+
+    <div class="myQ" ng-show='showMyQ'>
+      <p>My Q's Div</p>
+    </div>
+
+    <div class="searchResults" ng-show='showSearch'>
+      <p>Player Search Div</p>
+      <div class="playerSearchArea">
+        <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
+        <div ng-repeat="player in players">
+          <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
+            <span>{{player.FirstName}}</span>
+            <span>{{player.LastName}}</span>
+            <span>{{player.Position}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
