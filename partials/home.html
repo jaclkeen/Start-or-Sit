@@ -1,7 +1,7 @@
 <div class="home">
   <div class="homeNav">
     <ul>
-      <li class="homeNavCrumbs">Start or Sit > <span>Crumbs go here</span></li>
+      <li class="homeNavCrumbs">Start or Sit > <span>{{crumbs}}</span></li>
       <li class="addNewQ"><a href='#/newTicket'>Add New Q</a></li>
     </ul>
   </div>
@@ -10,6 +10,7 @@
     <span><a href="#/home" ng-click="showAllQs()">All Q's Nav</a></span>
     <span><a href="#/home" ng-click="showMyQs()">My Q's Nav</a></span>
     <span><a href="#/home" ng-click="showPlayerSearch()">Player Search Nav</a></span>
+    <span><a href="#/home" ng-click="showResearchArea()">Research</a></span>
   </div>
 
   <div class="homeMain">
@@ -43,23 +44,86 @@
         </div>
       </div>
 
-      <!-- SHOW SEARCH RESULTS AREA -->
-      <div class="playerSearchResults">
-        <img src='{{imgSrc}}'>
-        <p>{{pName}}</p><span>{{position}}</span>
-        <span>{{teamAbbr}}</span>
-        <p>{{seasonProjectedPts}}</p>
-        <p>{{seasonPts}}</p>
-      </div>
+      <!-- SHOWS CLICKED PLAYER AREA -->
+      <div class="searchContainer">
+        <div class="playerSearchResults" ng-show='showSearch'>
+          <img src='{{imgSrc}}'>
+          <p>{{pName}}</p><span>{{position}}</span>
+          <span>{{teamAbbr}}</span>
 
+          <div class="playerNav" ng-show='showPlayerNav'>
+            <ul>
+              <li><a href='#/home' ng-click="activateStats()">Stats</a></li>
+              <li><a href='#/home' ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</a></li>
+            </ul>
+          </div>
+
+          <div ng-show='showNews'>
+            <p>NEWS TEST</p>
+          </div>
+
+        <!-- SHOWS PLAYERS STATS AND INFO AREA -->
+        <div ng-show='showPlayerInfo'>
+          <table class="table table-striped">
+            <thead>
+              <strong>Season Stats:</strong>
+            </thead>
+            <thead class="thead-inverse">
+              <tr>
+                <th class="cat">Rush</th>
+                <th class="cat">Rush Yds</th>
+                <th class="cat">TD</th>
+                <th class="cat">Rec</th>
+                <th class="cat">Rec Yds</th>
+                <th class="cat">Rec TD</th>
+                <th class="cat">Fumbles Lost</th>
+                <th class="cat">Completions</th>
+                <th class="cat">Pass Yds</th>
+                <th class="cat">Pass TDs</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <td>{{rushAttempts}}</td>
+                <td>{{rushYards}}</td>
+                <td>{{rTD}}</td>
+                <td>{{receptions}}</td>
+                <td>{{recYards}}</td>
+                <td>{{recTD}}</td>
+                <td>{{fumblesLost}}</td>
+                <td>{{completions}}</td>
+                <td>{{pYards}}</td>
+                <td>{{pTD}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-striped">
+              <thead>
+                <strong>Season Fantasy Stats:</strong>
+              </thead class="table-hover">
+              <thead>
+                <th>Projected Points</th>
+                <th>Current Points</th>
+                <th>Projected Week Points</th>
+                <th>Current Week Points</th>
+              </thead>
+            <tr>
+              <td>{{seasonProjectedPts}}</td>
+              <td>{{seasonPts}}</td>
+              <td>{{weekProjectedPts}}</td>
+              <td>{{currentWeekPts}}</td>
+            </tr>
+          </table>
+        </div>
+    </div>
+  </div>
+
+    <!-- RESEARCH AREA -->
+    <div ng-show='showResearch'>
+      <p>RESEARCH AREA DIV</p>
+    </div>
     </div>
   </div>
 </div>
 
-<!--   $scope.esbid = ""
-  $scope.pName = ""
-  $scope.imgSrc = ""
-  $scope.teamAbbr = ""
-  $scope.position = ""
-  $scope.seasonProjectedPts = ""
-  $scope.seasonPts = "" -->

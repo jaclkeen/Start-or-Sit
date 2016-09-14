@@ -5,26 +5,47 @@ app.controller('HomeCtrl', function($scope, ApiFactory){
   // $scope.playerInput = ""
   // $scope.players = []
   // $scope.teams = []
-  $scope.showAllQ = false
+  $scope.showAllQ = true
   $scope.showMyQ = false
   $scope.showSearch = false
+  $scope.showPlayerInfo = false
+  $scope.showResearch = false
+  $scope.crumbs = "Show All Qs"
+
+  $scope.showResearchArea = function(){
+    $scope.showAllQ = false
+    $scope.showMyQ = false
+    $scope.showSearch = false
+    $scope.showResearch = true
+    $scope.showPlayerInfo = false
+    $scope.crumbs = 'Research'
+  }
 
   $scope.showAllQs = function(){
     $scope.showAllQ = true
     $scope.showMyQ = false
     $scope.showSearch = false
+    $scope.showResearch = false
+    $scope.showPlayerInfo = false
+    $scope.crumbs = 'Show All Qs'
   }
 
   $scope.showMyQs = function(){
     $scope.showAllQ = false
     $scope.showMyQ = true
     $scope.showSearch = false
+    $scope.showResearch = false
+    $scope.showPlayerInfo = false
+    $scope.crumbs = 'Show My Qs'
   }
 
   $scope.showPlayerSearch = function(){
     $scope.showAllQ = false
     $scope.showMyQ = false
     $scope.showSearch = true
+    $scope.showResearch = false
+    $scope.showPlayerInfo = false
+    $scope.crumbs = 'Player Search'
   }
 
   // $scope.playerSearch = function(){
