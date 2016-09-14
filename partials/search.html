@@ -1,0 +1,13 @@
+<div class="searchResults" ng-show='showSearch'>
+  <p>Player Search Div</p>
+  <div class="playerSearchArea">
+    <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
+    <div ng-repeat="player in players">
+      <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
+        <span>{{player.FirstName}}</span>
+        <span>{{player.LastName}}</span>
+        <span>{{player.Position}}</span>
+      </div>
+    </div>
+  </div>
+</div>
