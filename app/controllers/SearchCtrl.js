@@ -49,7 +49,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   }
 
   $scope.playerSearch = function(){
-    $scope.players = []
     $scope.showPlayerInfo = false
     $scope.showPlayerNav = false
     console.log('loading.....')
@@ -167,6 +166,8 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
             }
               $scope.showPlayerInfo = true
               $scope.showPlayerNav = true
+              $scope.playerInput = ""
+              $scope.players = []
           }
         })
       })
