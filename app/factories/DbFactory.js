@@ -7,8 +7,8 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
       $http.post(`${FirebaseURL}users.json`,
       JSON.stringify(userObj))
       .success(function(objFromFirebase){
-        resolve(objFromFirebase.rosterPlayers)
-        console.log(objFromFirebase)
+        resolve(objFromFirebase)
+        console.log('FIREBASE OBJ', objFromFirebase)
       })
       .error(function(error){
         reject(error)
@@ -16,8 +16,51 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
     })
   }
 
+  let storeToFirebase = function(obj){
+    return $q(function(resolve, reject){
+      $http.post(`${FirebaseURL}plays.json`,
+      JSON.stringify(obj))
+      .success(function(firebaseObj){
+        resolve(firebaseObj)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
+  let getAllPlaysFromFirebase = function(){
+    return $q(function(resolve, reject){
+      $http.get(`${FirebaseURL}plays.json`)
+      .success(function(play){
+        resolve(play)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
+  let deletePlayFromFirebase = function(id){
+    return $q(function(resolve, reject){
+      $http.delete(`${FirebaseURL}plays/${id}.json`)
+      .success(function(play){
+        resolve(play)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   return {
-    storeUser
+    storeUser,
+    storeToFirebase,
+    getAllPlaysFromFirebase,
+    deletePlayFromFirebase
   }
 
 })

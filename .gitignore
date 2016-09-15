@@ -1,4 +1,7 @@
 lib/bower_components
 lib/node_modules
 lib/.sass-cache
+app/factories/StatFactory.js
+app/modalDirective.js
+app/values/
 css/

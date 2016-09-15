@@ -34,8 +34,9 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
     console.log('you clicked login')
     AuthFactory.loginUser($scope.account)
     .then(function(data){
-      console.log('loginData', data)
       if(data){
+        AuthFactory.setUser(data.uid)
+        console.log('AUTHFACTORY SET USER', AuthFactory.getUser())
         $window.location.href = '#/home'
       }
     })
@@ -49,6 +50,7 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
     .then(function(result){
       var user = result.user.uid
       if(user){
+        AuthFactory.setUser(user)
         console.log('user', user)
         $window.location.href = '#home'
       }

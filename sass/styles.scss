@@ -44,3 +44,179 @@ nav{
 .playerSearch{
   margin-top: 3%;
 }
+
+table th{
+  text-align: center;
+}
+
+table td{
+  text-align: center;
+}
+
+.searchContainer{
+  background-color: black;
+  color: green;
+}
+
+.newTicket input{
+  display: inline-block;
+  // margin-left: 10%;
+}
+
+.p1SearchArea{
+  float: left;
+  display: inline-block;
+  // width: 30%;
+  text-align: center;
+  margin-left: 10%;
+}
+
+.p2SearchArea{
+  float: right;
+  display: inline-block;
+  text-align: center;
+  margin-right: 10%;
+  // width: 30%;
+}
+
+.addPlay{
+  margin-top: 7%;
+  margin-left: 7%;
+  margin-bottom: 1%;
+}
+
+// ALLQPAGE STYLING/////////////////
+
+.allQPage{
+  .player1{
+    display: inline-block;
+    width: 30%;
+    margin-left: 1.5%;
+  }
+
+  .playerCard{
+    display: inline-block;
+    border: 2px solid black;
+    width: 48%;
+    height: 215px;
+    margin-left: 1%;
+    margin-bottom: 1%;
+  }
+
+  h3{
+    margin-right: 0;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 1.3em;
+    width: 150%;
+  }
+
+  .player2{
+    display: inline-block;
+    margin-left: 20%;
+    width: 30%;
+  }
+
+  img{
+    width: 150%;
+    cursor: pointer;
+  }
+}
+///////END ALLQPAGE STYLING////////////
+///////START MYQPAGE STYLING///////////
+.myQPage{
+  .player1{
+    display: inline-block;
+    width: 30%;
+    margin-left: 1.5%;
+  }
+
+  .playerCard{
+    display: inline-block;
+    border: 2px solid black;
+    width: 48%;
+    height: 215px;
+    margin-left: 1%;
+    margin-bottom: 1%;
+  }
+
+  h3{
+    margin-right: 0;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 1.3em;
+    width: 150%;
+  }
+
+  .player2{
+    display: inline-block;
+    margin-left: 20%;
+    width: 30%;
+  }
+
+  img{
+    margin-top: -25%;
+    width: 150%;
+    cursor: pointer;
+  }
+
+  .delete{
+    font-size: 1em;
+    color: white;
+    padding: 1%;
+    cursor: pointer;
+    margin-top: 5%;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 40px;
+  }
+}
+////////END MYQPAGE STYLING////////
+////////LOADER STYLES//////////////
+$color-background: #eaecfa;
+$color-loader: #ce4233;
+
+body {
+  background: $color-background;
+}
+
+.loader {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: $color-loader;
+  letter-spacing: 0.2em;
+
+  &::before, &::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: $color-loader;
+    position: absolute;
+    animation: load .7s infinite alternate ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+}
+
+@keyframes load {
+  0% { left: 0; height: 30px; width: 15px }
+  50% { height: 8px; width: 40px }
+  100% { left: 235px; height: 30px; width: 15px}
+}
+///////////END LOADER STYLING///////////

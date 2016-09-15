@@ -1,0 +1,46 @@
+<a href="#/home">BACK</a>
+<h2>NEW TICKET DIV</h2>
+    <!-- PLAYER 1 SELECTION AREA -->
+<div class="p1SearchArea searchArea">
+  <input ng-model="p1Input" ng-change="p1Search()" type="text" id="p1Input" class="p1Input" placeholder="Enter first player">
+  <div class="p1SearchResults" ng-repeat="player in p1Players" ng-show='p1Results'>
+    <span ng-click="buildP1Object(player.FirstName, player.LastName)">
+      <span>{{player.FirstName}}</span>
+      <span>{{player.LastName}}</span>
+      <span>{{player.Position}}</span>
+    </span>
+  </div>
+  <div class="SelectedP1">
+    <img src={{p1Object.img}}>
+    <p>{{p1Object.name}}</p>
+    <span>{{p1Object.position}}</span>
+    <span>{{p1Object.team}}</span>
+  </div>
+</div>
+  <!-- PLAYER 2 SELECTION AREA -->
+<div class="p2SearchArea searchArea">
+  <input ng-model="p2Input" ng-change="p2Search()" type="text" id="p2Input" class="p2Input"  placeholder="Enter second player">
+  <div class="p2SearchResults" ng-repeat="player in p2Players" ng-show='p2Results'>
+    <div ng-click="buildP2Object(player.FirstName, player.LastName)">
+      <span>{{player.FirstName}}</span>
+      <span>{{player.LastName}}</span>
+      <span>{{player.Position}}</span>
+    </div>
+  </div>
+  <div class="SelectedP2">
+    <img src={{p2Object.img}}>
+    <p>{{p2Object.name}}</p>
+    <span>{{p2Object.position}}</span>
+    <span>{{p2Object.team}}</span>
+  </div>
+</div>
+
+<!-- LOADER AREA -->
+<div ng-show='showLoader'>
+  <div>
+    <div class="loader">Loading...</div>
+  </div>
+</div>
+<!-- SUBMIT BUTTON -->
+<input class="addPlay" id="addPlay" type="button" value="add new play" ng-click="addPlayToFirebase()">
+
