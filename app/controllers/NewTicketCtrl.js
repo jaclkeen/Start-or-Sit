@@ -10,8 +10,7 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
   $scope.p2Input = ""
   $scope.p1Results = true
   $scope.p2Results = true
-  // $scope.p1Players = []
-  // $scope.p2Players = []
+
   var selectedPlayers = {
     uid: AuthFactory.getUser(),
     player1: {
@@ -26,14 +25,16 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
     name: "",
     position: "",
     team: "",
-    img: ""
+    img: "",
+    votes: 0
   }
 
   $scope.p2Object = {
     name: "",
     position: "",
     team: "",
-    img: ""
+    img: "",
+    votes: 0
   }
 
   $scope.buildP1Object = function(fName, lName){
@@ -50,7 +51,6 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
             $scope.p1Object.position = collection.position
             $scope.p1Object.team = collection.teamAbbr
             $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
-            // selectedPlayers.push($scope.p1Object)
             selectedPlayers.player1 = $scope.p1Object
           }
         })
@@ -73,7 +73,6 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
             $scope.p2Object.position = collection.position
             $scope.p2Object.team = collection.teamAbbr
             $scope.p2Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
-            // selectedPlayers.push($scope.p1Object)
             selectedPlayers.player2 = $scope.p2Object
           }
         })

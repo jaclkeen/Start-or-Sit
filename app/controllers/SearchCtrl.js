@@ -5,7 +5,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   var lastname
 
   $scope.playerNewsObj = []
-  // $scope.playerVideos = []
   $scope.players = []
   $scope.showPlayerNav = false
   $scope.showPlayerInfo = false
