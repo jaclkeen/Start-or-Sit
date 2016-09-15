@@ -1,3 +1,21 @@
-<div>
-  <p>NEW TICKET DIV</p>
-</div>
+  <div>
+    <a href="#/home">BACK</a>
+    <h2>NEW TICKET DIV</h2>
+    <form>
+     <input ng-model="p1Input" ng-change="p1Search()" type="text" id="p1Input" class="p1Input" placeholder="Enter first player">
+     <div ng-repeat="player in p1Players">
+        <span>{{player.FirstName}}</span>
+        <span>{{player.LastName}}</span>
+        <span>{{player.Position}}</span>
+      </div>
+
+      <input ng-model="p2Input" ng-change="p2Search()" type="text" id="p2Input" class="p2Input"  placeholder="Enter second player">
+      <div ng-repeat="player in p2Players">
+        <span>{{player.FirstName}}</span>
+        <span>{{player.LastName}}</span>
+        <span>{{player.Position}}</span>
+      </div>
+
+      <input type="button" value="add new play">
+    </form>
+

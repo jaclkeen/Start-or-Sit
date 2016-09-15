@@ -2,15 +2,21 @@
 
 app.controller('HomeCtrl', function($scope, ApiFactory){
 
-  // $scope.playerInput = ""
-  // $scope.players = []
-  // $scope.teams = []
   $scope.showAllQ = true
   $scope.showMyQ = false
   $scope.showSearch = false
   $scope.showPlayerInfo = false
   $scope.showResearch = false
   $scope.crumbs = "Show All Qs"
+
+  $scope.addQArea = function(){
+    $scope.showAllQ = false
+    $scope.showMyQ = false
+    $scope.showSearch = false
+    $scope.showResearch = false
+    $scope.showPlayerInfo = false
+    $scope.crumbs = 'Add New Q'
+  }
 
   $scope.showResearchArea = function(){
     $scope.showAllQ = false

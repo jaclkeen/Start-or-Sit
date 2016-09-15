@@ -1,18 +1,4 @@
-<div class="home">
-  <div class="homeNav">
-    <ul>
-      <li class="homeNavCrumbs">Start or Sit > <span>{{crumbs}}</span></li>
-      <li class="addNewQ"><a href='#/newTicket'>Add New Q</a></li>
-    </ul>
-  </div>
-
-  <div class="SubNavSelection">
-    <span><a href="#/home" ng-click="showAllQs()">All Q's Nav</a></span>
-    <span><a href="#/home" ng-click="showMyQs()">My Q's Nav</a></span>
-    <span><a href="#/home" ng-click="showPlayerSearch()">Player Search Nav</a></span>
-    <span><a href="#/home" ng-click="showResearchArea()">Research</a></span>
-  </div>
-
+  <div ng-include="'partials/subNav.html'"></div>
   <div class="homeMain">
 <!-- ALL Q'S AREA -->
     <div ng-controller="AllQCtrl">
@@ -63,7 +49,6 @@
             <ul>
               <li><a href='#/home' ng-click="activateStats()">Stats</a></li>
               <li><a href='#/home' ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</a></li>
-              <li><a href='#/home' ng-click="activatePlayerVideos()">Videos</a></li>
             </ul>
           </div>
           <!-- PLAYER NEWS AREA -->
@@ -73,12 +58,6 @@
               <p>ANALYSIS: {{news.analysis}}</p>
               <p>TIME: {{news.timestamp}}</p>
               <hr>
-            </div>
-          </div>
-
-          <div ng-show='showVideos'>
-            <div ng-repeat="video in playerVideos">
-
             </div>
           </div>
 
@@ -145,5 +124,4 @@
     </div>
     </div>
   </div>
-</div>
 

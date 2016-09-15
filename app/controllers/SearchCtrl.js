@@ -5,7 +5,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   var lastname
 
   $scope.playerNewsObj = []
-  $scope.playerVideos = []
+  // $scope.playerVideos = []
   $scope.players = []
   $scope.showPlayerNav = false
   $scope.showPlayerInfo = false
@@ -197,15 +197,10 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
     ApiFactory.getNews(playerId)
       .then(function(news){
         let resultNews = news.players[0].notes
-        let resultVideos = news.players[0].videos
         for(let key in resultNews){
           $scope.playerNewsObj.push(resultNews[key])
           console.log(news)
         }
-        for(let key in resultVideos){
-          $scope.playerVideos.push(resultVideos[key])
-        }
-        console.log(resultVideos)
       })
   }
 
