@@ -4,10 +4,93 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory){
 
   var lastname = ""
   var lastname2 = ""
+  $scope.showLoader = false
   $scope.p1Input = ""
   $scope.p2Input = ""
-  $scope.p1Players = []
-  $scope.p2Players = []
+  $scope.p1Results = true
+  $scope.p2Results = true
+  // $scope.p1Players = []
+  // $scope.p2Players = []
+  var selectedPlayers = []
+
+  $scope.p1Object = {
+    name: "",
+    position: "",
+    team: "",
+    img: ""
+  }
+
+  $scope.p2Object = {
+    name: "",
+    position: "",
+    team: "",
+    img: ""
+  }
+
+  $scope.buildP1Object = function(fName, lName){
+    $scope.p1Players = []
+    $scope.p2Players = []
+    let playerName = fName + " " + lName
+    $scope.showLoader = true
+    ApiFactory.getPlayerStats()
+      .then(function(playerData){
+        var playerCollections = playerData.players
+        playerCollections.forEach(function(collection){
+          if(collection.name === playerName){
+            $scope.p1Object.name = collection.name
+            $scope.p1Object.position = collection.position
+            $scope.p1Object.team = collection.teamAbbr
+            $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+            selectedPlayers.push($scope.p1Object)
+          }
+        })
+        console.log(selectedPlayers)
+        $scope.showLoader = false
+      })
+  }
+
+    $scope.buildP2Object = function(fName, lName){
+    $scope.p1Players = []
+    $scope.p2Players = []
+    let playerName = fName + " " + lName
+    $scope.showLoader = true
+    ApiFactory.getPlayerStats()
+      .then(function(playerData){
+        var playerCollections = playerData.players
+        playerCollections.forEach(function(collection){
+          if(collection.name === playerName){
+            $scope.p2Object.name = collection.name
+            $scope.p2Object.position = collection.position
+            $scope.p2Object.team = collection.teamAbbr
+            $scope.p2Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+            selectedPlayers.push($scope.p1Object)
+          }
+        })
+        console.log(selectedPlayers)
+        $scope.showLoader = false
+      })
+    }
+
+
+  //   $scope.buildP2Object = function(fName, lName){
+  //   $scope.p1Players = []
+  //   $scope.p2Players = []
+  //   let playerName = fName + " " + lName
+  //   $scope.showLoader = true
+  //   ApiFactory.getPlayerStats()
+  //     .then(function(playerData){
+  //       var playerCollections = playerData.players
+  //       playerCollections.forEach(function(collection){
+  //         if(collection.name === playerName){
+  //           $scope.p1Object.name = collection.name
+  //           $scope.p1Object.position = collection.position
+  //           $scope.p1Object.team = collection.teamAbbr
+  //           $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+  //         }
+  //       })
+  //       $scope.showLoader = false
+  //     })
+  // }
 
   $scope.p1Search = function(){
     console.log('loading.....')
