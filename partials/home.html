@@ -51,6 +51,7 @@
         </div>
       </div>
       <!-- END LOADER -->
+
       <!-- SHOWS CLICKED PLAYER AREA -->
       <div class="searchContainer">
         <div class="playerSearchResults" ng-show='showSearch'>
@@ -62,11 +63,23 @@
             <ul>
               <li><a href='#/home' ng-click="activateStats()">Stats</a></li>
               <li><a href='#/home' ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</a></li>
+              <li><a href='#/home' ng-click="activatePlayerVideos()">Videos</a></li>
             </ul>
           </div>
-
+          <!-- PLAYER NEWS AREA -->
           <div ng-show='showNews'>
-            <p>NEWS TEST</p>
+            <div ng-repeat="news in playerNewsObj">
+              <p>BODY: {{news.body}}</p>
+              <p>ANALYSIS: {{news.analysis}}</p>
+              <p>TIME: {{news.timestamp}}</p>
+              <hr>
+            </div>
+          </div>
+
+          <div ng-show='showVideos'>
+            <div ng-repeat="video in playerVideos">
+
+            </div>
           </div>
 
         <!-- SHOWS PLAYERS STATS AND INFO AREA -->

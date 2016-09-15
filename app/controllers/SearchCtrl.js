@@ -3,10 +3,14 @@
 app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
 
   var lastname
+
+  $scope.playerNewsObj = []
+  $scope.playerVideos = []
   $scope.players = []
   $scope.showPlayerNav = false
   $scope.showPlayerInfo = false
   $scope.showNews = false
+  $scope.showVideos = false
   $scope.loader = false
   $scope.playerId = ""
   $scope.esbid = ""
@@ -41,12 +45,20 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
 
   $scope.activatePlayerNews = function(){
     $scope.showPlayerInfo = false
+    $scope.showVideos = false
     $scope.showNews = true
   }
 
   $scope.activateStats = function(){
     $scope.showPlayerInfo = true
+    $scope.showVideos = false
     $scope.showNews = false
+  }
+
+  $scope.activatePlayerVideos = function(){
+    $scope.showPlayerInfo = false
+    $scope.showNews = false
+    $scope.showVideos = true
   }
 
   $scope.playerSearch = function(){
@@ -178,6 +190,23 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   }
 
   $scope.getPlayerNews = function(playerId){
-    console.log(playerId)
+    $scope.playerNewsObj.body = []
+    $scope.playerNewsObj.newsAnalysis = []
+    $scope.playerNewsObj.newsHeadline = []
+    $scope.playerNewsObj.timestamp = []
+    ApiFactory.getNews(playerId)
+      .then(function(news){
+        let resultNews = news.players[0].notes
+        let resultVideos = news.players[0].videos
+        for(let key in resultNews){
+          $scope.playerNewsObj.push(resultNews[key])
+          console.log(news)
+        }
+        for(let key in resultVideos){
+          $scope.playerVideos.push(resultVideos[key])
+        }
+        console.log(resultVideos)
+      })
   }
+
 })
