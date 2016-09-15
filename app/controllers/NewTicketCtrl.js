@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller("NewTicketCtrl", function($scope, ApiFactory){
+app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFactory){
 
   var lastname = ""
   var lastname2 = ""
@@ -11,7 +11,15 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory){
   $scope.p2Results = true
   // $scope.p1Players = []
   // $scope.p2Players = []
-  var selectedPlayers = []
+  var selectedPlayers = {
+    uid: AuthFactory.getUser(),
+    player1: {
+
+    },
+    player2: {
+
+    }
+  }
 
   $scope.p1Object = {
     name: "",
@@ -41,7 +49,8 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory){
             $scope.p1Object.position = collection.position
             $scope.p1Object.team = collection.teamAbbr
             $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
-            selectedPlayers.push($scope.p1Object)
+            // selectedPlayers.push($scope.p1Object)
+            selectedPlayers.player1 = $scope.p1Object
           }
         })
         console.log(selectedPlayers)
@@ -49,7 +58,7 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory){
       })
   }
 
-    $scope.buildP2Object = function(fName, lName){
+  $scope.buildP2Object = function(fName, lName){
     $scope.p1Players = []
     $scope.p2Players = []
     let playerName = fName + " " + lName
@@ -63,34 +72,14 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory){
             $scope.p2Object.position = collection.position
             $scope.p2Object.team = collection.teamAbbr
             $scope.p2Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
-            selectedPlayers.push($scope.p1Object)
+            // selectedPlayers.push($scope.p1Object)
+            selectedPlayers.player2 = $scope.p2Object
           }
         })
         console.log(selectedPlayers)
         $scope.showLoader = false
       })
     }
-
-
-  //   $scope.buildP2Object = function(fName, lName){
-  //   $scope.p1Players = []
-  //   $scope.p2Players = []
-  //   let playerName = fName + " " + lName
-  //   $scope.showLoader = true
-  //   ApiFactory.getPlayerStats()
-  //     .then(function(playerData){
-  //       var playerCollections = playerData.players
-  //       playerCollections.forEach(function(collection){
-  //         if(collection.name === playerName){
-  //           $scope.p1Object.name = collection.name
-  //           $scope.p1Object.position = collection.position
-  //           $scope.p1Object.team = collection.teamAbbr
-  //           $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
-  //         }
-  //       })
-  //       $scope.showLoader = false
-  //     })
-  // }
 
   $scope.p1Search = function(){
     console.log('loading.....')
@@ -146,6 +135,15 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory){
         }
       })
     })
+  }
+
+  $scope.addPlayToFirebase = function(){
+    DbFactory.storeToFirebase(selectedPlayers)
+      .then(function(data){
+        console.log(data)
+        selectedPlayers.player1 = {}
+        selectedPlayers.player2 = {}
+      })
   }
 
 })

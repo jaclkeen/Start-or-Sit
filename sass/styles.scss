@@ -60,12 +60,109 @@ table td{
 
 .newTicket input{
   display: inline-block;
+  // margin-left: 10%;
 }
 
+.p1SearchArea{
+  float: left;
+  display: inline-block;
+  // width: 30%;
+  text-align: center;
+  margin-left: 10%;
+  border: 2px solid black;
+}
 
+.p2SearchArea{
+  float: right;
+  display: inline-block;
+  text-align: center;
+  margin-right: 10%;
+  // width: 30%;
+  border: 2px solid black;
+}
 
+.addPlay{
+  margin-top: 7%;
+  margin-left: 7%;
+  margin-bottom: 1%;
+}
 
-// LOADER STYLES
+// ALLQPAGE STYLING/////////////////
+
+.allQPage{
+  .player1{
+    display: inline-block;
+    width: 30%;
+    margin-left: 1.5%;
+  }
+
+  .playerCard{
+    display: inline-block;
+    border: 2px solid black;
+    width: 48%;
+    height: 215px;
+    margin-left: 1%;
+    margin-bottom: 1%;
+  }
+
+  h3{
+    margin-right: 0;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 1.3em;
+    width: 150%;
+  }
+
+  .player2{
+    display: inline-block;
+    margin-left: 27%;
+    width: 30%;
+  }
+
+  img{
+    width: 130%;
+    cursor: pointer;
+  }
+}
+///////END ALLQPAGE STYLING////////////
+///////START MYQPAGE STYLING///////////
+.myQPage{
+  .player1{
+    display: inline-block;
+    width: 30%;
+    margin-left: 1.5%;
+  }
+
+  .playerCard{
+    display: inline-block;
+    border: 2px solid black;
+    width: 48%;
+    height: 215px;
+    margin-left: 1%;
+    margin-bottom: 1%;
+  }
+
+  h3{
+    margin-right: 0;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 1.3em;
+    width: 150%;
+  }
+
+  .player2{
+    display: inline-block;
+    margin-left: 27%;
+    width: 30%;
+  }
+
+  img{
+    width: 130%;
+    cursor: pointer;
+  }
+}
+////////END MYQPAGE STYLING////////
+////////LOADER STYLES//////////////
 $color-background: #eaecfa;
 $color-loader: #ce4233;
 
@@ -112,3 +209,4 @@ body {
   50% { height: 8px; width: 40px }
   100% { left: 235px; height: 30px; width: 15px}
 }
+///////////END LOADER STYLING///////////
