@@ -4,8 +4,10 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
 
   var lastname
   $scope.players = []
+  $scope.showPlayerNav = false
   $scope.showPlayerInfo = false
   $scope.showNews = false
+  $scope.loader = false
   $scope.playerId = ""
   $scope.esbid = ""
   $scope.pName = ""
@@ -35,7 +37,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   $scope.thirtyFG = 0
   $scope.fourtyFG = 0
   $scope.longFG = 0
-  $scope.showPlayerNav = false
 
 
   $scope.activatePlayerNews = function(){
@@ -54,6 +55,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
     console.log('loading.....')
     ApiFactory.getPlayers()
     .then(function(players){
+      $scope.players = []
       $scope.esbid = ""
       $scope.pName = ""
       $scope.imgSrc = ""
@@ -82,6 +84,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   }
 
   $scope.getPlayerInfo = function(fName, lName){
+    $scope.loader = true
     var playerName = fName + " " + lName
     $scope.showNews = false
     ApiFactory.getPlayerStats()
@@ -168,6 +171,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
               $scope.showPlayerNav = true
               $scope.playerInput = ""
               $scope.players = []
+              $scope.loader = false
           }
         })
       })
