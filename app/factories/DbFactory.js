@@ -43,10 +43,24 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
     })
   }
 
+  let deletePlayFromFirebase = function(id){
+    return $q(function(resolve, reject){
+      $http.delete(`${FirebaseURL}plays/${id}.json`)
+      .success(function(play){
+        resolve(play)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   return {
     storeUser,
     storeToFirebase,
-    getAllPlaysFromFirebase
+    getAllPlaysFromFirebase,
+    deletePlayFromFirebase
   }
 
 })

@@ -69,7 +69,6 @@ table td{
   // width: 30%;
   text-align: center;
   margin-left: 10%;
-  border: 2px solid black;
 }
 
 .p2SearchArea{
@@ -78,7 +77,6 @@ table td{
   text-align: center;
   margin-right: 10%;
   // width: 30%;
-  border: 2px solid black;
 }
 
 .addPlay{
@@ -157,8 +155,20 @@ table td{
   }
 
   img{
+    margin-top: -25%;
     width: 130%;
     cursor: pointer;
+  }
+
+  .delete{
+    font-size: 1em;
+    color: white;
+    padding: 1%;
+    cursor: pointer;
+    margin-top: 5%;
+    background-color: red;
+    border: 2px solid black;
+    border-radius: 40px;
   }
 }
 ////////END MYQPAGE STYLING////////

@@ -5,15 +5,37 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory){
 
   DbFactory.getAllPlaysFromFirebase()
   .then(function(plays){
+    let idArr = Object.keys(plays)
+    idArr.forEach(function(item){
+      plays[item].id = item
+    })
     for(var key in plays){
       if(plays[key].uid === AuthFactory.getUser()){
-        console.log('true')
-        console.log('UIDTRY', plays[key].uid)
+        console.log('KEYYYY', key)
         $scope.plays.push(plays[key])
-      }
-      else{
-        console.log('nope')
       }
     }
   })
+
+  $scope.deletePlay = function(id){
+    DbFactory.deletePlayFromFirebase(id)
+      .then(function(data){
+        console.log('deleted')
+        DbFactory.getAllPlaysFromFirebase()
+          .then(function(plays){
+            $scope.plays = []
+            let idArr = Object.keys(plays)
+            idArr.forEach(function(item){
+              plays[item].id = item
+            })
+            for(var key in plays){
+              if(plays[key].uid === AuthFactory.getUser()){
+                console.log('KEYYYY', key)
+                $scope.plays.push(plays[key])
+              }
+            }
+          })
+        })
+  }
+
 })

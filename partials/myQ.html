@@ -1,6 +1,7 @@
 <div class="myQPage">
   <div class="playerCard" ng-repeat="play in plays">
     <div class="player1">
+      <span class="glyphicon glyphicon-remove delete" ng-click="deletePlay(play.id)"></span>
       <img src={{play.player1.img}}>
       <h3>{{play.player1.name}}</h3>
       <span>{{play.player1.position}}</span>

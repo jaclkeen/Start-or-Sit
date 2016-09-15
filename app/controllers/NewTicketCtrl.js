@@ -4,6 +4,7 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
 
   var lastname = ""
   var lastname2 = ""
+  var allVals = false
   $scope.showLoader = false
   $scope.p1Input = ""
   $scope.p2Input = ""
@@ -138,12 +139,27 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
   }
 
   $scope.addPlayToFirebase = function(){
-    DbFactory.storeToFirebase(selectedPlayers)
-      .then(function(data){
-        console.log(data)
-        selectedPlayers.player1 = {}
-        selectedPlayers.player2 = {}
-      })
+    for(var key in selectedPlayers.player1){
+      for(var item in selectedPlayers.player2){
+        if(selectedPlayers.player1[key] === "" || selectedPlayers.player2[key] === ""){
+          allVals = false
+        }
+        else{
+          allVals = true
+        }
+      }
+    }
+    if(allVals){
+      DbFactory.storeToFirebase(selectedPlayers)
+        .then(function(data){
+          console.log(data)
+          selectedPlayers.player1 = {}
+          selectedPlayers.player2 = {}
+        })
+    }
+    else{
+      console.log('NOT TODAY MY FRIEND')
+    }
   }
 
 })
