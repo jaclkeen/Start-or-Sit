@@ -1,29 +1,33 @@
-<div>
-  <!-- <div ng-include="'partials/splash.html'"></div> -->
-  <div class="login">
+<div class="splash">
+
+  <div class="loginNav">
     <h2>Login or signup</h2>
     <a href='#'>Login</a>
     <a href="#">Sign Up</a>
+  </div>
 
-    <form class="login">
-      <h4>Login</h4>
+  <div class="login">
+    <form class="loginInfo">
+      <h2 class="loginHead">Login</h2>
       <label for='email'>Email: </label>
-      <input type="text" ng-model="account.email" id="email" class="email">
-      <label for='pass'>Password: </label>
-      <input type="password" ng-model="account.password" id="pass" class="pass">
-      <input type="button" class='submitLogin' value="Login" ng-click="login()" id="submitLogin">
-      <input type="button" class='googleLogin' value="Login with Google" ng-click="googleLogin()" id="googleLogin">
+      <input type="text" ng-model="account.email" id="email" class="email"><br><br>
+      <label for='pass'>Password:</label>
+      <input type="password" ng-model="account.password" id="pass" class="pass"><br><br>
+      <button class='submitLogin' value="Login" ng-click="login()" id="submitLogin">Login</button>
+      <button class='googleLogin' value="Login with Google" ng-click="googleLogin()" id="googleLogin">Login with Google</button>
     </form>
+  </div>
 
-    <form class="signUp">
+  <div class="signUp">
+    <form class="signUpInfo">
       <h4>Signup</h4>
       <label for="name">Name: </label>
-      <input type="text" ng-model="account.name" id="name" class="name">
+      <input type="text" ng-model="account.name" id="name" class="name"><br><br>
       <label for='email'>Email: </label>
-      <input type="text" ng-model="account.email" id="email" class="email">
+      <input type="text" ng-model="account.email" id="email" class="email"><br><br>
       <label for='pass'>Password: </label>
-      <input type="password" ng-model="account.password" id="pass" class="pass">
-      <input type="button" class='register' value="Register" ng-click="register()" id="register">
+      <input type="password" ng-model="account.password" id="pass" class="pass"><br><br>
+      <button class='register' value="Register" ng-click="register()" id="register">Register</button>
     </form>
   </div>
 </div>

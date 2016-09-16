@@ -2,6 +2,7 @@ html{
   background-color: brown;
   color: white;
 }
+// NAV STYLING
 nav{
   background-color: lightgrey;
   width: 100%;
@@ -11,12 +12,54 @@ nav{
     vertical-align: middle;
     font-size: 4em;
     display: inline-block;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Courgette', cursive;
   }
   span{
     font-size: 1em;
   }
 }
+//////////////
+// LOGIN STYLING
+.splash{
+  border: 2px solid black;
+  width: 50%;
+  margin: auto;
+  border-radius: 50px;
+
+  .loginNav{
+    text-align: center;
+  }
+}
+.login{
+  // border: 2px solid black;
+  width: 50%;
+  margin: auto;
+  padding: 2%;
+  border-radius: 50px;
+  text-align: left;
+
+  input{
+    display: inline-block;
+  }
+  h2{
+    margin-top: 0;
+  }
+}
+.signUp{
+  width: 50%;
+  margin: auto;
+  padding: 2%;
+  border-radius: 50px;
+  text-align: left;
+
+  input{
+    display: inline-block;
+  }
+  h2{
+    margin-top: 0;
+  }
+}
+
 
 .splashImg{
   .splash{
