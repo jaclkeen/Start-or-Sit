@@ -1,0 +1,10 @@
+<h3>Recent Player News</h3>
+  <a href="#/home">Back</a>
+  <div class="recentNews" ng-repeat="news in recentNews">
+    <h4>{{news.firstName}} {{news.lastName}}</h4>
+    <span>{{news.teamAbbr}}</span>
+    <span>{{news.position}}</span>
+    <p>{{news.body}}</p>
+    <p>{{news.analysis}}</p>
+    <p>{{news.timestamp}}</p><hr>
+  </div>

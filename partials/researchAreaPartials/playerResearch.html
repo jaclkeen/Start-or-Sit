@@ -1,0 +1,32 @@
+<h3>Fantasy Start/Sit Statistics</h3>
+  <a href="#/home">Back</a>
+  <table class="table table-striped shortELeaders">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="rankCat">Order on Depth Chart</th>
+        <th class="rankCat">Name</th>
+        <th class="rankCat">Position</th>
+        <th class="rankCat">Team</th>
+        <th class="rankCat">Current Week Opponent</th>
+        <th class="rankCat">Drops</th>
+        <th class="rankCat">Adds</th>
+        <th class="rankCat">Percent Owned</th>
+        <th class="rankCat">Percent Started</th>
+        <th class="rankCat">Percent Started Change</th>
+      </tr>
+    </thead>
+    <tbody class="table-striped" ng-repeat="players in playerResearch">
+      <tr>
+        <td>{{players.depthChartOrder}}</td>
+        <td>{{players.firstName}} {{players.lastName}}</td>
+        <td>{{players.position}}</td>
+        <td>{{players.teamAbbr}}</td>
+        <td>{{players.opponentTeamAbbr}}</td>
+        <td>{{players.numDrops}}</td>
+        <td>{{players.numAdds}}</td>
+        <td>{{players.percentOwned}}</td>
+        <td>{{players.percentStarted}}</td>
+        <td>{{players.percentStartedChange}}</td>
+      </tr>
+    </tbody>
+  </table>

@@ -83,7 +83,7 @@ app.factory('ApiFactory', function($q, $http){
 
   let getMostRecentPlayerNews = function(){
     return $q(function(resolve, reject){
-      $http.get("http://api.fantasy.nfl.com/v1/players/news?&count=150&format=json")
+      $http.get("http://api.fantasy.nfl.com/v1/players/news?&count=50&format=json")
       .success(function(ranks){
         resolve(ranks)
       })

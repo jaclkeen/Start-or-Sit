@@ -1,0 +1,26 @@
+<h3>Season Scoring Leaders</h3>
+  <a href="#/home">Back</a>
+  <table class="table table-striped shortELeaders">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="rankCat">Rank</th>
+        <th class="rankCat">Name</th>
+        <th class="rankCat">Position</th>
+        <th class="rankCat">Team</th>
+        <!-- <th class="rankCat">Current Week Opponent</th> -->
+        <th class="rankCat">Season Projected Points</th>
+        <th class="rankCat">Current Points</th>
+      </tr>
+    </thead>
+    <tbody class="table-striped" ng-repeat="leaders in scoringLeaders">
+      <tr>
+        <td>{{leaders.rank}}</td>
+        <td>{{leaders.firstName}} {{leaders.lastName}}</td>
+        <td>{{leaders.position}}</td>
+        <td>{{leaders.teamAbbr}}</td>
+        <!-- <td>{{leaders.opponentTeamAbbr}}</td> -->
+        <td>{{leaders.projectedPts}}</td>
+        <td>{{leaders.pts}}</td>
+      </tr>
+    </tbody>
+  </table>
