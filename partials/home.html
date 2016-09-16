@@ -16,6 +16,13 @@
       </div>
     </div>
 
+<!-- RESEARCH AREA -->
+    <div ng-show='showResearch'>
+      <div ng-controller="ResearchCtrl">
+        <div ng-include="'partials/research.html'"></div>
+      </div>
+    </div>
+
 <!-- PLAYER SEARCH AREA -->
     <div ng-controller="SearchCtrl">
       <div class="searchResults" ng-show='showSearch'>
@@ -62,7 +69,7 @@
               <hr>
             </div>
           </div>
-
+          <!-- END PLAYER NEWS AREA -->
         <!-- SHOWS PLAYERS STATS AND INFO AREA -->
         <div ng-show='showPlayerInfo'>
           <table class="table table-striped">
@@ -117,13 +124,7 @@
             </tr>
           </table>
         </div>
+      </div>
     </div>
   </div>
-
-    <!-- RESEARCH AREA -->
-    <div ng-show='showResearch'>
-      <p>RESEARCH AREA DIV</p>
-    </div>
-    </div>
   </div>
-

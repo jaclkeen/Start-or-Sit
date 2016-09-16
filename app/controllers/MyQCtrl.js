@@ -23,11 +23,11 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory){
         console.log('deleted')
         DbFactory.getAllPlaysFromFirebase()
           .then(function(plays){
-            $scope.plays = []
             let idArr = Object.keys(plays)
             idArr.forEach(function(item){
               plays[item].id = item
             })
+            $scope.plays = []
             for(var key in plays){
               if(plays[key].uid === AuthFactory.getUser()){
                 console.log('KEYYYY', key)
