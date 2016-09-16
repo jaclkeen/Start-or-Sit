@@ -1,0 +1,33 @@
+<h3>Editor Ranks</h3>
+  <span>Filter by position: </span>
+  <select ng-model="position" ng-change="getERanks(position)">
+    <option default value="QB">QB</option>
+    <option value="RB">RB</option>
+    <option value="WR">WR</option>
+    <option value="TE">TE</option>
+    <option value="K">K</option>
+    <option value="DEF">DEF</option>
+  </select>
+  <a href="#/home">Back</a>
+  <table class="table table-striped shortERanks">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="rankCat">Average Rank</th>
+        <th class="rankCat">Name</th>
+        <th class="rankCat">Position</th>
+        <th class="rankCat">Team</th>
+        <th class="rankCat">Current Week Opponent</th>
+        <th class="rankCat">Stock</th>
+      </tr>
+    </thead>
+    <tbody class="table-striped" ng-repeat="ranks in editorRanks">
+      <tr>
+        <td>{{ranks.rank}}</td>
+        <td>{{ranks.firstName}} {{ranks.lastName}}</td>
+        <td>{{ranks.position}}</td>
+        <td>{{ranks.teamAbbr}}</td>
+        <td>{{ranks.opponentTeamAbbr}}</td>
+        <td>{{ranks.stock}}</td>
+      </tr>
+    </tbody>
+  </table>

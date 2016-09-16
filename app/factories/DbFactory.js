@@ -56,11 +56,28 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
     })
   }
 
+  let updateVotes = function(player, id, votes){
+    console.log('PLAYER', player)
+    return $q(function(resolve, reject){
+      $http.patch(`${FirebaseURL}plays/${id}/${player}.json`,
+        JSON.stringify({votes: votes}))
+      .success(function(play){
+        console.log('success')
+        resolve(play)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   return {
     storeUser,
     storeToFirebase,
     getAllPlaysFromFirebase,
-    deletePlayFromFirebase
+    deletePlayFromFirebase,
+    updateVotes
   }
 
 })

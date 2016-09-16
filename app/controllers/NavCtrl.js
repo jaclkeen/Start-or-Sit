@@ -1,9 +1,16 @@
 "use strict"
 
 app.controller('NavCtrl', function($scope, AuthFactory){
-  console.log('NavCtrl working')
-  $scope.logout = true
+
+  $scope.loginBtn = "Login"
+
   if(AuthFactory.getUser()){
-    $scope.logout = true
+    $scope.loginBtn = "Logout"
   }
+  else{
+    console.log('NOT TRUE')
+  }
+
+  $scope.userData = AuthFactory.getUserInfo()
+  console.log('USER DATA', $scope.userData)
 })

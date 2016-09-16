@@ -9,6 +9,10 @@ app.controller('HomeCtrl', function($scope, DbFactory){
   $scope.showResearch = false
   $scope.crumbs = "Show All Qs"
   $scope.plays = []
+  $scope.showVotes = false
+  $scope.p1Votes = 0
+  $scope.p2Votes = 0
+  $scope.isEnabled = true
 
   $scope.addQArea = function(){
     $scope.showAllQ = false
@@ -55,15 +59,28 @@ app.controller('HomeCtrl', function($scope, DbFactory){
     $scope.crumbs = 'Player Search'
   }
 
-  $scope.plays = []
-
   $scope.loadTickets = function(){
-    $scope.plays = []
     DbFactory.getAllPlaysFromFirebase()
     .then(function(plays){
+      let idArr = Object.keys(plays)
+      idArr.forEach(function(item){
+        plays[item].id = item
+      })
+      $scope.plays = []
       for(var key in plays){
+        console.log(key, plays, plays[key])
         $scope.plays.push(plays[key])
       }
+    })
+  }
+
+  $scope.addVote = function(player, id, votes){
+    votes++
+    DbFactory.updateVotes(player, id, votes)
+    .then(function(data){
+      console.log(data)
+      $scope.isEnabled = false
+      $scope.loadTickets()
     })
   }
 

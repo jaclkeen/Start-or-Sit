@@ -1,0 +1,121 @@
+<div class="researchArea">
+  <h2>Research Area</h2>
+  <!-- FIRST 5 EDITOR RANKS AREA -->
+  <h3>Editor Ranks</h3>
+  <table class="table table-striped shortERanks">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="rankCat">Average Rank</th>
+        <th class="rankCat">Name</th>
+        <th class="rankCat">Position</th>
+        <th class="rankCat">Team</th>
+        <th class="rankCat">Current Week Opponent</th>
+        <th class="rankCat">Stock</th>
+      </tr>
+    </thead>
+    <tbody class="table-striped" ng-repeat="ranks in editorRanks">
+      <tr>
+        <td>{{ranks.rank}}</td>
+        <td>{{ranks.firstName}} {{ranks.lastName}}</td>
+        <td>{{ranks.position}}</td>
+        <td>{{ranks.teamAbbr}}</td>
+        <td>{{ranks.opponentTeamAbbr}}</td>
+        <td>{{ranks.stock}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <a href="#/editorRanks">SHOW MORE</a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <!-- END FIRST 5 EDITOR RANKS AREA -->
+  <!-- START SEASON SCORING LEADERS AREA -->
+  <h3>Season Scoring Leaders</h3>
+  <table class="table table-striped shortELeaders">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="rankCat">Rank</th>
+        <th class="rankCat">Name</th>
+        <th class="rankCat">Position</th>
+        <th class="rankCat">Team</th>
+        <!-- <th class="rankCat">Current Week Opponent</th> -->
+        <th class="rankCat">Season Projected Points</th>
+        <th class="rankCat">Current Points</th>
+      </tr>
+    </thead>
+    <tbody class="table-striped" ng-repeat="leaders in scoringLeaders">
+      <tr>
+        <td>{{leaders.rank}}</td>
+        <td>{{leaders.firstName}} {{leaders.lastName}}</td>
+        <td>{{leaders.position}}</td>
+        <td>{{leaders.teamAbbr}}</td>
+        <!-- <td>{{leaders.opponentTeamAbbr}}</td> -->
+        <td>{{leaders.projectedPts}}</td>
+        <td>{{leaders.pts}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>
+          <a href="#/scoringLeaders">SHOW MORE</a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <!-- END SCORING LEADERS AREA -->
+  <!-- BEGIN PLAYER RESEARCH AREA -->
+  <h3>Fantasy Start/Sit Statistics</h3>
+  <table class="table table-striped shortELeaders">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="rankCat">Order on Depth Chart</th>
+        <th class="rankCat">Name</th>
+        <th class="rankCat">Position</th>
+        <th class="rankCat">Team</th>
+        <th class="rankCat">Current Week Opponent</th>
+        <th class="rankCat">Drops</th>
+        <th class="rankCat">Adds</th>
+        <th class="rankCat">Percent Owned</th>
+        <th class="rankCat">Percent Started</th>
+        <th class="rankCat">Percent Started Change</th>
+      </tr>
+    </thead>
+    <tbody class="table-striped" ng-repeat="players in playerResearch">
+      <tr>
+        <td>{{players.depthChartOrder}}</td>
+        <td>{{players.firstName}} {{players.lastName}}</td>
+        <td>{{players.position}}</td>
+        <td>{{players.teamAbbr}}</td>
+        <td>{{players.opponentTeamAbbr}}</td>
+        <td>{{players.numDrops}}</td>
+        <td>{{players.numAdds}}</td>
+        <td>{{players.percentOwned}}</td>
+        <td>{{players.percentStarted}}</td>
+        <td>{{players.percentStartedChange}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="rankCat">
+          <a href="#/fantasyResearch">SHOW MORE</a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <!-- END PLAYER RESEARCH AREA -->
+  <!-- START RECENT PLAYER NEWS AREA -->
+  <h3>Recent Player News</h3>
+  <div class="recentNews" ng-repeat="news in recentNews">
+    <h4>{{news.firstName}} {{news.lastName}}</h4>
+    <span>{{news.teamAbbr}}</span>
+    <span>{{news.position}}</span>
+    <p>{{news.body}}</p>
+    <p>{{news.analysis}}</p>
+    <p>{{news.timestamp}}</p><hr>
+  </div>
+  <a href='#/recentNews'>Show More News</a>
+  <!-- END RECENT PLAYER NEWS AREA -->
+</div>

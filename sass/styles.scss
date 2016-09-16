@@ -16,13 +16,20 @@ nav{
     width: 20%;
   }
   .navItems{
-    width: 150%;
+    width: 121%;
+    margin-left: 210%;
     ul{
       display: inline-block;
     }
     li{
       display: inline-block;
       margin-left: 2%;
+    }
+    .profile{
+      width: 20%;
+      margin-left: 10%;
+      border-radius: 40px;
+      display: inline-block;
     }
   }
 }
@@ -91,14 +98,14 @@ table td{
   .player1{
     display: inline-block;
     width: 30%;
-    margin-left: 1.5%;
+    margin-left: 1%;
   }
 
   .playerCard{
     display: inline-block;
     border: 2px solid black;
     width: 48%;
-    height: 215px;
+    // height: 215px;
     margin-left: 1%;
     margin-bottom: 1%;
   }
@@ -120,6 +127,11 @@ table td{
   img{
     width: 150%;
     cursor: pointer;
+    // margin-top: -56%;
+  }
+  .votes{
+    text-align: center;
+    font-size: 2em;
   }
 }
 ///////END ALLQPAGE STYLING////////////
@@ -135,7 +147,7 @@ table td{
     display: inline-block;
     border: 2px solid black;
     width: 48%;
-    height: 215px;
+    // height: 215px;
     margin-left: 1%;
     margin-bottom: 1%;
   }
@@ -163,7 +175,8 @@ table td{
   .delete{
     font-size: 1em;
     color: white;
-    padding: 1%;
+    padding: 2%;
+    padding-top: 2.5%;
     cursor: pointer;
     margin-top: 5%;
     background-color: red;

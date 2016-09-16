@@ -17,6 +17,22 @@ let app = angular.module("StartOrSit", ["ngRoute"])
         templateUrl: 'partials/newTicket',
         controller: 'NewTicketCtrl'
       })
+      .when('/editorRanks', {
+        templateUrl: 'partials/researchAreaPartials/editorRanks',
+        controller: 'EditorRanksCtrl'
+      })
+      .when('/scoringLeaders', {
+        templateUrl: 'partials/researchAreaPartials/scoringLeaders',
+        controller: 'ScoringLeadersCtrl'
+      })
+      .when('/fantasyResearch', {
+        templateUrl: 'partials/researchAreaPartials/playerResearch',
+        controller: 'PlayerResearchCtrl'
+      })
+      .when('/recentNews', {
+        templateUrl: 'partials/researchAreaPartials/recentNews',
+        controller: 'RecentNewsCtrl'
+      })
       .otherwise('/login')
   })
 
