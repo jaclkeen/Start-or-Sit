@@ -37,7 +37,7 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
       if(data){
         AuthFactory.setUser(data.uid)
         console.log('AUTHFACTORY SET USER', AuthFactory.getUser())
-        $window.location.href = '#/home'
+        $window.location.href = '#home'
       }
     })
     .catch(function(error){

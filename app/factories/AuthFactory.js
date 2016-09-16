@@ -2,7 +2,7 @@
 
 app.factory('AuthFactory', function($window){
 //Before we can do this we need to initialize a Firebase app
-  let currentUserId = null
+  let currentUserId = ""
   let userInfo = {
     name: null,
     img: null
