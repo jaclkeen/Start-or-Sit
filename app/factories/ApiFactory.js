@@ -69,8 +69,9 @@ app.factory('ApiFactory', function($q, $http){
   }
 
   let getFantasyScoringLeaders = function(position){
+    console.log(position)
     return $q(function(resolve, reject){
-      $http.get(`http://api.fantasy.nfl.com/v1/players/scoringleaders?&count=50&season=2016&position=${position}&format=json`)
+      $http.get(`http://api.fantasy.nfl.com/v1/players/scoringleaders?&count=30&season=2016&position=${position}&format=json`)
       .success(function(ranks){
         resolve(ranks)
       })

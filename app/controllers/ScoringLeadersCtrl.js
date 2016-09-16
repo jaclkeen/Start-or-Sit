@@ -3,14 +3,19 @@
 app.controller('ScoringLeadersCtrl', function($scope, ApiFactory){
 
   $scope.scoringLeaders = []
+  $scope.position = "QB"
 
-  ApiFactory.getFantasyScoringLeaders('QB')
-  .then(function(leaders){
-    console.log('LEADERS', leaders)
-    let playerLeaders = leaders.positions.QB
-    for(var key in playerLeaders){
-        $scope.scoringLeaders.push(playerLeaders[key])
-    }
-  })
+  $scope.getLeaders = function(position){
+    ApiFactory.getFantasyScoringLeaders(position)
+    .then(function(leaders){
+      let playerLeaders = leaders
+      $scope.scoringLeaders = []
+      for(var key in playerLeaders.positions){
+        $scope.scoringLeaders = playerLeaders.positions[key]
+      }
+    })
+  }
+
+  $scope.getLeaders('QB')
 
 })

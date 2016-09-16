@@ -84,10 +84,6 @@ app.controller('HomeCtrl', function($scope, DbFactory){
     })
   }
 
-  $scope.disableVoting = function(){
-    $scope.isEnabled = false
-  }
-
   $scope.loadTickets()
 
 })
