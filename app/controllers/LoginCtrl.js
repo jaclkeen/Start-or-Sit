@@ -1,6 +1,10 @@
 "use strict"
 
 app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
+
+  $scope.loginPage = true
+  $scope.signUpPage = false
+
   $scope.account = {
     email: "",
     password: "",
@@ -60,6 +64,16 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
           errorMessage = error.message,
           credential = error.credential
     })
+  }
+
+  $scope.showLogin = function(){
+    $scope.loginPage = true
+    $scope.signUpPage = false
+  }
+
+  $scope.showSignUp = function(){
+    $scope.loginPage = false
+    $scope.signUpPage = true
   }
 
 })

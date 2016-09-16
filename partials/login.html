@@ -1,14 +1,19 @@
+<div class="image">
+  <img src="background.jpg">
+</div>
+
 <div class="splash">
 
   <div class="loginNav">
     <h2>Login or signup</h2>
-    <a href='#'>Login</a>
-    <a href="#">Sign Up</a>
+    <span ng-click="showLogin()" class="loginNavOption">Login</span>
+    <span ng-click="showSignUp()"" class="loginNavOption">Sign Up</span>
   </div>
 
-  <div class="login">
+
+  <div class="login" ng-show="loginPage">
     <form class="loginInfo">
-      <h2 class="loginHead">Login</h2>
+      <h4 class="loginHead">Login:</h4>
       <label for='email'>Email: </label>
       <input type="text" ng-model="account.email" id="email" class="email"><br><br>
       <label for='pass'>Password:</label>
@@ -18,9 +23,9 @@
     </form>
   </div>
 
-  <div class="signUp">
+  <div class="signUp" ng-show="signUpPage">
     <form class="signUpInfo">
-      <h4>Signup</h4>
+      <h4>Signup:</h4>
       <label for="name">Name: </label>
       <input type="text" ng-model="account.name" id="name" class="name"><br><br>
       <label for='email'>Email: </label>
