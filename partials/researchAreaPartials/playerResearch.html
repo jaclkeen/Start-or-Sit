@@ -1,4 +1,6 @@
 <h3>Fantasy Start/Sit Statistics</h3>
+  <span>Filter by name: </span>
+  <input type="text" ng-model="searchText.firstName">
   <a href="#/home">Back</a>
   <table class="table table-striped shortELeaders">
     <thead class="thead-inverse">
@@ -15,7 +17,7 @@
         <th class="rankCat">Percent Started Change</th>
       </tr>
     </thead>
-    <tbody class="table-striped" ng-repeat="players in playerResearch">
+    <tbody class="table-striped" ng-repeat="players in playerResearch | filter:searchText">
       <tr>
         <td>{{players.depthChartOrder}}</td>
         <td>{{players.firstName}} {{players.lastName}}</td>

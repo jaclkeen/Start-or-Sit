@@ -3,6 +3,7 @@
 app.controller('PlayerResearchCtrl', function($scope, ApiFactory){
 
   $scope.playerResearch = []
+  $scope.searchText = ""
 
   ApiFactory.getFantasyResearchInfo()
   .then(function(researchInfo){
