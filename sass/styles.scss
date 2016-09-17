@@ -8,7 +8,6 @@ html{
 nav{
   background-color: black;
   width: 100%;
-  opacity: .85;
   border-bottom: 4px solid #216527;
 
   h3 {
@@ -163,6 +162,7 @@ nav{
   .addNewQ{
     display: inline-block;
     margin-top: -13%;
+    color: white;
 
     a{
       color: white;
@@ -192,18 +192,58 @@ nav{
     }
   }
 }
+  // **END SUBNAV STYLING
+// BEGIN PLAYER CARD STYLING
 
+// ALLQPAGE STYLING/////////////////
+.allQPage{
+  .player1{
+    display: inline-block;
+    width: 30%;
+    margin-left: 5%;
+  }
 
+  .playerCard{
+    display: inline-block;
+    border: 4px solid #216527;
+    border-radius: 20px;
+    width: 30%;
+    margin-top: 1%;
+    margin-left: 2.2%;
+    margin-bottom: .3%;
+    color: white;
+  }
+
+  h3{
+    margin-right: 0;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-size: 1.3em;
+    width: 140%;
+  }
+
+  .player2{
+    display: inline-block;
+    margin-left: 20%;
+    width: 30%;
+  }
+
+  img{
+    width: 130%;
+    cursor: pointer;
+    background: white;
+    border-radius: 30px;
+    margin-top: 6.5%;
+  }
+  .votes{
+    text-align: center;
+    font-size: 1.6em;
+  }
+}
+///////END ALLQPAGE STYLING////////////
+///////BEGIN ADD NEW PLAY AREA/////////
 .playerSearch{
   margin-top: 3%;
-}
-
-table th{
-  text-align: center;
-}
-
-table td{
-  text-align: center;
 }
 
 .searchContainer{
@@ -237,50 +277,7 @@ table td{
   margin-left: 7%;
   margin-bottom: 1%;
 }
-
-// ALLQPAGE STYLING/////////////////
-
-.allQPage{
-  .player1{
-    display: inline-block;
-    width: 30%;
-    margin-left: 1%;
-  }
-
-  .playerCard{
-    display: inline-block;
-    border: 2px solid black;
-    width: 48%;
-    // height: 215px;
-    margin-left: 1%;
-    margin-bottom: 1%;
-  }
-
-  h3{
-    margin-right: 0;
-    margin-top: 4%;
-    margin-bottom: 4%;
-    font-size: 1.3em;
-    width: 150%;
-  }
-
-  .player2{
-    display: inline-block;
-    margin-left: 20%;
-    width: 30%;
-  }
-
-  img{
-    width: 150%;
-    cursor: pointer;
-    // margin-top: -56%;
-  }
-  .votes{
-    text-align: center;
-    font-size: 2em;
-  }
-}
-///////END ALLQPAGE STYLING////////////
+///////END ADD NEW PLAY AREA///////////
 ///////START MYQPAGE STYLING///////////
 .myQPage{
   .player1{
@@ -331,6 +328,14 @@ table td{
   }
 }
 ////////END MYQPAGE STYLING////////
+////////RESEARCH TABLE STYLING/////
+table th{
+  text-align: center;
+}
+
+table td{
+  text-align: center;
+}
 ////////LOADER STYLES//////////////
 $color-background: #eaecfa;
 $color-loader: #ce4233;

@@ -3,7 +3,6 @@
 <!-- ALL Q'S AREA -->
     <div ng-controller="AllQCtrl">
       <div class="allQ" ng-show='showAllQ'>
-        <p>All Q's Div</p>
         <div ng-include="'partials/allQ.html'"></div>
       </div>
     </div>
@@ -11,7 +10,6 @@
 <!-- MY Q'S AREA/ -->
     <div ng-controller="MyQCtrl">
       <div class="myQ" ng-show='showMyQ'>
-        <p>My Q's Div</p>
         <div ng-include="'partials/myQ.html'"></div>
       </div>
     </div>
@@ -26,7 +24,6 @@
 <!-- PLAYER SEARCH AREA -->
     <div ng-controller="SearchCtrl">
       <div class="searchResults" ng-show='showSearch'>
-        <p>Player Search Div</p>
         <div class="playerSearchArea">
           <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
           <div ng-repeat="player in players">
