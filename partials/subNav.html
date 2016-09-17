@@ -1,9 +1,12 @@
-  <div class="homeNav">
-    <ul>
-      <li class="homeNavCrumbs">Start or Sit > <span>{{crumbs}}</span></li>
-      <li class="addNewQ"><a href='#/newTicket'>Add New Q</a></li>
-    </ul>
+<div class="homeNav">
+  <ul>
+    <li class="homeNavCrumbs">Start or Sit > <span>{{crumbs}}</span></li>
+  <div class="ePositioning">
+    <li class="addNewQ">Add New Q: </li>
+    <a href='#/newTicket'><span class="glyphicon glyphicon-plus-sign addEmblem"></span></a>
   </div>
+  </ul>
+
 
   <div class="SubNavSelection">
     <span><a href="#/home" ng-click="showAllQs();loadTickets()">All Q's Nav</a></span>
@@ -11,3 +14,4 @@
     <span><a href="#/home" ng-click="showPlayerSearch()">Player Search Nav</a></span>
     <span><a href="#/home" ng-click="showResearchArea()">Research</a></span>
   </div>
+</div>

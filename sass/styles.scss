@@ -47,7 +47,7 @@ nav{
   z-index: 0;
 
   .register{
-    margin-left: 20%;
+    margin-left: 28%;
   }
 
   a{
@@ -142,21 +142,57 @@ nav{
     margin-right: 6%;
   }
 }
+// END LOGIN PAGE STYLING
+// BEGIN HOME PAGE STYLING
+  // **SUBNAV STYLING
+.homeNav{
+  color: white;
+  font-size: 1.3em;
+  background-color: #216527;
+  padding-bottom: 1%;
+  border-bottom: 3px solid white;
 
-
-.splashImg{
-  .splash{
+  li{
+    margin-left: -1.5%;
+    list-style-type: none;
+    color: black;
     display: inline-block;
-    width: 40%;
-    height: 300px;
+    vertical-align: middle;
+  }
+
+  .addNewQ{
+    display: inline-block;
+    margin-top: -13%;
+
+    a{
+      color: white;
+    }
+  }
+
+  .ePositioning{
+    float: right;
+    width: 18%;
+    vertical-align: middle;
+  }
+  .addEmblem{
+    font-size: 3em;
+    cursor: pointer;
+    color: black;
+    border: 2px solid white;
+    border-radius: 60px;
+    margin-left: 35%;
+    margin-top: 2.2%;
+  }
+
+  .SubNavSelection{
+    margin-left: 1%;
+    a{
+      color: white;
+      margin-right: 6%;
+    }
   }
 }
 
-.pTest{
-  position: relative;
-  color: black;
-  top: 75px;
-}
 
 .playerSearch{
   margin-top: 3%;
