@@ -5,9 +5,9 @@
 <div class="splash">
 
   <div class="loginNav">
-    <h2>Login or signup</h2>
-    <span ng-click="showLogin()" class="loginNavOption">Login</span>
-    <span ng-click="showSignUp()"" class="loginNavOption">Sign Up</span>
+    <h2>Start or Sit</h2>
+    <span ng-click="showLogin()" class="loginNavOption"><a ng-href="">Login</a></span>
+    <span ng-click="showSignUp()"" class="loginNavOption"><a ng-href="">Sign Up</a></span>
   </div>
 
 
@@ -18,7 +18,7 @@
       <input type="text" ng-model="account.email" id="email" class="email"><br><br>
       <label for='pass'>Password:</label>
       <input type="password" ng-model="account.password" id="pass" class="pass"><br><br>
-      <button class='submitLogin' value="Login" ng-click="login()" id="submitLogin">Login</button>
+      <button class='submitLogin' value="Login" ng-click="login()" id="submitLogin">Login</button><span>or</span>
       <button class='googleLogin' value="Login with Google" ng-click="googleLogin()" id="googleLogin">Login with Google</button>
     </form>
   </div>
