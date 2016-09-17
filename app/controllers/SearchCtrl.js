@@ -218,10 +218,14 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
     $scope.playerNewsObj.timestamp = []
     ApiFactory.getNews(playerId)
       .then(function(news){
+        let i = 0
         let resultNews = news.players[0].notes
         for(let key in resultNews){
-          $scope.playerNewsObj.push(resultNews[key])
-          console.log(news)
+          if(i < 5){
+            $scope.playerNewsObj.push(resultNews[key])
+            console.log(news)
+            i++
+          }
         }
       })
   }

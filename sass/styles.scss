@@ -350,6 +350,7 @@ table td{
   text-align: center;
 }
 ////////PLAYER SEARCH AREA/////////
+// PLAYER SEARCH NAV AREA
 .searchResults{
   .searchLabel{
     color: white;
@@ -379,16 +380,14 @@ table td{
     text-align: center;
   }
 }
-
+//////END PLAYER SEARCH NAV AREA//////
 .playerSearchResults{
-  // border: 2px solid white;
-  width: 60%;
+  width: 70%;
   margin-top: 2%;
-  margin-left: 20%;
+  margin-left: 15%;
   padding: 1%;
 
   img{
-    // background: white;
     width: 28%;
   }
 
@@ -466,9 +465,62 @@ table td{
     color: white;
     font-size: 1.3em;
   }
-
 }
+////////END PLAYER SEARCH AREA/////
+////////BEGIN RESEARCH AREA////////
+.researchArea{
+  width: 70%;
+  margin: auto;
 
+  h2{
+    color: white;
+  }
+
+  h3{
+    color: white;
+  }
+
+  .rankCat{
+    color: $primary;
+    font-size: 1.3em;
+  }
+
+  table{
+    border: 4px solid $primary;
+  }
+
+    .showMore{
+      color: $primary;
+      font-size: 1.4em;
+      text-decoration: underline;
+      margin-left: 42%;
+    }
+
+    a:hover{
+      color: white;
+    }
+
+  .recentNews{
+    color: white;
+
+    h2{
+      color: $primary;
+
+      .position{
+        font-size: .6em;
+        margin-left: 2%;
+      }
+    }
+
+    .color{
+      color: $primary;
+      font-size: 1.3em;
+    }
+    p{
+      font-size: 1.3em;
+    }
+  }
+}
 ////////LOADER STYLES//////////////
 $color-background: #eaecfa;
 $color-loader: #ce4233;
