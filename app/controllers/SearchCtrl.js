@@ -74,6 +74,29 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
       $scope.position = ""
       $scope.seasonProjectedPts = ""
       $scope.seasonPts = ""
+      $scope.seasonProjectedPts = 0
+      $scope.weekProjectedPts = 0
+      $scope.seasonPts = 0
+      $scope.passAttempts = 0
+      $scope.completions = 0
+      $scope.pYards = 0
+      $scope.pTD = 0
+      $scope.int = 0
+      $scope.rushAttempts = 0
+      $scope.rushYards = 0
+      $scope.rTD = 0
+      $scope.receptions = 0
+      $scope.recYards = 0
+      $scope.recTD = 0
+      $scope.fumblesLost = 0
+      $scope.twoPtMade = 0
+      $scope.patMade = 0
+      $scope.patMiss = 0
+      $scope.shortFG = 0
+      $scope.twentyFG = 0
+      $scope.thirtyFG = 0
+      $scope.fourtyFG = 0
+      $scope.longFG = 0
 
       if($scope.playerInput.includes(" ")){
         lastname = $scope.playerInput.slice($scope.playerInput.indexOf(" ")+1, $scope.playerInput.length)
@@ -195,10 +218,14 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
     $scope.playerNewsObj.timestamp = []
     ApiFactory.getNews(playerId)
       .then(function(news){
+        let i = 0
         let resultNews = news.players[0].notes
         for(let key in resultNews){
-          $scope.playerNewsObj.push(resultNews[key])
-          console.log(news)
+          if(i < 5){
+            $scope.playerNewsObj.push(resultNews[key])
+            console.log(news)
+            i++
+          }
         }
       })
   }

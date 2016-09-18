@@ -3,7 +3,6 @@
 <!-- ALL Q'S AREA -->
     <div ng-controller="AllQCtrl">
       <div class="allQ" ng-show='showAllQ'>
-        <p>All Q's Div</p>
         <div ng-include="'partials/allQ.html'"></div>
       </div>
     </div>
@@ -11,7 +10,6 @@
 <!-- MY Q'S AREA/ -->
     <div ng-controller="MyQCtrl">
       <div class="myQ" ng-show='showMyQ'>
-        <p>My Q's Div</p>
         <div ng-include="'partials/myQ.html'"></div>
       </div>
     </div>
@@ -26,10 +24,9 @@
 <!-- PLAYER SEARCH AREA -->
     <div ng-controller="SearchCtrl">
       <div class="searchResults" ng-show='showSearch'>
-        <p>Player Search Div</p>
         <div class="playerSearchArea">
-          <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
-          <div ng-repeat="player in players">
+          <span class="searchLabel">Search by player name: </span><input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
+          <div class="holder" ng-repeat="player in players">
             <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
               <span>{{player.FirstName}}</span>
               <span>{{player.LastName}}</span>
@@ -51,22 +48,23 @@
       <div class="searchContainer">
         <div class="playerSearchResults" ng-show='showSearch'>
           <img src='{{imgSrc}}'>
-          <p>{{pName}}</p><span>{{position}}</span>
-          <span>{{teamAbbr}}</span>
-
+          <div class="resultsContainer">
+            <p class="pName">{{pName}}</p>
+            <p class="details"><span>{{position}}</span><br>
+            <span>{{teamAbbr}}</span></p>
+          </div>
           <div class="playerNav" ng-show='showPlayerNav'>
             <ul>
-              <li><a href='#/home' ng-click="activateStats()">Stats</a></li>
-              <li><a href='#/home' ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</a></li>
+              <li><a href='#/home' ng-click="activateStats()">Stats</a>
+              <span><a href='#/home' ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</a><span></li>
             </ul>
           </div>
           <!-- PLAYER NEWS AREA -->
-          <div ng-show='showNews'>
-            <div ng-repeat="news in playerNewsObj">
-              <p>BODY: {{news.body}}</p>
-              <p>ANALYSIS: {{news.analysis}}</p>
-              <p>TIME: {{news.timestamp}}</p>
-              <hr>
+          <div class="news" ng-show='showNews'>
+            <div ng-repeat="news in playerNewsObj"><hr>
+              <p><span class="color">BODY: </span>{{news.body}}</p>
+              <p><span class="color">ANALYSIS: </span>{{news.analysis}}</p>
+              <p><span class="color">TIME: </span>{{news.timestamp}}</p>
             </div>
           </div>
           <!-- END PLAYER NEWS AREA -->
@@ -74,7 +72,7 @@
         <div ng-show='showPlayerInfo'>
           <table class="table table-striped">
             <thead>
-              <strong>Season Stats:</strong>
+              <h3 class="head"><strong>Season Stats:</strong></h3>
             </thead>
             <thead class="thead-inverse">
               <tr>
@@ -108,7 +106,7 @@
 
           <table class="table table-striped">
               <thead>
-                <strong>Season Fantasy Stats:</strong>
+                <h3 class="head"><strong>Season Fantasy Stats:</strong></h3>
               </thead class="table-hover">
               <thead>
                 <th>Projected Points</th>

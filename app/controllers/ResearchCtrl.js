@@ -50,11 +50,12 @@ app.controller('ResearchCtrl', function($scope, ApiFactory){
     let playerNews = news.news
     for(var key in playerNews){
       if(count < 5){
-        if(playerNews.position !== "DE" && playerNews.position !== "OLB" && playerNews.position !== "DT" && playerNews.position !== "T" && playerNews.position !== "LB" && playerNews.position !== "P" && playerNews.position !== "FS" && playerNews.position !== "FB" && playerNews.position !== "OT"){
-        if(playerNews.position !== "SS" && playerNews.position !== "G" && playerNews.position !== "MLB" && playerNews.position !== "C" && playerNews.position !== "LS" && playerNews.position !== "DB" && playerNews.position !== "CB" && playerNews.position !== "ILB"){
-          $scope.recentNews.push(playerNews[key])
-          count++
-        }
+        console.log(playerNews[key].position, 'POSITION')
+        if(playerNews[key].position !== "DE" && playerNews[key].position !== "OLB" && playerNews[key].position !== "DT" && playerNews[key].position !== "T" && playerNews[key].position !== "LB" && playerNews[key].position !== "P" && playerNews[key].position !== "FS" && playerNews[key].position !== "FB" && playerNews[key].position !== "OT"){
+          if(playerNews[key].position !== "SS" && playerNews[key].position !== "G" && playerNews[key].position !== "MLB" && playerNews[key].position !== "C" && playerNews[key].position !== "LS" && playerNews[key].position !== "DB" && playerNews[key].position !== "CB" && playerNews[key].position !== "ILB" && playerNews[key].position !== "DL"){
+            $scope.recentNews.push(playerNews[key])
+            count++
+          }
         }
       }
     }

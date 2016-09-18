@@ -1,6 +1,8 @@
-<h3>Editor Ranks</h3>
-  <span>Filter by position: </span>
-  <select ng-model="position" ng-change="getERanks(position)">
+<div class="editorRanks">
+<h2>Editor Ranks</h2>
+<a class="back" href="#/home">Back</a><br>
+  <span class="filterL">Filter by position: </span>
+  <select class="filter" ng-model="position" ng-change="getERanks(position)">
     <option default value="QB">QB</option>
     <option value="RB">RB</option>
     <option value="WR">WR</option>
@@ -8,7 +10,6 @@
     <option value="K">K</option>
     <option value="DEF">DEF</option>
   </select>
-  <a href="#/home">Back</a>
   <table class="table table-striped shortERanks">
     <thead class="thead-inverse">
       <tr>
@@ -31,3 +32,4 @@
       </tr>
     </tbody>
   </table>
+</div>

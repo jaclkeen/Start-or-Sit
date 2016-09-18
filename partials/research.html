@@ -1,5 +1,5 @@
 <div class="researchArea">
-  <h2>Research Area</h2>
+  <h2>Player Research</h2>
   <!-- FIRST 5 EDITOR RANKS AREA -->
   <h3>Editor Ranks</h3>
   <table class="table table-striped shortERanks">
@@ -23,14 +23,8 @@
         <td>{{ranks.stock}}</td>
       </tr>
     </tbody>
-    <tfoot>
-      <tr>
-        <td>
-          <a href="#/editorRanks">SHOW MORE</a>
-        </td>
-      </tr>
-    </tfoot>
   </table>
+  <a class="showMore" href="#/editorRanks">SHOW MORE</a>
   <!-- END FIRST 5 EDITOR RANKS AREA -->
   <!-- START SEASON SCORING LEADERS AREA -->
   <h3>Season Scoring Leaders</h3>
@@ -57,14 +51,8 @@
         <td>{{leaders.pts}}</td>
       </tr>
     </tbody>
-    <tfoot>
-      <tr>
-        <td>
-          <a href="#/scoringLeaders">SHOW MORE</a>
-        </td>
-      </tr>
-    </tfoot>
   </table>
+  <a class="showMore" href="#/scoringLeaders">SHOW MORE</a>
   <!-- END SCORING LEADERS AREA -->
   <!-- BEGIN PLAYER RESEARCH AREA -->
   <h3>Fantasy Start/Sit Statistics</h3>
@@ -97,25 +85,18 @@
         <td>{{players.percentStartedChange}}</td>
       </tr>
     </tbody>
-    <tfoot>
-      <tr>
-        <td class="rankCat">
-          <a href="#/fantasyResearch">SHOW MORE</a>
-        </td>
-      </tr>
-    </tfoot>
   </table>
+  <a class="showMore" href="#/fantasyResearch">SHOW MORE</a>
   <!-- END PLAYER RESEARCH AREA -->
   <!-- START RECENT PLAYER NEWS AREA -->
   <h3>Recent Player News</h3>
   <div class="recentNews" ng-repeat="news in recentNews">
-    <h4>{{news.firstName}} {{news.lastName}}</h4>
-    <span>{{news.teamAbbr}}</span>
-    <span>{{news.position}}</span>
-    <p>{{news.body}}</p>
-    <p>{{news.analysis}}</p>
-    <p>{{news.timestamp}}</p><hr>
+    <h2>{{news.firstName}} {{news.lastName}}<span class="position">{{news.teamAbbr}}</span>
+    <span class="position">{{news.position}}</span></h2>
+    <p><span class="color">Body: </span>{{news.body}}</p>
+    <p><span class="color">Analysis: </span>{{news.analysis}}</p>
+    <p><span class="color">Timestamp: </span>{{news.timestamp}}</p><hr>
   </div>
-  <a href='#/recentNews'>Show More News</a>
+  <a class="showMore" href='#/recentNews'>Show More</a>
   <!-- END RECENT PLAYER NEWS AREA -->
 </div>
