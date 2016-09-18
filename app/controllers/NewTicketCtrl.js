@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFactory){
+app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactory, AuthFactory, $mdToast){
 
   var lastname = ""
   var lastname2 = ""
@@ -36,6 +36,15 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
     img: "",
     votes: 0
   }
+
+  let showToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+        .hideDelay(4000)
+        .textContent('Play added!')
+        .theme("success-toast")
+    );
+  };
 
   $scope.buildP1Object = function(fName, lName){
     $scope.p1Players = []
@@ -154,6 +163,8 @@ app.controller("NewTicketCtrl", function($scope, ApiFactory, DbFactory, AuthFact
           console.log(data)
           selectedPlayers.player1 = {}
           selectedPlayers.player2 = {}
+          $location.url('home')
+          showToast()
         })
     }
     else{

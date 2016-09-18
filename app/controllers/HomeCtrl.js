@@ -1,6 +1,15 @@
 "use strict"
 
-app.controller('HomeCtrl', function($scope, DbFactory){
+app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
+
+  let showToast = function(playerName) {
+    $mdToast.show(
+      $mdToast.simple()
+        .hideDelay(4000)
+        .textContent(`You voted for ${playerName}`)
+        .theme("success-toast")
+    );
+  };
 
   $scope.showAllQ = true
   $scope.showMyQ = false
@@ -74,7 +83,7 @@ app.controller('HomeCtrl', function($scope, DbFactory){
     })
   }
 
-  $scope.addVote = function(player, id, votes){
+  $scope.addVote = function(playerName, player, id, votes){
     votes++
     DbFactory.updateVotes(player, id, votes)
     .then(function(data){
@@ -82,6 +91,8 @@ app.controller('HomeCtrl', function($scope, DbFactory){
       $scope.isEnabled = false
       $scope.loadTickets()
     })
+    console.log('PLAYERNAME', playerName)
+    showToast(playerName)
   }
 
   $scope.loadTickets()

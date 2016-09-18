@@ -1,6 +1,6 @@
 "use strict"
 
-let app = angular.module("StartOrSit", ["ngRoute"])
+let app = angular.module("StartOrSit", ["ngRoute", "ngMaterial"])
   .constant('FirebaseURL', "https://start-or-sit.firebaseio.com/")
 
   app.config(function($routeProvider){

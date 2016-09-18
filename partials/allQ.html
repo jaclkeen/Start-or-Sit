@@ -1,7 +1,7 @@
 <div class="allQPage">
   <div class="playerCard" ng-repeat="play in plays">
     <div class="player1">
-      <img ng-click="addVote('player1', play.id, play.player1.votes)" ng-src={{play.player1.img}} ng-disabled="!isEnabled">
+      <img ng-click="addVote(play.player1.name, 'player1', play.id, play.player1.votes)" ng-src={{play.player1.img}} ng-disabled="!isEnabled">
       <h3>{{play.player1.name}}</h3>
       <span>{{play.player1.position}}</span>
       <span>{{play.player1.team}}</span><br>
