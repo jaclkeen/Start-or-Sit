@@ -516,11 +516,53 @@ table td{
       color: $primary;
       font-size: 1.3em;
     }
+
     p{
       font-size: 1.3em;
     }
   }
 }
+////////END RESEARCH AREA//////////
+////////BEGIN EDITOR RANKS AREA////
+.editorRanks{
+  width: 70%;
+  margin: auto;
+
+  h2{
+    color: white;
+    display: inline-block;
+  }
+
+  .filterL{
+    color: white;
+  }
+
+  .filter{
+    margin-left: 2%;
+    width: 8%;
+  }
+
+  .back{
+    color: white;
+    font-size: 1.3em;
+    margin-left: 73%;
+    padding: .7%;
+    border-radius: 20px;
+    background-color: $primary;
+    border: 2px solid white;
+  }
+
+  .rankCat{
+    color: $primary;
+    font-size: 1.4em;
+  }
+
+  td{
+    font-size: 1.3em;
+    background: darkgrey;
+  }
+}
+////////FINISHED EDITOR RANKS//////
 ////////LOADER STYLES//////////////
 $color-background: #eaecfa;
 $color-loader: #ce4233;
