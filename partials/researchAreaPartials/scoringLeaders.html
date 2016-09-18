@@ -1,6 +1,8 @@
-<h3>Season Scoring Leaders</h3>
-  <span>Filter by position: </span>
-  <select ng-model="position" ng-change="getLeaders(position)">
+<div class="scoringLeaders">
+<h2>Scoring Leaders</h2>
+  <a class="back" href="#/home">Back</a><br>
+  <span class="filterL">Filter by position: </span>
+  <select class="filter" ng-model="position" ng-change="getLeaders(position)">
     <option default value="QB">QB</option>
     <option ng-click="getLeaders('RB')" value="RB">RB</option>
     <option ng-click="getLeaders('WR')" value="WR">WR</option>
@@ -8,7 +10,6 @@
     <option ng-click="getLeaders('K')" value="K">K</option>
     <option ng-click="getLeaders('DEF')" value="DEF">DEF</option>
   </select>
-  <a href="#/home">Back</a>
   <table class="table table-striped shortELeaders">
     <thead class="thead-inverse">
       <tr>
@@ -33,3 +34,4 @@
       </tr>
     </tbody>
   </table>
+</div>

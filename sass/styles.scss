@@ -346,8 +346,9 @@ table th{
   text-align: center;
 }
 
-table td{
+td{
   text-align: center;
+  background: darkgrey;
 }
 ////////PLAYER SEARCH AREA/////////
 // PLAYER SEARCH NAV AREA
@@ -520,6 +521,10 @@ table td{
     p{
       font-size: 1.3em;
     }
+
+    td{
+      background: darkgrey;
+    }
   }
 }
 ////////END RESEARCH AREA//////////
@@ -540,6 +545,7 @@ table td{
   .filter{
     margin-left: 2%;
     width: 8%;
+    border-radius: 20px;
   }
 
   .back{
@@ -557,12 +563,62 @@ table td{
     font-size: 1.4em;
   }
 
+  table{
+    border: 4px solid $primary;
+    margin-top: 1%;
+  }
+
   td{
     font-size: 1.3em;
     background: darkgrey;
   }
 }
 ////////FINISHED EDITOR RANKS//////
+////////BEGIN SCORING LEADERS//////
+.scoringLeaders{
+  width: 70%;
+  margin: auto;
+
+    h2{
+    color: white;
+    display: inline-block;
+  }
+
+  .filterL{
+    color: white;
+  }
+
+  .filter{
+    margin-left: 2%;
+    width: 8%;
+    border-radius: 20px;
+  }
+
+  .back{
+    color: white;
+    font-size: 1.3em;
+    margin-left: 67%;
+    padding: .7%;
+    border-radius: 20px;
+    background-color: $primary;
+    border: 2px solid white;
+  }
+
+  .rankCat{
+    color: $primary;
+    font-size: 1.4em;
+  }
+
+  table{
+    border: 4px solid $primary;
+    margin-top: 1%;
+  }
+
+  td{
+    font-size: 1.3em;
+    background: darkgrey;
+  }
+}
 ////////LOADER STYLES//////////////
 $color-background: #eaecfa;
 $color-loader: #ce4233;
