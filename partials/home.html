@@ -50,8 +50,8 @@
           <img src='{{imgSrc}}'>
           <div class="resultsContainer">
             <p class="pName">{{pName}}</p>
-            <p class="details"><span>{{teamAbbr}}</span>
-            <span>{{position}}</span></p>
+            <p class="details"><span>{{position}}</span><br>
+            <span>{{teamAbbr}}</span></p>
           </div>
           <div class="playerNav" ng-show='showPlayerNav'>
             <ul>
@@ -62,9 +62,9 @@
           <!-- PLAYER NEWS AREA -->
           <div class="news" ng-show='showNews'>
             <div ng-repeat="news in playerNewsObj"><hr>
-              <p>BODY: {{news.body}}</p>
-              <p>ANALYSIS: {{news.analysis}}</p>
-              <p>TIME: {{news.timestamp}}</p>
+              <p><span class="color">BODY: </span>{{news.body}}</p>
+              <p><span class="color">ANALYSIS: </span>{{news.analysis}}</p>
+              <p><span class="color">TIME: </span>{{news.timestamp}}</p>
             </div>
           </div>
           <!-- END PLAYER NEWS AREA -->

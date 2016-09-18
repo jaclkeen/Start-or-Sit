@@ -43,7 +43,7 @@ nav{
   width: 30%;
   background-color: #E9E9E9;
   position: relative;
-  left: 550px;
+  left: 520px;
   top: -400px;
   z-index: 0;
 
@@ -243,43 +243,6 @@ nav{
   }
 }
 ///////END ALLQPAGE STYLING////////////
-///////BEGIN ADD NEW PLAY AREA/////////
-.playerSearch{
-  margin-top: 3%;
-}
-
-.searchContainer{
-  background-color: black;
-  color: green;
-}
-
-.newTicket input{
-  display: inline-block;
-  // margin-left: 10%;
-}
-
-.p1SearchArea{
-  float: left;
-  display: inline-block;
-  // width: 30%;
-  text-align: center;
-  margin-left: 10%;
-}
-
-.p2SearchArea{
-  float: right;
-  display: inline-block;
-  text-align: center;
-  margin-right: 10%;
-  // width: 30%;
-}
-
-.addPlay{
-  margin-top: 7%;
-  margin-left: 7%;
-  margin-bottom: 1%;
-}
-///////END ADD NEW PLAY AREA///////////
 ///////START MYQPAGE STYLING///////////
 .myQPage{
   padding-bottom: 2%;
@@ -465,6 +428,10 @@ td{
     margin-top: 2%;
     color: white;
     font-size: 1.3em;
+  }
+
+  .color{
+    color: $primary;
   }
 }
 ////////END PLAYER SEARCH AREA/////
@@ -721,6 +688,129 @@ td{
     border: 2px solid white;
   }
 }
+////////END RECENT PLAYER NEWS/////
+////////BEGIN NEW TICKET PAGE//////
+h2{
+  color: white;
+  display: inline-block;
+}
+
+.p1SearchArea{
+  display: inline-block;
+  border: 4px solid $primary;
+  border-radius: 20px;
+  padding: 1%;
+  width: 30%;
+  margin-top: 1%;
+  margin-left: 9%;
+  margin-right: 21%;
+  text-align: center;
+
+  .p1Input{
+    border: 3px solid white;
+  }
+
+  h2{
+    color: $primary;
+    margin-top: 0;
+  }
+
+  .p1SearchResults{
+    cursor: pointer;
+    background-color: black;
+    color: $primary;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    width: 41.3%;
+    font-size: 1.3em;
+    margin-left: 29.3%;
+  }
+
+  img{
+    margin-top: 4%;
+    background: white;
+    border-radius: 20px;
+  }
+
+  .name{
+    color: white;
+  }
+
+  span{
+    color: white;
+  }
+}
+.p2SearchArea{
+  position: fixed;
+  display: inline-block;
+  text-align: center;
+  border: 4px solid $primary;
+  border-radius: 20px;
+  margin-top: 1.01%;
+  padding: 1%;
+  width: 30%;
+
+  .p2Input{
+    border: 3px solid white;
+  }
+
+  h2{
+    color: $primary;
+    margin-top: 0;
+  }
+
+  .p2SearchResults{
+    cursor: pointer;
+    background-color: black;
+    color: $primary;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    width: 41.3%;
+    font-size: 1.3em;
+    margin-left: 29.3%;
+  }
+
+  img{
+    margin-top: 4%;
+    background: white;
+    border-radius: 20px;
+  }
+
+  .name{
+    color: white;
+  }
+
+  .info{
+    color: white;
+  }
+}
+
+.addPlay{
+  margin-top: 4.5%;
+  margin-left: 45.25%;
+  margin-bottom: 1%;
+  border: 3px solid $primary;
+  border-radius: 20px;
+  padding: .3%;
+}
+
+.back{
+  color: white;
+  font-size: 1.3em;
+  margin-left: 70%;
+  padding: .7%;
+  border-radius: 20px;
+  background-color: $primary;
+  border: 2px solid white;
+}
+
+.title{
+  margin-left: 3%;
+}
+
+////////END NEW TICKET PAGE////////
 ////////LOADER STYLES//////////////
 $color-background: #eaecfa;
 $color-loader: #ce4233;
