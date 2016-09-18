@@ -619,6 +619,108 @@ td{
     background: darkgrey;
   }
 }
+////////FINISHED SCORING LEADERS///
+////////BEGIN IN DEPTH STATS AREA//
+.playerResearch{
+  width: 70%;
+  margin: auto;
+
+  h2{
+    display: inline-block;
+    color: white;
+  }
+
+  .back{
+    color: white;
+    font-size: 1.3em;
+    margin-left: 62%;
+    padding: .7%;
+    border-radius: 20px;
+    background-color: $primary;
+    border: 2px solid white;
+  }
+
+  .rankCat{
+    color: $primary;
+    font-size: 1.4em;
+  }
+
+  table{
+    border: 4px solid $primary;
+    margin-top: 1%;
+  }
+
+  td{
+    font-size: 1.3em;
+    background: darkgrey;
+  }
+
+  .filterL{
+    color: white;
+  }
+
+  .filterInput{
+    margin-left: 2%;
+    border-radius: 20px;
+    border: 2px solid $primary;
+    padding: .3%;
+  }
+
+}
+////////END IN DEPTH STATS/////////
+////////BEGIN RECENT PLAYER NEWS///
+.recentPlayerNews{
+    color: white;
+    width: 70%;
+    margin: auto;
+
+    h2{
+      display: inline-block;
+      color: white;
+      margin-bottom: 3%;
+    }
+
+    .newsContainer{
+      border: 4px solid $primary;
+
+      h2{
+        color: $primary;
+        margin-left: 1%;
+        width: 80%;
+        display: inline-block;
+      }
+
+      .position{
+        font-size: .6em;
+        margin-left: 2%;
+      }
+    }
+
+    .color{
+      color: $primary;
+      font-size: 1.3em;
+    }
+
+    p{
+      font-size: 1.3em;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+
+    td{
+      background: darkgrey;
+    }
+
+  .back{
+    color: white;
+    font-size: 1.3em;
+    margin-left: 62%;
+    padding: .7%;
+    border-radius: 20px;
+    background-color: $primary;
+    border: 2px solid white;
+  }
+}
 ////////LOADER STYLES//////////////
 $color-background: #eaecfa;
 $color-loader: #ce4233;
