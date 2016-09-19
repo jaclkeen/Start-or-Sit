@@ -3,11 +3,13 @@
 app.controller("ScoreTickerCtrl", function($scope, $http, ApiFactory){
 
   $scope.games = []
+  $scope.gameInfo = []
 
   let domStuff = function(games){
-    console.log(games.ss)
+    // console.log(games.ss)
     games.ss.forEach(function(game){
       console.log(game)
+      $scope.gameInfo.push(game)
     })
   }
 
@@ -15,7 +17,6 @@ app.controller("ScoreTickerCtrl", function($scope, $http, ApiFactory){
     var xml = new XMLHttpRequest()
     xml.open('GET', 'http://www.nfl.com/liveupdate/scorestrip/scorestrip.json')
     xml.addEventListener('load', function(){
-      // console.log(xml.responseText.replace(/,(?=,)/gm, ",\"\""))
       $scope.games.push(xml.responseText.replace(/,(?=,)/gm, ",\"\""))
       $scope.games = JSON.parse($scope.games)
       domStuff($scope.games)

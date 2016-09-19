@@ -47,8 +47,69 @@ nav{
 }
 //////////////BEGIN SCORE TICKER//////////////
 .scoreTicker{
-  h1{
-    color: white;
+  color: white;
+
+  .teams{
+    .team1{
+      position: relative;
+      left: -30px;
+    }
+
+    .team2{
+      position: relative;
+      left: 30px;
+    }
+  }
+
+  .team1Img{
+    width: 22%;
+    position: relative;
+    top: -10px;
+    left: -12px;
+  }
+  .team2Img{
+    width: 22%;
+    position: relative;
+    top: -10px;
+    left: 11px;
+  }
+  p{
+    display: inline-block;
+  }
+
+  .scoreBlocks{
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: .5%;
+    margin-right: -15.5%;
+  }
+
+  .scoreContainer{
+    border: 2px solid white;
+    width: 36%;
+    height: 83px;
+  }
+  .Final{
+    position: relative;
+    top: -7px;
+    left: -2px;
+  }
+  .Pregame{
+    position: relative;
+    top: -5px;
+    left: -13px;
+    margin-right: -20%;
+  }
+  .team2Score{
+    position: relative;
+    top: -8px;
+    left: 37px;
+  }
+  .team1Score{
+    position: relative;
+    left: -38px;
+    top: -8px;
   }
 }
 // LOGIN STYLING
