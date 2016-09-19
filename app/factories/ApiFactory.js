@@ -2,6 +2,21 @@
 
 app.factory('ApiFactory', function($q, $http){
 
+  // let getScores = function(){
+  //   return $q(function(resolve, reject){
+  //     $http.get('http://www.nfl.com/liveupdate/scorestrip/scorestrip.json',
+  //       JSON.stringify())
+  //     .success(function(data){
+  //       JSON.stringify(data)
+  //       resolve(data)
+  //     })
+  //     .error(function(error){
+  //       console.log(error)
+  //       reject(error)
+  //     })
+  //   })
+  // }
+
   let getPlayers = function(){
     return $q(function(resolve, reject){
       $http.get('players.json')
@@ -95,8 +110,22 @@ app.factory('ApiFactory', function($q, $http){
     })
   }
 
+  // let playerScoreTicker = function(YYYYMMDD){
+  //   return $q(function(resolve, reject){
+  //     $http.get(`https://www.mysportsfeeds.com/api/feed/pull/nfl/2016-2017-regular/scoreboard.json?fordate=${YYYYMMDD}&format=json`)
+  //     .success(function(scores){
+  //       resolve(scores)
+  //     })
+  //     .error(function(error){
+  //       console.log(error)
+  //       reject(error)
+  //     })
+  //   })
+  // }
+
   return {
     getNews,
+    // getScores,
     getPlayers,
     getPlayerStats,
     getEditorWeekRanks,

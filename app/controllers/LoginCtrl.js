@@ -1,9 +1,10 @@
 "use strict"
 
-app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
+app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, DbFactory){
 
   $scope.loginPage = true
   $scope.signUpPage = false
+  $scope.loginTxt = true
 
   $scope.account = {
     email: "",
@@ -41,7 +42,9 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
       if(data){
         AuthFactory.setUser(data.uid)
         console.log('AUTHFACTORY SET USER', AuthFactory.getUser())
+        console.log('DATA', data)
         $window.location.href = '#home'
+        $scope.loginTxt = true
       }
     })
     .catch(function(error){
@@ -57,12 +60,22 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
         AuthFactory.setUser(user)
         console.log('user', user)
         $window.location.href = '#home'
+        $scope.loginTxt = true
       }
       $scope.$apply()
     }).catch(function(error){
       let errorCode = error.code,
           errorMessage = error.message,
           credential = error.credential
+    })
+  }
+
+  $scope.logout = function(){
+    AuthFactory.logoutUser()
+    .then(function(data){
+      console.log('logout')
+      $scope.loginTxt = false
+      $window.location.href = '#login'
     })
   }
 

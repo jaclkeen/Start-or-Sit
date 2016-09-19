@@ -1,7 +1,8 @@
-$primary: #216527;
+$primary: #1A5C21;
 
 html{
   background-color: black;
+
   .main{
     background-color: black;
   }
@@ -10,10 +11,11 @@ md-toast.md-success-toast-theme {
     .md-toast-content {
       background-color: white;
       color: green;
-      width: 9%;
+      width: 15%;
       padding: .5%;
-      position: relative;
-      top: 200px;
+      position: fixed;
+      top: 150px;
+      z-index: 3;
       left: 1203px;
       margin-top: -46px;
       text-align: center;
@@ -31,13 +33,16 @@ nav{
     margin-top: .5%;
     margin-left: 1.5%;
     vertical-align: middle;
-    font-size: 3em;
+    font-size: 3.7em;
     display: inline-block;
     color: $primary;
     font-family: 'Sansita One', cursive;
   }
-  span{
-    font-size: 1em;
+  .status{
+    color: white;
+    font-size: 1.3em;
+    margin-left: 72%;
+    cursor: pointer;
   }
 }
 //////////////
@@ -166,7 +171,9 @@ nav{
   font-size: 1.3em;
   background-color: $primary;
   padding-bottom: 1%;
+  border-top: 3px solid white;
   border-bottom: 3px solid white;
+  margin-top: -.4%;
 
   li{
     margin-left: -1.5%;
@@ -477,7 +484,7 @@ td{
 
     .showMore{
       color: $primary;
-      font-size: 1.4em;
+      font-size: 1.8em;
       text-decoration: underline;
       margin-left: 42%;
     }

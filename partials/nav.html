@@ -1,5 +1,8 @@
-<nav ng-controller="NavCtrl">
+<nav ng-controller="LoginCtrl">
   <div class="navTitle">
-    <h3>Start <span>or</span> Sit</h3>
+    <h3 class="brand">Start <span>or</span> Sit</h3>
+    <span class="status" ng-click="logout()" ng-show="loginTxt">Logout</span>
+  </div>
+  <div ng-include="'partials/scoreTicker.html'">
   </div>
 </nav>
