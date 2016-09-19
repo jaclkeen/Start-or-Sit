@@ -45,7 +45,12 @@ nav{
     cursor: pointer;
   }
 }
-//////////////
+//////////////BEGIN SCORE TICKER//////////////
+.scoreTicker{
+  h1{
+    color: white;
+  }
+}
 // LOGIN STYLING
 .image img{
   width: 100%;
@@ -766,6 +771,7 @@ h2{
     color: white;
   }
 }
+
 .p2SearchArea{
   position: fixed;
   display: inline-block;
@@ -883,4 +889,4 @@ body {
   50% { height: 8px; width: 40px }
   100% { left: 235px; height: 30px; width: 15px}
 }
-///////////END LOADER STYLING///////////
+////////END SCORETICKER////////////////

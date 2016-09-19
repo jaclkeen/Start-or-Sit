@@ -16,7 +16,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   $scope.showSearch = false
   $scope.showPlayerInfo = false
   $scope.showResearch = false
-  $scope.crumbs = "Show All Qs"
+  $scope.crumbs = "All Plays"
   $scope.plays = []
   $scope.showVotes = false
   $scope.p1Votes = 0
@@ -29,7 +29,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     $scope.showSearch = false
     $scope.showResearch = false
     $scope.showPlayerInfo = false
-    $scope.crumbs = 'Add New Q'
+    $scope.crumbs = 'Add New Play'
   }
 
   $scope.showResearchArea = function(){
@@ -47,7 +47,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     $scope.showSearch = false
     $scope.showResearch = false
     $scope.showPlayerInfo = false
-    $scope.crumbs = 'Show All Qs'
+    $scope.crumbs = 'All Plays'
   }
 
   $scope.showMyQs = function(){
@@ -56,7 +56,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     $scope.showSearch = false
     $scope.showResearch = false
     $scope.showPlayerInfo = false
-    $scope.crumbs = 'Show My Qs'
+    $scope.crumbs = 'My Plays'
   }
 
   $scope.showPlayerSearch = function(){
@@ -77,7 +77,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       })
       $scope.plays = []
       for(var key in plays){
-        console.log(key, plays, plays[key])
+        // console.log(key, plays, plays[key])
         $scope.plays.push(plays[key])
       }
     })
@@ -85,10 +85,16 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
 
   $scope.addVote = function(playerName, player, id, votes){
     votes++
+    var player1 = this.play.player1.name
+    var player2 = this.play.player2.name
+    console.log(player)
     DbFactory.updateVotes(player, id, votes)
     .then(function(data){
-      console.log(data)
-      $scope.isEnabled = false
+      // console.log('IS THIS WORKIN YET?!?!', player1, player2, playerName)
+      // console.log('IS THIS WORKIN YET?!?!', player2)
+      // if (playerName === player1 || player2) {
+        $scope.isEnabled = false
+      // }
       $scope.loadTickets()
     })
     console.log('PLAYERNAME', playerName)
