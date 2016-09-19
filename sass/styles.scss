@@ -48,7 +48,6 @@ nav{
 //////////////BEGIN SCORE TICKER//////////////
 .scoreTicker{
   color: white;
-
   .teams{
     .team1{
       position: relative;
@@ -110,6 +109,11 @@ nav{
     position: relative;
     left: -38px;
     top: -8px;
+  }
+  .time{
+    position: relative;
+    top: -7px;
+    left: -2px;
   }
 }
 // LOGIN STYLING

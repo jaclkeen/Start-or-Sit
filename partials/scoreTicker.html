@@ -1,5 +1,6 @@
 <div ng-controller="ScoreTickerCtrl">
   <div class="scoreTicker">
+    <marquee behavior="scroll">
     <div class="scoreBlocks" ng-repeat="game in gameInfo">
     <div class="scoreContainer">
       <div class="teams">
@@ -14,7 +15,9 @@
       <div class="scores">
         <p class="team1Score">{{game[5]}}</p>
         <p class="team2Score">{{game[7]}}</p>
+        <p class="time" ng-if="game[2] === 'Pregame'">{{game[0]}} {{game[1]}}</p>
       </div>
     </div>
+  </marquee>
   </div>
 </div>
