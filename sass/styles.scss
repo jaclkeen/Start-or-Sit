@@ -311,6 +311,7 @@ nav{
     border: 4px solid $primary;
     border-radius: 20px;
     width: 30%;
+    height: 275px;
     margin-top: 1%;
     margin-left: 2.2%;
     color: white;
@@ -331,16 +332,17 @@ nav{
   }
 
   img{
-    width: 130%;
+    width: 124%;
     cursor: pointer;
     background: white;
     border-radius: 30px;
-    margin-top: 6.5%;
+    margin-top: -11.5%;
   }
   .votes{
     text-align: center;
     font-size: 1.6em;
   }
+
 }
 ///////END ALLQPAGE STYLING////////////
 ///////START MYQPAGE STYLING///////////
@@ -982,3 +984,62 @@ body {
   100% { left: 235px; height: 30px; width: 15px}
 }
 ////////END SCORETICKER////////////////
+.flip {
+  -webkit-perspective: 800;
+   width: 400px;
+   height: 200px;
+    position: relative;
+    margin: 50px auto;
+}
+.flip .card.flipped {
+  -webkit-transform: rotatex(-180deg);
+}
+.flip .card {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+}
+.flip .card .face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden ;
+  z-index: 2;
+  color: white;
+}
+.flip .card .front {
+  position: absolute;
+  z-index: 1;
+}
+.flip .card .backCard {
+  padding: 1.5%;
+  -webkit-transform: rotatex(-180deg);
+    color: white;
+    margin-left: 0;
+    overflow-wrap: break-word;
+}
+.comment{
+    font-size: 1.4em;
+    position: relative;
+    color: green;
+    right: -420px;
+    margin-right: 92%;
+    top: 5px;
+}
+
+.removeComments{
+  color: $primary;
+  cursor: pointer;
+  font-size: 2em;
+  position: relative;
+  top: 20px;
+}
+
+.card{
+  .flipped{
+    span{
+      display: none;
+    }
+  }
+}
