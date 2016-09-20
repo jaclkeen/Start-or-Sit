@@ -1,6 +1,6 @@
 <div ng-controller="ScoreTickerCtrl">
   <div class="scoreTicker">
-    <marquee behavior="scroll">
+    <!-- <marquee behavior="scroll"> -->
     <div class="scoreBlocks" ng-repeat="game in gameInfo">
     <div class="scoreContainer">
       <div class="teams">
@@ -9,7 +9,11 @@
       </div>
       <div class="imgAndStatus">
         <img class="team1Img" src="http://i.nflcdn.com/static/site/7.4/img/teams/{{game[4]}}/{{game[4]}}_logo-80x90.gif">
-        <p class="{{game[2]}}">{{game[2]}}</p>
+        <p ng-if="game[2] == 1" class="{{game[2]}}">{{game[2]}}st</p>
+        <p ng-if="game[2] == 2" class="{{game[2]}}">{{game[2]}}nd</p>
+        <p ng-if="game[2] == 3" class="{{game[2]}}">{{game[2]}}rd</p>
+        <p ng-if="game[2] == 4" class="{{game[2]}}">{{game[2]}}th</p>
+        <p ng-if="game[2] === 'Final'" class="{{game[2]}}">{{game[2]}}</p>
         <img class="team2Img" src="http://i.nflcdn.com/static/site/7.4/img/teams/{{game[6]}}/{{game[6]}}_logo-80x90.gif">
       </div>
       <div class="scores">
@@ -18,6 +22,6 @@
         <p class="time" ng-if="game[2] === 'Pregame'">{{game[0]}} {{game[1]}}</p>
       </div>
     </div>
-  </marquee>
+  <!-- </marquee> -->
   </div>
 </div>
