@@ -1,9 +1,10 @@
 "use strict"
 
-app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
+app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, DbFactory){
 
   $scope.loginPage = true
   $scope.signUpPage = false
+  $scope.logoutUser = true
 
   $scope.account = {
     email: "",
@@ -41,12 +42,14 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
       if(data){
         AuthFactory.setUser(data.uid)
         console.log('AUTHFACTORY SET USER', AuthFactory.getUser())
+        console.log('DATA', data)
         $window.location.href = '#home'
       }
     })
     .catch(function(error){
       console.log('Error logging in: ', error)
     })
+    $scope.logoutUser = true
   }
 
   $scope.googleLogin = function(){
@@ -54,16 +57,25 @@ app.controller('LoginCtrl', function($scope, $window, AuthFactory, DbFactory){
     .then(function(result){
       var user = result.user.uid
       if(user){
+        $scope.logoutUser = true
         AuthFactory.setUser(user)
         console.log('user', user)
         $window.location.href = '#home'
       }
-      $scope.$apply()
     }).catch(function(error){
       let errorCode = error.code,
           errorMessage = error.message,
           credential = error.credential
     })
+  }
+
+  $scope.logout = function(){
+    AuthFactory.logoutUser()
+    .then(function(data){
+      console.log('logout')
+      $window.location.href = '#login'
+    })
+    $scope.logoutUser = false
   }
 
   $scope.showLogin = function(){

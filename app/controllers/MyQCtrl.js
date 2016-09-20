@@ -1,7 +1,16 @@
 "use strict"
 
-app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory){
+app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $mdToast){
   $scope.plays = []
+
+  let showToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+        .hideDelay(4000)
+        .textContent('Play deleted!')
+        .theme("success-toast")
+    );
+  };
 
   DbFactory.getAllPlaysFromFirebase()
   .then(function(plays){
@@ -34,8 +43,10 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory){
                 $scope.plays.push(plays[key])
               }
             }
+            showToast()
           })
         })
   }
+
 
 })

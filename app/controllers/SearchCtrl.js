@@ -9,7 +9,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   $scope.showPlayerNav = false
   $scope.showPlayerInfo = false
   $scope.showNews = false
-  $scope.showVideos = false
   $scope.loader = false
   $scope.playerId = ""
   $scope.esbid = ""
@@ -54,18 +53,12 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
     $scope.showNews = false
   }
 
-  $scope.activatePlayerVideos = function(){
-    $scope.showPlayerInfo = false
-    $scope.showNews = false
-    $scope.showVideos = true
-  }
-
   $scope.playerSearch = function(){
     $scope.showPlayerInfo = false
     $scope.showPlayerNav = false
-    console.log('loading.....')
     ApiFactory.getPlayers()
     .then(function(players){
+      $scope.playerNewsObj = []
       $scope.players = []
       $scope.esbid = ""
       $scope.pName = ""
@@ -212,10 +205,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
   }
 
   $scope.getPlayerNews = function(playerId){
-    $scope.playerNewsObj.body = []
-    $scope.playerNewsObj.newsAnalysis = []
-    $scope.playerNewsObj.newsHeadline = []
-    $scope.playerNewsObj.timestamp = []
+    $scope.playerNewsObj = []
     ApiFactory.getNews(playerId)
       .then(function(news){
         let i = 0
