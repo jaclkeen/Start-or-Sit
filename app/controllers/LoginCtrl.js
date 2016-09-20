@@ -4,7 +4,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
 
   $scope.loginPage = true
   $scope.signUpPage = false
-  $scope.loginTxt = true
+  $scope.logoutUser = true
 
   $scope.account = {
     email: "",
@@ -44,12 +44,12 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
         console.log('AUTHFACTORY SET USER', AuthFactory.getUser())
         console.log('DATA', data)
         $window.location.href = '#home'
-        $scope.loginTxt = true
       }
     })
     .catch(function(error){
       console.log('Error logging in: ', error)
     })
+    $scope.logoutUser = true
   }
 
   $scope.googleLogin = function(){
@@ -57,12 +57,11 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
     .then(function(result){
       var user = result.user.uid
       if(user){
+        $scope.logoutUser = true
         AuthFactory.setUser(user)
         console.log('user', user)
         $window.location.href = '#home'
-        $scope.loginTxt = true
       }
-      $scope.$apply()
     }).catch(function(error){
       let errorCode = error.code,
           errorMessage = error.message,
@@ -74,9 +73,9 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
     AuthFactory.logoutUser()
     .then(function(data){
       console.log('logout')
-      $scope.loginTxt = false
       $window.location.href = '#login'
     })
+    $scope.logoutUser = false
   }
 
   $scope.showLogin = function(){

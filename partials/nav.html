@@ -1,8 +1,6 @@
 <nav ng-controller="LoginCtrl">
   <div class="navTitle">
     <h3 class="brand">Start <span>or</span> Sit</h3>
-    <span class="status" ng-click="logout()" ng-show="loginTxt">Logout</span>
-  </div>
-  <div ng-include="'partials/scoreTicker.html'">
+    <span ng-show="{{logoutUser}}" class="status" ng-click="logout()">Logout</span>
   </div>
 </nav>

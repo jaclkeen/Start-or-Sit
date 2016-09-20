@@ -19,7 +19,6 @@ app.factory('ApiFactory', function($q, $http){
     return $q(function(resolve, reject){
       $http.get("http://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2016&format=json")
       .success(function(playerStats){
-        // console.log(playerStats)
         resolve(playerStats)
       })
       .error(function(error){
@@ -95,23 +94,8 @@ app.factory('ApiFactory', function($q, $http){
     })
   }
 
-  // let playerScoreTicker = function(YYYYMMDD){
-  //   return $q(function(resolve, reject){
-  //     $http.get(`https://www.mysportsfeeds.com/api/feed/pull/nfl/2016-2017-regular/scoreboard.json?fordate=${YYYYMMDD}&format=json`)
-  //     .success(function(scores){
-  //       resolve(scores)
-  //     })
-  //     .error(function(error){
-  //       console.log(error)
-  //       reject(error)
-  //     })
-  //   })
-  // }
-
   return {
     getNews,
-    // getGames,
-    // getScores,
     getPlayers,
     getPlayerStats,
     getEditorWeekRanks,
