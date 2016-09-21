@@ -112,6 +112,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
 
   $scope.addComment = function(id){
     if($scope.comment.text !== "" || " "){
+      $scope.comment.playId = id
       DbFactory.storeComment(id, $scope.comment)
       .then(function(data){
         showCommentAddedToast()
@@ -120,22 +121,25 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     }
   }
 
-  $scope.retrieveComments = function(playId){
-    DbFactory.getComments(playId)
+  $scope.retrieveComments = function(){
+    DbFactory.getComments()
     .then(function(data){
       let idArr = Object.keys(data)
       idArr.forEach(function(item){
         data[item].id = item
-        data[item].playId = playId
       })
       $scope.userMessages = []
-      for(var key in data){
-        $scope.userMessages.push(data[key])
-        console.log($scope.userMessages, 'USER MESSAGES')
+      if(data){
+        for(var key in data){
+          $scope.userMessages.push(data[key])
+          console.log($scope.userMessages, 'USER MESSAGES')
+        }
       }
     })
   }
 
+
   $scope.loadTickets()
+  $scope.retrieveComments()
 
 })
