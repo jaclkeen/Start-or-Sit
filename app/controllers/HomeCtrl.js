@@ -17,8 +17,8 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       .hideDelay(4000)
       .textContent("Comment posted!")
       .theme("success-toast")
-  );
-};
+    );
+  };
 
   $scope.showAllQ = true
   $scope.showMyQ = false
@@ -31,10 +31,10 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   $scope.p1Votes = 0
   $scope.p2Votes = 0
   $scope.isEnabled = true
-  $scope.comment = {
-    playId: "",
-    text: ""
-  }
+  $scope.comment = [{
+    text: "",
+    playId: ""
+  }]
   $scope.userMessages = []
 
   $scope.addQArea = function(){
@@ -92,6 +92,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       $scope.plays = []
       for(var key in plays){
         $scope.plays.push(plays[key])
+        $scope.comment.push({text: "", playId: ""})
       }
     })
   }
@@ -110,15 +111,14 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     showToast(playerName)
   }
 
-  $scope.addComment = function(id){
-    if($scope.comment.text !== "" || " "){
-      $scope.comment.playId = id
-      DbFactory.storeComment(id, $scope.comment)
+  $scope.addComment = function(index, id){
+      $scope.comment[index].playId = id
+      DbFactory.storeComment(id, $scope.comment[index])
       .then(function(data){
-        showCommentAddedToast()
+        $scope.comment.text = ""
         $scope.retrieveComments(id)
+        showCommentAddedToast()
       })
-    }
   }
 
   $scope.retrieveComments = function(){
@@ -137,7 +137,6 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       }
     })
   }
-
 
   $scope.loadTickets()
   $scope.retrieveComments()

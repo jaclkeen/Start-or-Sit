@@ -7,7 +7,6 @@ app.controller("ScoreTickerCtrl", function($scope, $http, ApiFactory){
 
   let domStuff = function(games){
     games.ss.forEach(function(game){
-      console.log(game)
       $scope.gameInfo.push(game)
     })
   }
