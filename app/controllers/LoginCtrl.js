@@ -4,7 +4,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
 
   $scope.loginPage = true
   $scope.signUpPage = false
-  $scope.logoutUser = true
+  $scope.logoutUser = false
 
   $scope.account = {
     email: "",

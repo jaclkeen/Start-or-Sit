@@ -357,6 +357,7 @@ nav{
     border-bottom-left-radius: 0;
 
     .commentPlayerName1{
+      color: black;
       display: inline-block;
       position: relative;
       top: -20px;
@@ -364,6 +365,7 @@ nav{
     }
 
     .commentPlayerName2{
+      color: black;
       display: inline-block;
       position: relative;
       top: -36px;
@@ -461,7 +463,7 @@ nav{
   .player1{
     display: inline-block;
     width: 30%;
-    margin-left: 9%;
+    margin-left: 6%;
   }
 
   .playerCard{
@@ -485,7 +487,7 @@ nav{
 
   .player2{
     display: inline-block;
-    margin-left: 12%;
+    margin-left: 17%;
     width: 30%;
   }
 
@@ -535,11 +537,13 @@ nav{
     .commentPlayerName1{
       display: inline-block;
       position: relative;
+      color: black;
       top: -20px;
       left: 24px;
     }
 
     .commentPlayerName2{
+      color: black;
       display: inline-block;
       position: relative;
       top: -36px;
@@ -601,7 +605,6 @@ nav{
     }
 
     .textInput{
-      display: none;
       position: relative;
       border-radius: 20px;
       top: 8px;
@@ -611,7 +614,6 @@ nav{
       border: 2px solid black;
     }
     .inputBtn{
-      display: none;
       position: relative;
       top: -11px;
       border: 2px solid black;
@@ -662,7 +664,7 @@ td{
   .playerSelection{
     margin-left: 21.05%;
     cursor: pointer;
-    color: black;
+    color: white;
     font-size: 1.3em;
     border-top: 0;
     border-left: 2px solid white;
@@ -696,6 +698,7 @@ td{
     color: white;
     margin-top: 5%;
     margin-bottom: -3%;
+    font-family: 'Sansita One', cursive;
   }
 
   .dHead{
@@ -704,8 +707,9 @@ td{
   }
 
   .details{
-    font-size: 2em;
+    font-size: 0.5em;
     color: white;
+    margin-left: 5%;
   }
 
   .playerNav{
@@ -783,10 +787,12 @@ td{
 
   h2{
     color: white;
+    font-family: 'Sansita One', cursive;
   }
 
   h3{
     color: white;
+    font-family: 'Sansita One', cursive;
   }
 
   .rankCat{
@@ -814,6 +820,9 @@ td{
 
     h2{
       color: $primary;
+      font-style: bolder;
+      width: 100%;
+      font-family: 'Sansita One', cursive;
 
       .position{
         font-size: .6em;
@@ -844,6 +853,7 @@ td{
   h2{
     color: white;
     display: inline-block;
+    font-family: 'Sansita One', cursive;
   }
 
   .filterL{
@@ -890,6 +900,7 @@ td{
     h2{
     color: white;
     display: inline-block;
+    font-family: 'Sansita One', cursive;
   }
 
   .filterL{
@@ -936,6 +947,7 @@ td{
   h2{
     display: inline-block;
     color: white;
+    font-family: 'Sansita One', cursive;
   }
 
   .back{
@@ -986,6 +998,7 @@ td{
       display: inline-block;
       color: white;
       margin-bottom: 3%;
+      font-family: 'Sansita One', cursive;
     }
 
     .newsContainer{
@@ -993,6 +1006,7 @@ td{
 
       h2{
         color: $primary;
+        font-weight: bolder;
         margin-left: 1%;
         width: 80%;
         display: inline-block;
@@ -1050,20 +1064,22 @@ h2{
 
   .p1Input{
     border: 3px solid white;
-    background: black;
-    color:white;
+    background: white;
+    color:black;
+    border: 2px solid black;
     padding-left: 2%;
   }
 
   h2{
     color: $primary;
     margin-top: 0;
+    font-family: 'Sansita One', cursive;
   }
 
   .p1SearchResults{
     cursor: pointer;
     background-color: black;
-    color: darkgrey;
+    color: white;
     border-left: 2px solid white;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
@@ -1096,20 +1112,22 @@ h2{
 
   .p2Input{
     border: 3px solid white;
-    background: black;
-    color: white;
+    background: white;
+    border: 2px solid black;
+    color: black;
     padding-left: 2%;
   }
 
   h2{
     color: $primary;
     margin-top: 0;
+    font-family: 'Sansita One', cursive;
   }
 
   .p2SearchResults{
     cursor: pointer;
     background-color: black;
-    color: darkgrey;
+    color: white;
     border-left: 2px solid white;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
@@ -1158,8 +1176,13 @@ h2{
   border: 2px solid white;
 }
 
+.back:hover{
+  color: white;
+}
+
 .title{
   margin-left: 3%;
+  font-family: 'Sansita One', cursive;
 }
 
 ////////END NEW TICKET PAGE////////

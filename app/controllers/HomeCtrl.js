@@ -31,11 +31,11 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   $scope.p1Votes = 0
   $scope.p2Votes = 0
   $scope.isEnabled = true
+  $scope.userMessages = []
   $scope.comment = [{
     text: "",
     playId: ""
   }]
-  $scope.userMessages = []
 
   $scope.addQArea = function(){
     $scope.showAllQ = false
@@ -124,12 +124,12 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   $scope.retrieveComments = function(){
     DbFactory.getComments()
     .then(function(data){
+      $scope.userMessages = []
+      if(data){
       let idArr = Object.keys(data)
       idArr.forEach(function(item){
         data[item].id = item
       })
-      $scope.userMessages = []
-      if(data){
         for(var key in data){
           $scope.userMessages.push(data[key])
         }
