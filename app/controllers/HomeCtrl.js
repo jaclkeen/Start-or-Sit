@@ -12,11 +12,11 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   };
 
   let showCommentAddedToast = function() {
-  $mdToast.show(
-    $mdToast.simple()
-      .hideDelay(4000)
-      .textContent("Comment posted!")
-      .theme("success-toast")
+    $mdToast.show(
+      $mdToast.simple()
+        .hideDelay(4000)
+        .textContent("Comment posted!")
+        .theme("success-toast")
     );
   };
 
