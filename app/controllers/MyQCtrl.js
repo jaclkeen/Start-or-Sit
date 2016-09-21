@@ -1,7 +1,9 @@
 "use strict"
 
 app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $mdToast){
+
   $scope.plays = []
+  $scope.userMessages = []
 
   let showToast = function() {
     $mdToast.show(
@@ -45,8 +47,29 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
             }
             showToast()
           })
-        })
+      })
   }
 
+  $scope.retrieveComments = function(){
+    DbFactory.getAllPlaysFromFirebase()
+    .then(function(plays){
+      DbFactory.getComments()
+      .then(function(data){
+        $scope.userMessages = []
+        if(data){
+          console.log('THIS DATA', data)
+          let idArr = Object.keys(data)
+          idArr.forEach(function(item){
+            data[item].id = item
+          })
+          for(var key in data){
+            $scope.userMessages.push(data[key])
+          }
+        }
+      })
+    })
+  }
+
+  $scope.retrieveComments()
 
 })

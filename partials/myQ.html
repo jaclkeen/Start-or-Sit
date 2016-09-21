@@ -1,20 +1,56 @@
 <div class="myQPage">
-  <div class="playerCard" ng-repeat="play in plays">
-    <div class="player1">
-      <span class="glyphicon glyphicon-remove delete" ng-click="deletePlay(play.id)"></span>
-      <img src={{play.player1.img}}>
-      <h3>{{play.player1.name}}</h3>
-      <span>{{play.player1.position}}</span>
-      <span>{{play.player1.team}}</span><br>
-      <span class="votes">Votes: {{play.player1.votes}}</span>
-    </div>
+  <div class="playerCard flip" ng-repeat="play in plays">
+    <div class="card" ng-class="{'flipped':isFlipped}">
 
-    <div class="player2">
-      <img src={{play.player2.img}}>
-      <h3>{{play.player2.name}}</h3>
-      <span>{{play.player2.position}}</span>
-      <span>{{play.player2.team}}</span><br>
-      <span class="votes">Votes: {{play.player2.votes}}</span>
+      <span class="glyphicon glyphicon-remove delete" ng-click="deletePlay(play.id)"></span>
+
+      <div class="face front">
+        <div class="player1">
+          <img ng-click="addVote(play.player1.name, 'player1', play.id, play.player1.votes)"  ng-src={{play.player1.img}}>
+          <h3>{{play.player1.name}}</h3>
+          <span>{{play.player1.position}}</span>
+          <span>{{play.player1.team}}</span><br>
+          <span class="votes">Votes: {{play.player1.votes}}</span>
+        </div>
+
+        <div class="player2">
+          <img ng-click="addVote(play.player2.name, 'player2', play.id, play.player2.votes)" ng-src={{play.player2.img}}>
+          <h3>{{play.player2.name}}</h3>
+          <span>{{play.player2.position}}</span>
+          <span>{{play.player2.team}}</span><br>
+          <span class="votes">Votes: {{play.player2.votes}}</span>
+        </div>
+          <span class="comment glyphicon glyphicon-pencil" ng-click="isFlipped=!isFlipped" ng-class="{'flipped':isFlipped}"></span>
+      </div>
+    <!-- END FACE FRONT -->
+        <div class="face backCard"  id="{{$index}}">
+          <div class="backPlayerArea">
+            <span class="glyphicon glyphicon-arrow-left removeComments backArrow" ng-click="isFlipped=!isFlipped"></span>
+            <div class="firstPlayer">
+              <img class="commentPlayerImg1" ng-src={{play.player2.img}}>
+              <h4 class="commentPlayerName1">{{play.player2.name}}</h4>
+            </div>
+            <div class="secondPlayer">
+              <img class="commentPlayerImg2" ng-src={{play.player1.img}}>
+              <h4 class="commentPlayerName2">{{play.player1.name}}</h4>
+            </div>
+          </div>
+          <div class="commentArea">
+            <div ng-repeat="message in userMessages">
+              <div class="message.id">
+                <p ng-if="message.playId === play.id">
+                <!-- {{message[$index].text}} -->
+                {{message.text}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="inputArea">
+            <textarea class="textInput" placeholder="Comment.." ng-model="comment[$index].text"></textarea>
+            <input type="button" ng-click="addComment($index, play.id); retrieveComments()" value="Comment" class="inputBtn">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
