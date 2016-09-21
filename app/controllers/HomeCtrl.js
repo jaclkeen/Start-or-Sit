@@ -115,7 +115,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       $scope.comment[index].playId = id
       DbFactory.storeComment(id, $scope.comment[index])
       .then(function(data){
-        $scope.comment.text = ""
+        $scope.comment[index].text = ""
         $scope.retrieveComments(id)
         showCommentAddedToast()
       })
@@ -132,7 +132,6 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       if(data){
         for(var key in data){
           $scope.userMessages.push(data[key])
-          console.log($scope.userMessages, 'USER MESSAGES')
         }
       }
     })
