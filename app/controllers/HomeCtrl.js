@@ -11,6 +11,15 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     );
   };
 
+  let showCommentAddedToast = function() {
+  $mdToast.show(
+    $mdToast.simple()
+      .hideDelay(4000)
+      .textContent("Comment posted!")
+      .theme("success-toast")
+  );
+};
+
   $scope.showAllQ = true
   $scope.showMyQ = false
   $scope.showSearch = false
@@ -99,6 +108,10 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     })
     console.log('PLAYERNAME', playerName)
     showToast(playerName)
+  }
+
+  $scope.addComment = function(){
+    showCommentAddedToast()
   }
 
   $scope.loadTickets()
