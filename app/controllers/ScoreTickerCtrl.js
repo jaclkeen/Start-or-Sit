@@ -5,6 +5,10 @@ app.controller("ScoreTickerCtrl", function($scope, $http, ApiFactory){
   $scope.games = []
   $scope.gameInfo = []
 
+  let formatTime = function(mTime){
+
+  }
+
   let domStuff = function(games){
     games.ss.forEach(function(game){
       $scope.gameInfo.push(game)

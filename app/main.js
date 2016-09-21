@@ -3,6 +3,19 @@
 let app = angular.module("StartOrSit", ["ngRoute", "ngMaterial"])
   .constant('FirebaseURL', "https://start-or-sit.firebaseio.com/")
 
+  let isSignedIn = function(AuthFactory){
+    new Promise(function(resolve, reject){
+      if(AuthFactory.isAuthenticated()){
+        console.log(AuthFactory.getUser())
+        resolve()
+      }
+      else{
+        console.log('no user')
+        reject()
+      }
+    })
+  }
+
   app.config(function($routeProvider){
     $routeProvider
       .when('/login', {
@@ -11,27 +24,33 @@ let app = angular.module("StartOrSit", ["ngRoute", "ngMaterial"])
       })
       .when('/home', {
         templateUrl: 'partials/home',
-        controller: 'HomeCtrl'
+        controller: 'HomeCtrl',
+        resolve: {isSignedIn}
       })
       .when('/newTicket', {
         templateUrl: 'partials/newTicket',
-        controller: 'NewTicketCtrl'
+        controller: 'NewTicketCtrl',
+        resolve: {isSignedIn}
       })
       .when('/editorRanks', {
         templateUrl: 'partials/researchAreaPartials/editorRanks',
-        controller: 'EditorRanksCtrl'
+        controller: 'EditorRanksCtrl',
+        resolve: {isSignedIn}
       })
       .when('/scoringLeaders', {
         templateUrl: 'partials/researchAreaPartials/scoringLeaders',
-        controller: 'ScoringLeadersCtrl'
+        controller: 'ScoringLeadersCtrl',
+        resolve: {isSignedIn}
       })
       .when('/fantasyResearch', {
         templateUrl: 'partials/researchAreaPartials/playerResearch',
-        controller: 'PlayerResearchCtrl'
+        controller: 'PlayerResearchCtrl',
+        resolve: {isSignedIn}
       })
       .when('/recentNews', {
         templateUrl: 'partials/researchAreaPartials/recentNews',
-        controller: 'RecentNewsCtrl'
+        controller: 'RecentNewsCtrl',
+        resolve: {isSignedIn}
       })
       .otherwise('/login')
   })
