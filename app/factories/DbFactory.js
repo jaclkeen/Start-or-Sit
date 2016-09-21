@@ -16,6 +16,34 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
     })
   }
 
+  let storeComment = function(playKey, comments){
+    return $q(function(resolve, reject){
+      $http.post(`${FirebaseURL}/comments.json`,
+      JSON.stringify(comments))
+      .success(function(obj){
+        console.log(obj)
+        resolve(obj)
+      })
+      .error(function(error){
+        console.log(error)
+      })
+    })
+  }
+
+  let getComments = function(){
+    return $q(function(resolve, reject){
+      $http.get(`${FirebaseURL}comments.json`)
+      .success(function(data){
+        console.log(data)
+        resolve(data)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   let storeToFirebase = function(obj){
     return $q(function(resolve, reject){
       $http.post(`${FirebaseURL}plays.json`,
@@ -74,6 +102,8 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
 
   return {
     storeUser,
+    getComments,
+    storeComment,
     storeToFirebase,
     getAllPlaysFromFirebase,
     deletePlayFromFirebase,
