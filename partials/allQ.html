@@ -21,7 +21,7 @@
         </div>
       </div>
     <!-- END FACE FRONT -->
-        <div class="face backCard">
+        <div class="face backCard"  id="{{$index}}">
           <div class="backPlayerArea">
             <span class="glyphicon glyphicon-arrow-left removeComments backArrow" ng-click="isFlipped=!isFlipped"></span>
             <div class="firstPlayer">
@@ -36,13 +36,16 @@
           <div class="commentArea">
             <div ng-repeat="message in userMessages">
               <div class="message.id">
-                <p ng-if="message.playId === play.id">{{message.text}}</p>
+                <p ng-if="message.playId === play.id">
+                <!-- {{message[$index].text}} -->
+                {{message.text}}
+                </p>
               </div>
             </div>
           </div>
           <div class="inputArea">
-            <textarea class="textInput" placeholder="Comment.." ng-model="comment.text"></textarea>
-            <input type="button" ng-click="addComment(play.id)" value="Comment" class="inputBtn">
+            <textarea class="textInput" placeholder="Comment.." ng-model="comment[$index].text"></textarea>
+            <input type="button" ng-click="addComment($index, play.id)" value="Comment" class="inputBtn">
           </div>
         </div>
       </div>
