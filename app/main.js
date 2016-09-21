@@ -6,11 +6,9 @@ let app = angular.module("StartOrSit", ["ngRoute", "ngMaterial"])
   let isSignedIn = function(AuthFactory){
     new Promise(function(resolve, reject){
       if(AuthFactory.isAuthenticated()){
-        console.log(AuthFactory.getUser())
         resolve()
       }
       else{
-        console.log('no user')
         reject()
       }
     })

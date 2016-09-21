@@ -511,7 +511,7 @@ nav{
     top: 6px;
     font-size: 1em;
     color: white;
-    padding: 1%;
+    padding: .4%;
     cursor: pointer;
     background-color: $primary;
     border: 1px solid white;
@@ -528,7 +528,7 @@ nav{
   .backPlayerArea{
     background-color: darkgrey;
     position: relative;
-    top: 16px;
+    top: 13px;
     right: 10px;
     width: 104.5%;
     height: 55px;
@@ -592,7 +592,7 @@ nav{
 
   .inputArea{
     position: fixed;
-    top: 233px;
+    top: 231px;
     border: 3px solid #1A5C21;
     border-radius: 20px;
     border-top-right-radius: 0;
@@ -697,7 +697,8 @@ td{
   }
 
   .pName{
-    font-size: 4em;
+    font-size: 3.75em;
+    width: 149%;
     color: white;
     margin-top: 5%;
     margin-bottom: -3%;
@@ -731,7 +732,7 @@ td{
       li{
         display: inline-block;
         margin-right: 0%;
-        width: 80%;
+        width: 42%;
         padding: 1%;
         padding-left: 4%;
         background-color: $primary;
@@ -745,7 +746,7 @@ td{
 
       }
       a{
-        margin-left: -2%;
+        margin-left: 6%;
         margin-right: -11%;
         color: black;
         background-color: $primary;
@@ -787,6 +788,7 @@ td{
 .researchArea{
   width: 70%;
   margin: auto;
+  padding-bottom: 2%;
 
   h2{
     color: white;
