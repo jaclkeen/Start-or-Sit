@@ -18,7 +18,7 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
 
   let storeComment = function(playKey, comments){
     return $q(function(resolve, reject){
-      $http.post(`${FirebaseURL}/plays/${playKey}/comments.json`,
+      $http.post(`${FirebaseURL}plays/${playKey}/comments.json`,
       JSON.stringify(comments))
       .success(function(obj){
         console.log(obj)
@@ -26,6 +26,20 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
       })
       .error(function(error){
         console.log(error)
+      })
+    })
+  }
+
+  let getComments = function(playKey){
+    return $q(function(resolve, reject){
+      $http.get(`${FirebaseURL}plays/${playKey}/comments.json`)
+      .success(function(data){
+        console.log(data)
+        resolve(data)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
       })
     })
   }
@@ -88,6 +102,7 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
 
   return {
     storeUser,
+    getComments,
     storeComment,
     storeToFirebase,
     getAllPlaysFromFirebase,

@@ -6,7 +6,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     $mdToast.show(
       $mdToast.simple()
         .hideDelay(4000)
-        .textContent(`You voted for ${playerName}`)
+        .textContent(`You voted for ${playerName}!`)
         .theme("success-toast")
     );
   };
@@ -32,8 +32,10 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   $scope.p2Votes = 0
   $scope.isEnabled = true
   $scope.comment = {
+    playId: "",
     text: ""
   }
+  $scope.userMessages = []
 
   $scope.addQArea = function(){
     $scope.showAllQ = false
@@ -89,7 +91,6 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       })
       $scope.plays = []
       for(var key in plays){
-        // console.log(key, plays, plays[key])
         $scope.plays.push(plays[key])
       }
     })
@@ -102,11 +103,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     console.log(player)
     DbFactory.updateVotes(player, id, votes)
     .then(function(data){
-      // console.log('IS THIS WORKIN YET?!?!', player1, player2, playerName)
-      // console.log('IS THIS WORKIN YET?!?!', player2)
-      // if (playerName === player1 || player2) {
-        $scope.isEnabled = false
-      // }
+      $scope.isEnabled = false
       $scope.loadTickets()
     })
     console.log('PLAYERNAME', playerName)
@@ -118,8 +115,25 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       DbFactory.storeComment(id, $scope.comment)
       .then(function(data){
         showCommentAddedToast()
+        $scope.retrieveComments(id)
       })
     }
+  }
+
+  $scope.retrieveComments = function(playId){
+    DbFactory.getComments(playId)
+    .then(function(data){
+      let idArr = Object.keys(data)
+      idArr.forEach(function(item){
+        data[item].id = item
+        data[item].playId = playId
+      })
+      $scope.userMessages = []
+      for(var key in data){
+        $scope.userMessages.push(data[key])
+        console.log($scope.userMessages, 'USER MESSAGES')
+      }
+    })
   }
 
   $scope.loadTickets()
