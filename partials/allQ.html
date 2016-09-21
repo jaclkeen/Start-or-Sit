@@ -33,18 +33,10 @@
             </div>
           </div>
           <div class="commentArea">
-            <p>TESTTESTSESTSTSASDFSADFASDFSDFASDFSDFASDFSASDFASDFASDFSADFASDFSADFS</p>
-            <p>TEST</p>
-            <p>TEST</p>
-            <p>TEST</p>
-            <p>TEST</p>
-            <p>TEST</p>
-            <p>TEST</p>
-            <p>TEST</p>
           </div>
           <div class="inputArea">
-            <textarea class="textInput" placeholder="Comment.."></textarea>
-            <input type="button" ng-click="addComment()" value="Comment" class="inputBtn">
+            <textarea class="textInput" placeholder="Comment.." ng-model="comment.text"></textarea>
+            <input type="button" ng-click="addComment(play.id)" value="Comment" class="inputBtn">
           </div>
         </div>
       </div>

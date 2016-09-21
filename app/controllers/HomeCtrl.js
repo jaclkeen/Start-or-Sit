@@ -31,6 +31,9 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   $scope.p1Votes = 0
   $scope.p2Votes = 0
   $scope.isEnabled = true
+  $scope.comment = {
+    text: ""
+  }
 
   $scope.addQArea = function(){
     $scope.showAllQ = false
@@ -110,8 +113,13 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     showToast(playerName)
   }
 
-  $scope.addComment = function(){
-    showCommentAddedToast()
+  $scope.addComment = function(id){
+    if($scope.comment.text !== "" || " "){
+      DbFactory.storeComment(id, $scope.comment)
+      .then(function(data){
+        showCommentAddedToast()
+      })
+    }
   }
 
   $scope.loadTickets()
