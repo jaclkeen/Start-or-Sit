@@ -518,11 +518,17 @@ nav{
     color: black;
     border-radius: 40px;
   }
-
-  .comment{
-    position: relative;
-    left: 424px;
-    top: -262px;
+  .cContainer{
+      width: 10%;
+      margin-left: 95%;
+      margin-top: -5%;
+    .comment{
+      font-size: 1.4em;
+      position: relative;
+      color: green;
+      right: 5px;
+      top: 5px;
+    }
   }
 
   .backPlayerArea{
@@ -1285,8 +1291,7 @@ body {
     font-size: 1.4em;
     position: relative;
     color: green;
-    right: -420px;
-    margin-right: 92%;
+    right: -5px;
     top: 5px;
 }
 
@@ -1303,5 +1308,11 @@ body {
     span{
       display: none;
     }
+  }
+}
+
+@media screen and (max-width: 1300px){
+  .scoreTicker{
+    background-color: red;
   }
 }

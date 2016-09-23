@@ -1,6 +1,6 @@
 <div ng-controller="ScoreTickerCtrl">
   <div class="scoreTicker">
-    <marquee scrollamount="12" scrolldelay="120" truespeed direction="right">
+    <!-- <marquee scrollamount="12" scrolldelay="120" truespeed direction="right"> -->
     <div class="scoreBlocks" ng-repeat="game in gameInfo">
     <div class="scoreContainer">
       <div class="teams">
@@ -22,5 +22,5 @@
         <p class="time" ng-if="game[2] === 'Pregame'">{{game[0]}} {{game[1]}}</p>
       </div>
     </div>
-  </marquee>
+  <!-- </marquee> -->
 </div>
