@@ -1,7 +1,9 @@
 <div class="allQPage">
   <div class="playerCard flip" ng-repeat="play in plays">
     <div class="card" ng-class="{'flipped':isFlipped}">
-      <span class="comment glyphicon glyphicon-pencil" ng-click="isFlipped=!isFlipped" ng-class="{'flipped':isFlipped}"></span>
+      <div class="commentContainer">
+        <span class="comment glyphicon glyphicon-pencil" ng-click="isFlipped=!isFlipped" ng-class="{'flipped':isFlipped}"></span>
+      </div>
 
       <div class="face front">
         <div class="player1">

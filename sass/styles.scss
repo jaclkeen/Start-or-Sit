@@ -1,6 +1,7 @@
 $primary: #1A5C21;
 $secondary: 'Titillium Web', sans-serif;
 
+//FOR NORMAL ZOOM
 html{
   background-color: black;
 
@@ -54,6 +55,8 @@ nav{
 //////////////BEGIN SCORE TICKER//////////////
 .scoreTicker{
   color: white;
+  margin-bottom: .1%;
+  margin-top: .4%;
   height: 91px;
   overflow: hidden;
   display: inline-block;
@@ -90,8 +93,6 @@ nav{
     width: 25%;
     display: inline-block;
     text-align: center;
-    margin-bottom: .3%;
-    margin-top: .3%;
     margin-right: -16.5%;
   }
 
@@ -100,6 +101,11 @@ nav{
     width: 33%;
     height: 83px;
   }
+
+  .scores{
+    margin-top: -3%;
+  }
+
   .Final{
     position: relative;
     top: -7px;
@@ -109,7 +115,8 @@ nav{
     position: relative;
     top: -5px;
     left: -13px;
-    margin-right: -20%;
+    margin-right: -7%;
+    margin-left: 15%;
   }
   .team2Score{
     position: relative;
@@ -518,11 +525,17 @@ nav{
     color: black;
     border-radius: 40px;
   }
-
-  .comment{
-    position: relative;
-    left: 424px;
-    top: -262px;
+  .cContainer{
+      width: 10%;
+      margin-left: 95%;
+      margin-top: -5%;
+    .comment{
+      font-size: 1.4em;
+      position: relative;
+      color: green;
+      right: 5px;
+      top: 5px;
+    }
   }
 
   .backPlayerArea{
@@ -665,7 +678,7 @@ td{
   }
 
   .playerSelection{
-    margin-left: 21.05%;
+    margin-left: 21.15%;
     cursor: pointer;
     color: white;
     font-size: 1.3em;
@@ -1088,10 +1101,10 @@ h2{
     border-left: 2px solid white;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
-    width: 41.3%;
-    font-size: 1.3em;
-    margin-left: 29.3%;
     font-family: $secondary;
+    width: 40.2%;
+    font-size: 1.3em;
+    margin-left: 29.9%;
   }
 
   img{
@@ -1137,9 +1150,9 @@ h2{
     border-left: 2px solid white;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
-    width: 41.3%;
+    width: 40.2%;
     font-size: 1.3em;
-    margin-left: 29.3%;
+    margin-left: 29.9%;
     font-family: $secondary;
   }
 
@@ -1285,8 +1298,7 @@ body {
     font-size: 1.4em;
     position: relative;
     color: green;
-    right: -420px;
-    margin-right: 92%;
+    right: -5px;
     top: 5px;
 }
 
@@ -1305,3 +1317,611 @@ body {
     }
   }
 }
+
+// FOR ZOOM 150%
+@media screen and (max-width: 1300px){
+    // TOAST STYLING
+    md-toast.md-success-toast-theme {
+    .md-toast-content {
+      background-color: white;
+      color: green;
+      width: 15%;
+      padding: .5%;
+      position: fixed;
+      top: 135px;
+      z-index: 3;
+      left: 980px;
+      margin-top: -46px;
+      text-align: center;
+      font-size: 1.3em;
+      border: 3px solid black;
+    }
+  }
+
+  // SCORETICKER STYLING
+  .scoreTicker{
+    .scoreBlocks{
+      margin-right: -15.3%;
+    }
+
+    .scoreContainer{
+      width: 38%;
+    }
+  }
+  // END SCORETICKER STYLING
+  // BEGIN MYQPAGE AND ALLQPAGE STYLING
+  .allQPage{
+    h3{
+      width: 170%;
+    }
+  }
+  .myQPage, .allQPage{
+    h3{
+      width: 170%;
+    }
+    .backPlayerArea{
+      top: 13.5px;
+      right: 8px;
+
+      .firstPlayer{
+        top: 27px;
+        right: 24px;
+        left: 0;
+
+        .commentPlayerName1{
+          font-size: 1em;
+        }
+      }
+
+      .secondPlayer{
+        top: 8px;
+        left: 40px;
+
+        .commentPlayerName2{
+          font-size: 1em;
+        }
+
+        .commentPlayerImg2{
+          width: 18.5%;
+          display: inline-block;
+          position: relative;
+          top: -28px;
+        }
+      }
+
+      .inputArea{
+        width: 101.5%;
+        left: -3px;
+      }
+
+    }
+  }
+  .myQPage .inputArea .inputBtn{
+    top: -13px;
+    left: 18px;
+  }
+  .myQPage .inputArea .textInput{
+    top: 6px;
+  }
+
+  .allQPage .inputArea .inputBtn{
+    top: -13px;
+    left: 18px;
+  }
+  .allQPage .inputArea .textInput{
+    top: 6px;
+  }
+  // END MYQPAGE AND ALLQPAGE STYLING
+  .searchResults .playerSelection{
+    margin-left: 24.3%;
+    width: 14.95%;
+  }
+  .playerSearchResults{
+    .pName{
+      font-size: 2.75em;
+    }
+    .playerNav{
+      ul{
+        li{
+          width: 51%;
+        }
+      }
+    }
+  }
+  // RESEARCH AREA STYLING
+  .researchArea{
+    .showMore{
+      font-size: 1.5em;
+    }
+  }
+  .editorRanks .back{
+    position: relative;
+    top: -34px;
+    right: -182px;
+  }
+  .scoringLeaders .back{
+    position: relative;
+    top: -32px;
+    left: 235px;
+  }
+  .playerResearch{
+    width: 92%;
+
+    .back{
+      position: relative;
+      top: 12px;
+      right: -65px;
+    }
+  }
+  // END//////////
+  // BEGIN ADD NEW TICKET AREA
+  .p1SearchArea{
+    h2{
+      font-size: 1.6em;
+    }
+    .p1SearchResults{
+      font-size: 1.2em;
+      position: relative;
+      width: 49%;
+      right: 13px;
+    }
+    img{
+      background: darkgrey;
+      height: 150px;
+    }
+  }
+
+  .p2SearchArea{
+    top: 152px;
+
+    h2{
+      font-size: 1.6em;
+    }
+    .p2SearchResults{
+      font-size: 1.2em;
+      position: relative;
+      width: 49%;
+      right: 13px;
+    }
+    img{
+      background: darkgrey;
+      height: 150px;
+    }
+  }
+}
+// END ZOOM 150%////////
+// FOR ZOOM 175%////////
+@media screen and (max-width: 1100px){
+  .scoreTicker{
+    height: 73px;
+
+    .scoreContainer{
+      height: 69px;
+    }
+  }
+
+  md-toast.md-success-toast-theme {
+    .md-toast-content {
+      background-color: white;
+      color: green;
+      width: 15%;
+      padding: .5%;
+      position: fixed;
+      top: 125px;
+      z-index: 3;
+      left: 810px;
+      margin-top: -46px;
+      text-align: center;
+      font-size: 1.3em;
+      border: 3px solid black;
+    }
+  }
+
+  body{
+    font-size: 1.1em;
+  }
+
+  .allQPage, .myQPage{
+    .playerCard{
+      height: 215px;
+    }
+  }
+  .allQPage{
+    .backPlayerArea{
+      top: 11.5px;
+      right: 8.5px;
+      width: 105.5%;
+
+      .secondPlayer{
+        top: 13px;
+      }
+    }
+
+    .commentArea{
+      height: 100px;
+      top: 13.5px;
+    }
+
+    .inputArea{
+      top: 175px;
+      width: 102%;
+      left: -3px;
+      height: 57px;
+    }
+  }
+  .myQPage{
+    .backPlayerArea{
+      top: 9px;
+      right: 8.5px;
+      width: 105.5%;
+
+      .secondPlayer{
+        top: 13px;
+      }
+    }
+
+    .commentArea{
+      height: 99px;
+      top: 10.5px;
+    }
+
+    .inputArea{
+      top: 171px;
+      width: 102%;
+      left: -3px;
+      height: 57px;
+    }
+  }
+  .searchResults{
+    .playerSelection{
+      margin-left: 22.75%;
+      width: 15%;
+    }
+  }
+  .p2SearchArea{
+    top: 137px;
+    .p2SearchResults{
+      width: 45%;
+      right: 7px;
+    }
+  }
+
+  .p1SearchArea{
+    .p1SearchResults{
+      width: 45%;
+      right: 7px;
+    }
+  }
+
+  .recentPlayerNews{
+    .back{
+      position: relative;
+      top: -46px;
+      left: 182px;
+    }
+  }
+}
+// END ZOOM 175%/////////
+// BEGIN ZOOM 200%///////
+@media screen and (max-width: 960px){
+  .scoreTicker{
+
+    .scoreBlocks{
+      margin-right: -13.9%;
+    }
+
+    .scoreContainer{
+      width: 43%;
+    }
+  }
+  body{
+    font-size: 1em;
+  }
+  .searchResults{
+    .playerSelection{
+      margin-left: 23.25%;
+    }
+  }
+
+  .editorRanks{
+    .back{
+      right: -140px;
+    }
+  }
+  .scoringLeaders{
+    .back{
+      left: 180px;
+    }
+  }
+
+  .playerResearch{
+    .back{
+      right: 0;
+    }
+  }
+
+  .back{
+    margin-left: 65%;
+  }
+
+  .p1SearchArea{
+    margin-top: -.21%;
+    img{
+      height: 120px;
+      background: transparent;
+    }
+  }
+
+  .p2SearchArea{
+    top: 103px;
+
+    img{
+      height: 120px;
+      background: none;
+    }
+  }
+  .title{
+    margin-left: 3%;
+    margin-top: .5%;
+  }
+}
+// END STYLING FOR 200%/////
+// BEGIN 110% STYLING//////
+@media screen and (min-width: 1600px){
+  body{
+    font-size: 1.5em;
+  }
+
+  .allQPage{
+    .playerCard{
+      height: 305px;
+    }
+    .inputArea{
+      top: 255px;
+    }
+
+    .commentArea{
+      height: 172px;
+    }
+
+    .backPlayerArea{
+      top: 17px;
+      right: 11px;
+
+      .commentPlayerImg1{
+        width: 17%;
+        top: -11px;
+      }
+    }
+  }
+
+  .myQPage{
+    .playerCard{
+      height: 311px;
+    }
+    .inputArea{
+      top: 254px;
+      height: 77px;
+      left: -3px;
+    }
+    .commentArea{
+      height: 170px;
+    }
+    .backPlayerArea{
+      .commentPlayerImg1{
+        width: 17%;
+        top: -9px;
+      }
+      .commentPlayerName1{
+        top: -16px;
+      }
+    }
+  }
+
+  .searchResults{
+    .playerSelection{
+      margin-left: 20.1%;
+    }
+  }
+
+  .editorRanks{
+    .back{
+      margin-top: 0;
+      margin-left: 870px;
+    }
+  }
+
+  .p1SearchArea{
+    .p1SearchResults{
+      width: 39.4%;
+      margin-left: 30.3%;
+    }
+  }
+
+  .p2SearchArea{
+    .p2SearchResults{
+      width: 39.4%;
+      margin-left: 30.3%;
+    }
+  }
+}
+// END 110% STYLING////////
+// BEGIN STYLING FOR 90% ZOOM
+@media screen and (min-width: 1800px){
+  body{
+    font-size: 1.8em;
+  }
+  .scoreTicker{
+    height: 107px;
+    .scoreContainer{
+      height: 97px;
+    }
+  }
+  .allQPage{
+    .playerCard{
+      height: 375px;
+      border: 5px solid $primary;
+    }
+
+    .inputArea{
+      top: 317px;
+      width: 100.6%;
+    }
+
+    .backPlayerArea{
+      height: 71px;
+      top: 21px;
+      width: 104%;
+      right: 12.5px;
+
+      .secondPlayer{
+        top: 15px;
+        left: 58px;
+      }
+      .firstPlayer{
+        top: 43px;
+      }
+      .commentPlayerName1{
+        top: -18px;
+      }
+    }
+
+    .commentArea{
+      height: 206px;
+      top: 26px;
+    }
+  }
+
+  .myQPage{
+    height: 378px;
+
+    .playerCard{
+      height: 375px;
+      border: 5px solid $primary;
+    }
+
+    .inputArea{
+      top: 320px;
+      width: 100.6%;
+      left: -2px;
+    }
+
+    .backPlayerArea{
+      height: 71px;
+      top: 16px;
+      width: 104%;
+      right: 12.5px;
+
+      .secondPlayer{
+        top: 15px;
+        left: 58px;
+      }
+      .firstPlayer{
+        top: 43px;
+      }
+      .commentPlayerName1{
+        top: -18px;
+      }
+    }
+
+    .commentArea{
+      height: 210px;
+      top: 22px;
+    }
+  }
+  .searchResults .playerSelection{
+    margin-left: 19.61%;
+  }
+
+  .editorRanks{
+    .back{
+      margin-top: 27px;
+      margin-left: 1100px;
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+  }
+  .scoringLeaders{
+    .back{
+      margin-top: 27px;
+      margin-left: 1100px;
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+  }
+  .playerResearch{
+    .back{
+      margin-top: 27px;
+      margin-left: 1100px;
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+  }
+  .recentPlayerNews{
+    .back{
+
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+    h2{
+      font-size: 2.4em;
+    }
+  }
+  .p1SearchArea{
+     h2{
+      font-size: 2em;
+    }
+    img{
+      width: 45%;
+      background: darkgrey;
+    }
+    .name{
+      font-size: 2em;
+    }
+    .p1Input{
+      padding: .6em;
+    }
+    .p1SearchResults{
+      width: 41.2%;
+      margin-left: 29.5%;
+    }
+  }
+
+  .p2SearchArea{
+    top: 198px;
+    h2{
+      font-size: 2em;
+    }
+    .p2SearchResults{
+      width: 40.96%;
+      margin-left: 29.5%;
+    }
+    .p2SearchResults{
+      width: 38.8%;
+      margin-left: 30.519%;
+    }
+    .name{
+      font-size: 2em;
+    }
+    img{
+      width: 45%;
+      background: darkgrey;
+    }
+    .p2Input{
+      padding: .6em;
+    }
+  }
+
+  .addPlay{
+    margin-top: 10%;
+  }
+
+  .title{
+    font-size: 2.1em;
+  }
+}
+// END 90% ZOOM STYLING//////
