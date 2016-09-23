@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller("SearchCtrl", function($scope, ApiFactory, StatFactory){
+app.controller("SearchCtrl", function($scope, ApiFactory){
 
   var lastname
 

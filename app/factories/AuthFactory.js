@@ -1,7 +1,6 @@
 "use strict"
 
 app.factory('AuthFactory', function($window){
-//Before we can do this we need to initialize a Firebase app
   let currentUserId = ""
   let userInfo = {
     name: null,
@@ -25,7 +24,6 @@ app.factory('AuthFactory', function($window){
 
   // BEGIN EMAIL&PASSWORD LOGIN
   let createUser = function(userObject){
-    //firebase is universally available because we added it in the script tags. The userObject has the email and password on it.
     return firebase.auth().createUserWithEmailAndPassword(userObject.email, userObject.password)
       .catch(function(error){
         let errorCode = error.code;
@@ -62,13 +60,13 @@ app.factory('AuthFactory', function($window){
   }
 
   return {
+    authWithProvider,
+    isAuthenticated,
+    getUserInfo,
+    logoutUser,
     createUser,
     loginUser,
-    logoutUser,
-    isAuthenticated,
-    authWithProvider,
     getUser,
-    getUserInfo,
     setUser
   };
 
