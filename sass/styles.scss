@@ -1600,6 +1600,69 @@ body {
       left: 182px;
     }
   }
-
 }
 // END ZOOM 175%/////////
+// BEGIN ZOOM 200%///////
+@media screen and (max-width: 960px){
+  .scoreTicker{
+
+    .scoreBlocks{
+      margin-right: -13.9%;
+    }
+
+    .scoreContainer{
+      width: 43%;
+    }
+  }
+  body{
+    font-size: 1em;
+  }
+  .searchResults{
+    .playerSelection{
+      margin-left: 23.25%;
+    }
+  }
+
+  .editorRanks{
+    .back{
+      right: -140px;
+    }
+  }
+  .scoringLeaders{
+    .back{
+      left: 180px;
+    }
+  }
+
+  .playerResearch{
+    .back{
+      right: 0;
+    }
+  }
+
+  .back{
+    margin-left: 65%;
+  }
+
+  .p1SearchArea{
+    margin-top: -.21%;
+    img{
+      height: 120px;
+      background: transparent;
+    }
+  }
+
+  .p2SearchArea{
+    top: 103px;
+
+    img{
+      height: 120px;
+      background: none;
+    }
+  }
+  .title{
+    margin-left: 3%;
+    margin-top: .5%;
+  }
+}
+// END STYLING FOR 200%/////
