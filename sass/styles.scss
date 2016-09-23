@@ -678,7 +678,7 @@ td{
   }
 
   .playerSelection{
-    margin-left: 21.05%;
+    margin-left: 21.15%;
     cursor: pointer;
     color: white;
     font-size: 1.3em;
@@ -1101,10 +1101,10 @@ h2{
     border-left: 2px solid white;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
-    width: 41.3%;
-    font-size: 1.3em;
-    margin-left: 29.3%;
     font-family: $secondary;
+    width: 40.2%;
+    font-size: 1.3em;
+    margin-left: 29.9%;
   }
 
   img{
@@ -1150,9 +1150,9 @@ h2{
     border-left: 2px solid white;
     border-right: 2px solid white;
     border-bottom: 2px solid white;
-    width: 41.3%;
+    width: 40.2%;
     font-size: 1.3em;
-    margin-left: 29.3%;
+    margin-left: 29.9%;
     font-family: $secondary;
   }
 
@@ -1320,6 +1320,24 @@ body {
 
 // FOR ZOOM 150%
 @media screen and (max-width: 1300px){
+    // TOAST STYLING
+    md-toast.md-success-toast-theme {
+    .md-toast-content {
+      background-color: white;
+      color: green;
+      width: 15%;
+      padding: .5%;
+      position: fixed;
+      top: 135px;
+      z-index: 3;
+      left: 980px;
+      margin-top: -46px;
+      text-align: center;
+      font-size: 1.3em;
+      border: 3px solid black;
+    }
+  }
+
   // SCORETICKER STYLING
   .scoreTicker{
     .scoreBlocks{
@@ -1470,5 +1488,89 @@ body {
       height: 150px;
     }
   }
-
 }
+// END ZOOM 150%////////
+// FOR ZOOM 175%////////
+@media screen and (max-width: 1100px){
+  .scoreTicker{
+    height: 73px;
+
+    .scoreContainer{
+      height: 69px;
+    }
+  }
+
+  md-toast.md-success-toast-theme {
+    .md-toast-content {
+      background-color: white;
+      color: green;
+      width: 15%;
+      padding: .5%;
+      position: fixed;
+      top: 125px;
+      z-index: 3;
+      left: 810px;
+      margin-top: -46px;
+      text-align: center;
+      font-size: 1.3em;
+      border: 3px solid black;
+    }
+  }
+
+  body{
+    font-size: 1.1em;
+  }
+
+  .allQPage, .myQPage{
+    .playerCard{
+      height: 215px;
+    }
+  }
+  .allQPage{
+    .backPlayerArea{
+      top: 11.5px;
+      right: 8.5px;
+      width: 105.5%;
+
+      .secondPlayer{
+        top: 13px;
+      }
+    }
+
+    .commentArea{
+      height: 100px;
+      top: 13.5px;
+    }
+
+    .inputArea{
+      top: 175px;
+      width: 102%;
+      left: -3px;
+      height: 57px;
+    }
+  }
+  .myQPage{
+    .backPlayerArea{
+      top: 9px;
+      right: 8.5px;
+      width: 105.5%;
+
+      .secondPlayer{
+        top: 13px;
+      }
+    }
+
+    .commentArea{
+      height: 99px;
+      top: 10.5px;
+    }
+
+    .inputArea{
+      top: 171px;
+      width: 102%;
+      left: -3px;
+      height: 57px;
+    }
+  }
+}
+// END ZOOM 175%/////////
