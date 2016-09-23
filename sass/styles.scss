@@ -1671,6 +1671,7 @@ body {
   body{
     font-size: 1.5em;
   }
+
   .allQPage{
     .playerCard{
       height: 305px;
@@ -1743,6 +1744,184 @@ body {
       margin-left: 30.3%;
     }
   }
-
 }
 // END 110% STYLING////////
+// BEGIN STYLING FOR 90% ZOOM
+@media screen and (min-width: 1800px){
+  body{
+    font-size: 1.8em;
+  }
+  .scoreTicker{
+    height: 107px;
+    .scoreContainer{
+      height: 97px;
+    }
+  }
+  .allQPage{
+    .playerCard{
+      height: 375px;
+      border: 5px solid $primary;
+    }
+
+    .inputArea{
+      top: 317px;
+      width: 100.6%;
+    }
+
+    .backPlayerArea{
+      height: 71px;
+      top: 21px;
+      width: 104%;
+      right: 12.5px;
+
+      .secondPlayer{
+        top: 15px;
+        left: 58px;
+      }
+      .firstPlayer{
+        top: 43px;
+      }
+      .commentPlayerName1{
+        top: -18px;
+      }
+    }
+
+    .commentArea{
+      height: 206px;
+      top: 26px;
+    }
+  }
+
+  .myQPage{
+    height: 378px;
+
+    .playerCard{
+      height: 375px;
+      border: 5px solid $primary;
+    }
+
+    .inputArea{
+      top: 320px;
+      width: 100.6%;
+      left: -2px;
+    }
+
+    .backPlayerArea{
+      height: 71px;
+      top: 16px;
+      width: 104%;
+      right: 12.5px;
+
+      .secondPlayer{
+        top: 15px;
+        left: 58px;
+      }
+      .firstPlayer{
+        top: 43px;
+      }
+      .commentPlayerName1{
+        top: -18px;
+      }
+    }
+
+    .commentArea{
+      height: 210px;
+      top: 22px;
+    }
+  }
+  .searchResults .playerSelection{
+    margin-left: 19.61%;
+  }
+
+  .editorRanks{
+    .back{
+      margin-top: 27px;
+      margin-left: 1100px;
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+  }
+  .scoringLeaders{
+    .back{
+      margin-top: 27px;
+      margin-left: 1100px;
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+  }
+  .playerResearch{
+    .back{
+      margin-top: 27px;
+      margin-left: 1100px;
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+  }
+  .recentPlayerNews{
+    .back{
+
+      padding: .5%;
+      padding-left: 1%;
+      padding-right: 1%;
+    }
+    h2{
+      font-size: 2.4em;
+    }
+  }
+  .p1SearchArea{
+     h2{
+      font-size: 2em;
+    }
+    img{
+      width: 45%;
+      background: darkgrey;
+    }
+    .name{
+      font-size: 2em;
+    }
+    .p1Input{
+      padding: .6em;
+    }
+    .p1SearchResults{
+      width: 41.2%;
+      margin-left: 29.5%;
+    }
+  }
+
+  .p2SearchArea{
+    top: 198px;
+    h2{
+      font-size: 2em;
+    }
+    .p2SearchResults{
+      width: 40.96%;
+      margin-left: 29.5%;
+    }
+    .p2SearchResults{
+      width: 38.8%;
+      margin-left: 30.519%;
+    }
+    .name{
+      font-size: 2em;
+    }
+    img{
+      width: 45%;
+      background: darkgrey;
+    }
+    .p2Input{
+      padding: .6em;
+    }
+  }
+
+  .addPlay{
+    margin-top: 10%;
+  }
+
+  .title{
+    font-size: 2.1em;
+  }
+}
+// END 90% ZOOM STYLING//////
