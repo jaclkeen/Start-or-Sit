@@ -1,6 +1,7 @@
 $primary: #1A5C21;
 $secondary: 'Titillium Web', sans-serif;
 
+//FOR NORMAL ZOOM
 html{
   background-color: black;
 
@@ -1317,8 +1318,157 @@ body {
   }
 }
 
+// FOR ZOOM 150%
 @media screen and (max-width: 1300px){
+  // SCORETICKER STYLING
   .scoreTicker{
-    background-color: red;
+    .scoreBlocks{
+      margin-right: -15.3%;
+    }
+
+    .scoreContainer{
+      width: 38%;
+    }
   }
+  // END SCORETICKER STYLING
+  // BEGIN MYQPAGE AND ALLQPAGE STYLING
+  .allQPage{
+    h3{
+      width: 170%;
+    }
+  }
+  .myQPage, .allQPage{
+    h3{
+      width: 170%;
+    }
+    .backPlayerArea{
+      top: 13.5px;
+      right: 8px;
+
+      .firstPlayer{
+        top: 27px;
+        right: 24px;
+        left: 0;
+
+        .commentPlayerName1{
+          font-size: 1em;
+        }
+      }
+
+      .secondPlayer{
+        top: 8px;
+        left: 40px;
+
+        .commentPlayerName2{
+          font-size: 1em;
+        }
+
+        .commentPlayerImg2{
+          width: 18.5%;
+          display: inline-block;
+          position: relative;
+          top: -28px;
+        }
+      }
+
+      .inputArea{
+        width: 101.5%;
+        left: -3px;
+      }
+
+    }
+  }
+  .myQPage .inputArea .inputBtn{
+    top: -13px;
+    left: 18px;
+  }
+  .myQPage .inputArea .textInput{
+    top: 6px;
+  }
+
+  .allQPage .inputArea .inputBtn{
+    top: -13px;
+    left: 18px;
+  }
+  .allQPage .inputArea .textInput{
+    top: 6px;
+  }
+  // END MYQPAGE AND ALLQPAGE STYLING
+  .searchResults .playerSelection{
+    margin-left: 24.3%;
+    width: 14.95%;
+  }
+  .playerSearchResults{
+    .pName{
+      font-size: 2.75em;
+    }
+    .playerNav{
+      ul{
+        li{
+          width: 51%;
+        }
+      }
+    }
+  }
+  // RESEARCH AREA STYLING
+  .researchArea{
+    .showMore{
+      font-size: 1.5em;
+    }
+  }
+  .editorRanks .back{
+    position: relative;
+    top: -34px;
+    right: -182px;
+  }
+  .scoringLeaders .back{
+    position: relative;
+    top: -32px;
+    left: 235px;
+  }
+  .playerResearch{
+    width: 92%;
+
+    .back{
+      position: relative;
+      top: 12px;
+      right: -65px;
+    }
+  }
+  // END//////////
+  // BEGIN ADD NEW TICKET AREA
+  .p1SearchArea{
+    h2{
+      font-size: 1.6em;
+    }
+    .p1SearchResults{
+      font-size: 1.2em;
+      position: relative;
+      width: 49%;
+      right: 13px;
+    }
+    img{
+      background: darkgrey;
+      height: 150px;
+    }
+  }
+
+  .p2SearchArea{
+    top: 152px;
+
+    h2{
+      font-size: 1.6em;
+    }
+    .p2SearchResults{
+      font-size: 1.2em;
+      position: relative;
+      width: 49%;
+      right: 13px;
+    }
+    img{
+      background: darkgrey;
+      height: 150px;
+    }
+  }
+
 }
