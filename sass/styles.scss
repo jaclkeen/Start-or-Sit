@@ -1572,5 +1572,34 @@ body {
       height: 57px;
     }
   }
+  .searchResults{
+    .playerSelection{
+      margin-left: 22.75%;
+      width: 15%;
+    }
+  }
+  .p2SearchArea{
+    top: 137px;
+    .p2SearchResults{
+      width: 45%;
+      right: 7px;
+    }
+  }
+
+  .p1SearchArea{
+    .p1SearchResults{
+      width: 45%;
+      right: 7px;
+    }
+  }
+
+  .recentPlayerNews{
+    .back{
+      position: relative;
+      top: -46px;
+      left: 182px;
+    }
+  }
+
 }
 // END ZOOM 175%/////////
