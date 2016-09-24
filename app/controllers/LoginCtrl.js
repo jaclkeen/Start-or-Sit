@@ -36,13 +36,12 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
   }
 
   $scope.login = function(){
-    console.log('you clicked login')
     AuthFactory.loginUser($scope.account)
     .then(function(data){
       if(data){
         AuthFactory.setUser(data.uid)
-        console.log('AUTHFACTORY SET USER', AuthFactory.getUser())
-        console.log('DATA', data)
+        console.log('ACCOUNT', $scope.account.name)
+        AuthFactory.setUserInfo($scope.account)
         $window.location.href = '#home'
       }
     })

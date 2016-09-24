@@ -3,8 +3,7 @@
 app.factory('AuthFactory', function($window){
   let currentUserId = ""
   let userInfo = {
-    name: null,
-    img: null
+    name: ""
   }
   // GOOGLE LOGIN
   let provider = new firebase.auth.GoogleAuthProvider()
@@ -55,6 +54,12 @@ app.factory('AuthFactory', function($window){
     currentUserId = user
   }
 
+  let setUserInfo = function(name){
+    console.log(name, 'NAMENAMENAMENAME')
+    userInfo.name = name.name
+    console.log(userInfo.name, 'USERINFO.NAME')
+  }
+
   let getUserInfo = function(){
     return userInfo
   }
@@ -62,6 +67,7 @@ app.factory('AuthFactory', function($window){
   return {
     authWithProvider,
     isAuthenticated,
+    setUserInfo,
     getUserInfo,
     logoutUser,
     createUser,

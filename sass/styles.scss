@@ -1338,6 +1338,10 @@ body {
     }
   }
 
+  .image img{
+    height: 424px;
+  }
+
   // SCORETICKER STYLING
   .scoreTicker{
     .scoreBlocks{
@@ -1488,6 +1492,11 @@ body {
       height: 150px;
     }
   }
+  .recentPlayerNews{
+    .back{
+      margin-left: 60%;
+    }
+  }
 }
 // END ZOOM 150%////////
 // FOR ZOOM 175%////////
@@ -1515,6 +1524,10 @@ body {
       font-size: 1.3em;
       border: 3px solid black;
     }
+  }
+
+  .image img{
+    height: 367px;
   }
 
   body{
@@ -1614,6 +1627,11 @@ body {
       width: 43%;
     }
   }
+
+  .image img{
+    height: 312px;
+  }
+
   body{
     font-size: 1em;
   }
@@ -1670,6 +1688,10 @@ body {
 @media screen and (min-width: 1600px){
   body{
     font-size: 1.5em;
+  }
+
+  .image img{
+    height: 610px;
   }
 
   .allQPage{
@@ -1757,6 +1779,11 @@ body {
       height: 97px;
     }
   }
+
+  .image img{
+    height: 740px;
+  }
+
   .allQPage{
     .playerCard{
       height: 375px;
@@ -1862,7 +1889,6 @@ body {
   }
   .recentPlayerNews{
     .back{
-
       padding: .5%;
       padding-left: 1%;
       padding-right: 1%;
