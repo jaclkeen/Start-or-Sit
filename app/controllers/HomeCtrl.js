@@ -1,6 +1,6 @@
 "use strict"
 
-app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
+app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
 
   let showToast = function(playerName) {
     $mdToast.show(
@@ -20,6 +20,8 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
     );
   };
 
+  $scope.currentUser = AuthFactory.getUser()
+  $scope.userInfo = AuthFactory.getUserInfo()
   $scope.showAllQ = true
   $scope.showMyQ = false
   $scope.showSearch = false
@@ -34,7 +36,9 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
   $scope.userMessages = []
   $scope.comment = [{
     text: "",
-    playId: ""
+    playId: "",
+    userId: $scope.currentUser,
+    userName: $scope.userInfo.name
   }]
 
   $scope.addQArea = function(){
@@ -91,8 +95,13 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast){
       })
       $scope.plays = []
       for(var key in plays){
+        console.log(AuthFactory.getUserInfo(), 'USERINFO TEST')
         $scope.plays.push(plays[key])
-        $scope.comment.push({text: "", playId: ""})
+        $scope.comment.push({ text: "",
+                              playId: "",
+                              userId: $scope.currentUser,
+                              userName: $scope.userInfo.name
+                            })
       }
     })
   }
