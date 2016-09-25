@@ -39,9 +39,17 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
     AuthFactory.loginUser($scope.account)
     .then(function(data){
       if(data){
+        let email = data.email
         AuthFactory.setUser(data.uid)
-        console.log('ACCOUNT', $scope.account.name)
-        AuthFactory.setUserInfo($scope.account)
+        DbFactory.getUserFromFB()
+        .then(function(users){
+          for(var key in users){
+            if(users[key].email === email){
+              console.log(users[key], 'USERSKEY')
+              AuthFactory.setUserInfo(users[key])
+            }
+          }
+        })
         $window.location.href = '#home'
       }
     })

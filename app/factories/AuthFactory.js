@@ -3,7 +3,8 @@
 app.factory('AuthFactory', function($window){
   let currentUserId = ""
   let userInfo = {
-    name: ""
+    name: "",
+    img: ""
   }
   // GOOGLE LOGIN
   let provider = new firebase.auth.GoogleAuthProvider()
@@ -11,8 +12,8 @@ app.factory('AuthFactory', function($window){
   firebase.auth().onAuthStateChanged(function(user){
     if(user){
       currentUserId = user.uid
-      userInfo.name = user.displayName
-      userInfo.img = user.photoURL
+      // userInfo.name = user.displayName
+      // userInfo.img = user.photoURL
     }
   })
 
@@ -56,11 +57,12 @@ app.factory('AuthFactory', function($window){
 
   let setUserInfo = function(name){
     console.log(name, 'NAMENAMENAMENAME')
-    userInfo.name = name.name
-    console.log(userInfo.name, 'USERINFO.NAME')
+    userInfo = name.name
+    console.log(userInfo, 'USERINFO.NAME')
   }
 
   let getUserInfo = function(){
+    console.log(userInfo)
     return userInfo
   }
 

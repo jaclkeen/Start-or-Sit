@@ -21,7 +21,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
   };
 
   $scope.currentUser = AuthFactory.getUser()
-  $scope.userInfo = AuthFactory.getUserInfo()
+  $scope.userStuff = ""
   $scope.showAllQ = true
   $scope.showMyQ = false
   $scope.showSearch = false
@@ -38,7 +38,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     text: "",
     playId: "",
     userId: $scope.currentUser,
-    userName: $scope.userInfo.name
+    userName: ""
   }]
 
   $scope.addQArea = function(){
@@ -100,8 +100,9 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
         $scope.comment.push({ text: "",
                               playId: "",
                               userId: $scope.currentUser,
-                              userName: $scope.userInfo.name
+                              userName: ""
                             })
+        console.log($scope.userStuff.name, 'USERSTUFF.NAME')
       }
     })
   }
@@ -122,6 +123,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
 
   $scope.addComment = function(index, id){
       $scope.comment[index].playId = id
+      $scope.comment[index].userName = AuthFactory.getUserInfo()
       DbFactory.storeComment(id, $scope.comment[index])
       .then(function(data){
         $scope.comment[index].text = ""
@@ -131,6 +133,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
   }
 
   $scope.retrieveComments = function(){
+    $scope.userStuff = AuthFactory.getUserInfo()
     DbFactory.getComments()
     .then(function(data){
       $scope.userMessages = []
