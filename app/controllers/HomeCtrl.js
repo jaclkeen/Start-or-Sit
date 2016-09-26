@@ -86,6 +86,25 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     $scope.crumbs = 'Player Search'
   }
 
+  $scope.retrieveComments = function(){
+    $scope.userStuff = AuthFactory.getUserInfo()
+    console.log($scope.userStuff, 'USERSTUFF TEST') //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    DbFactory.getComments()
+    .then(function(data){
+      console.log(data, 'COMMENT DATA')
+      $scope.userMessages = []
+      if(data){
+      let idArr = Object.keys(data)
+      idArr.forEach(function(item){
+        data[item].id = item
+      })
+        for(var key in data){
+          $scope.userMessages.push(data[key])
+        }
+      }
+    })
+  }
+
   $scope.loadTickets = function(){
     DbFactory.getAllPlaysFromFirebase()
     .then(function(plays){
@@ -104,6 +123,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
                             })
         console.log($scope.userStuff.name, 'USERSTUFF.NAME')
       }
+      $scope.retrieveComments()
     })
   }
 
@@ -127,29 +147,12 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
       DbFactory.storeComment(id, $scope.comment[index])
       .then(function(data){
         $scope.comment[index].text = ""
-        $scope.retrieveComments(id)
+        $scope.retrieveComments()
         showCommentAddedToast()
       })
   }
 
-  $scope.retrieveComments = function(){
-    $scope.userStuff = AuthFactory.getUserInfo()
-    DbFactory.getComments()
-    .then(function(data){
-      $scope.userMessages = []
-      if(data){
-      let idArr = Object.keys(data)
-      idArr.forEach(function(item){
-        data[item].id = item
-      })
-        for(var key in data){
-          $scope.userMessages.push(data[key])
-        }
-      }
-    })
-  }
 
   $scope.loadTickets()
-  $scope.retrieveComments()
 
 })
