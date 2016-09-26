@@ -9,7 +9,9 @@
           <span class="comment glyphicon glyphicon-pencil" ng-click="isFlipped=!isFlipped" ng-class="{'flipped':isFlipped}"></span>
         </div>
         <div class="player1">
-          <img ng-src={{play.player1.img}}>
+          <img ng-if="play.player1.position === 'DEF'" ng-src={{play.player1.img}} class="dImg">
+
+          <img ng-if="play.player1.position !== 'DEF'" ng-src={{play.player1.img}}>
           <h3>{{play.player1.name}}</h3>
           <span>{{play.player1.position}}</span>
           <span>{{play.player1.team}}</span><br>
@@ -17,7 +19,9 @@
         </div>
 
         <div class="player2">
-          <img ng-src={{play.player2.img}}>
+          <img ng-if="play.player2.position === 'DEF'" ng-src={{play.player2.img}} class="dImg">
+
+          <img ng-if="play.player2.position !== 'DEF'" ng-src={{play.player2.img}}>
           <h3>{{play.player2.name}}</h3>
           <span>{{play.player2.position}}</span>
           <span>{{play.player2.team}}</span><br>
