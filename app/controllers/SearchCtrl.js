@@ -308,6 +308,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
             $scope.showPlayerNav = true
             $scope.playerInput = ""
             $scope.players = []
+            $scope.showSeasonStats = true
             $scope.loader = false
           }
         }

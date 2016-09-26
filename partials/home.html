@@ -72,8 +72,9 @@
           <!-- END PLAYER NEWS AREA -->
         <!-- SHOWS PLAYERS STATS AND INFO AREA -->
         <!-- TABLE FOR QB'S -->
-        <h3 class="head" ng-show="showSeasonStats"><strong>Season Stats:</strong></h3>
-
+        <thead ng-show="showSeasonStats">
+          <h3 class="head" ng-show="showSeasonStats"><strong>Season Stats:</strong></h3>
+        </thead>
         <div ng-show='showPlayerInfo'>
           <table class="table table-striped" ng-if="position === 'QB'">
             <thead class="thead-inverse">
