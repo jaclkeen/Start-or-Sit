@@ -14,19 +14,42 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
     );
   };
 
-  DbFactory.getAllPlaysFromFirebase()
-  .then(function(plays){
-    let idArr = Object.keys(plays)
-    idArr.forEach(function(item){
-      plays[item].id = item
+  $scope.retrieveComments = function(){
+    DbFactory.getAllPlaysFromFirebase()
+    .then(function(plays){
+      DbFactory.getComments()
+      .then(function(data){
+        $scope.userMessages = []
+        if(data){
+          console.log('THIS DATA', data)
+          let idArr = Object.keys(data)
+          idArr.forEach(function(item){
+            data[item].id = item
+          })
+          for(var key in data){
+            $scope.userMessages.push(data[key])
+          }
+        }
+      })
     })
-    for(var key in plays){
-      if(plays[key].uid === AuthFactory.getUser()){
-        console.log('KEYYYY', key)
-        $scope.plays.push(plays[key])
+  }
+
+  $scope.getMyPlays = function(){
+    DbFactory.getAllPlaysFromFirebase()
+    .then(function(plays){
+      let idArr = Object.keys(plays)
+      idArr.forEach(function(item){
+        plays[item].id = item
+      })
+      for(var key in plays){
+        if(plays[key].uid === AuthFactory.getUser()){
+          console.log('KEYYYY', key)
+          $scope.plays.push(plays[key])
+        }
       }
-    }
-  })
+    })
+      $scope.retrieveComments()
+  }
 
   $scope.deletePlay = function(id){
     DbFactory.deletePlayFromFirebase(id)
@@ -50,26 +73,7 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
       })
   }
 
-  $scope.retrieveComments = function(){
-    DbFactory.getAllPlaysFromFirebase()
-    .then(function(plays){
-      DbFactory.getComments()
-      .then(function(data){
-        $scope.userMessages = []
-        if(data){
-          console.log('THIS DATA', data)
-          let idArr = Object.keys(data)
-          idArr.forEach(function(item){
-            data[item].id = item
-          })
-          for(var key in data){
-            $scope.userMessages.push(data[key])
-          }
-        }
-      })
-    })
-  }
 
-  $scope.retrieveComments()
+  $scope.getMyPlays()
 
 })
