@@ -44,21 +44,30 @@ app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactor
     );
   };
 
-  $scope.buildP1Object = function(fName, lName){
+  $scope.buildP1Object = function(fName, lName, position){
     $scope.p1Players = []
     $scope.p2Players = []
     let playerName = fName + " " + lName
+    let dPlayerName = lName + " " + fName
+    console.log(playerName, 'PLAYERNAME')
     $scope.showLoader = true
     ApiFactory.getPlayerStats()
       .then(function(playerData){
         var playerCollections = playerData.players
         playerCollections.forEach(function(collection){
-          if(collection.name === playerName){
+          if(collection.name === playerName || collection.name === dPlayerName){
             $scope.p1Object.name = collection.name
             $scope.p1Object.position = collection.position
             $scope.p1Object.team = collection.teamAbbr
-            $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
-            selectedPlayers.player1 = $scope.p1Object
+            if(position !== 'D'){
+              $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+              console.log('position', position)
+            }
+            else if(position === 'D'){
+              $scope.p1Object.img = `http://i.nflcdn.com/static/site/7.4/img/teams/${collection.teamAbbr}/${collection.teamAbbr}_logo-80x90.gif`
+              console.log('D', collection)
+            }
+              selectedPlayers.player1 = $scope.p1Object
           }
         })
         console.log(selectedPlayers)
@@ -66,24 +75,29 @@ app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactor
       })
   }
 
-  $scope.buildP2Object = function(fName, lName){
+  $scope.buildP2Object = function(fName, lName, position){
     $scope.p1Players = []
     $scope.p2Players = []
     let playerName = fName + " " + lName
+    let dPlayerName = lName + " " + fName
     $scope.showLoader = true
     ApiFactory.getPlayerStats()
       .then(function(playerData){
         var playerCollections = playerData.players
         playerCollections.forEach(function(collection){
-          if(collection.name === playerName){
+          if(collection.name === playerName || collection.name === dPlayerName){
             $scope.p2Object.name = collection.name
             $scope.p2Object.position = collection.position
             $scope.p2Object.team = collection.teamAbbr
-            $scope.p2Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+            if(position !== 'D'){
+              $scope.p2Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+            }
+            else{
+              $scope.p2Object.img = `http://i.nflcdn.com/static/site/7.4/img/teams/${collection.teamAbbr}/${collection.teamAbbr}_logo-80x90.gif`
+            }
             selectedPlayers.player2 = $scope.p2Object
           }
         })
-        console.log(selectedPlayers)
         $scope.showLoader = false
       })
     }

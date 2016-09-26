@@ -5,7 +5,7 @@
   <h2>Select your first player!</h2>
   <input ng-model="p1Input" ng-change="p1Search()" type="text" id="p1Input" class="p1Input" placeholder="Enter first player">
   <div class="p1SearchResults" ng-repeat="player in p1Players" ng-show='p1Results'>
-    <span ng-click="buildP1Object(player.FirstName, player.LastName)">
+    <span ng-click="buildP1Object(player.FirstName, player.LastName, player.Position)">
       <span>{{player.FirstName}}</span>
       <span ng-if="player.Position !== 'D'">{{player.LastName}}</span>
       <span>{{player.Position}}</span>
@@ -23,7 +23,7 @@
   <h2>Select your second player!</h2>
   <input ng-model="p2Input" ng-change="p2Search()" type="text" id="p2Input" class="p2Input"  placeholder="Enter second player">
   <div class="p2SearchResults" ng-repeat="player in p2Players" ng-show='p2Results'>
-    <div ng-click="buildP2Object(player.FirstName, player.LastName)">
+    <div ng-click="buildP2Object(player.FirstName, player.LastName, player.Position)">
       <span>{{player.FirstName}}</span>
       <span ng-if="player.Position !== 'D'">{{player.LastName}}</span>
       <span>{{player.Position}}</span>
