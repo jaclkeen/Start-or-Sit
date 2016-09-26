@@ -88,10 +88,8 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
 
   $scope.retrieveComments = function(){
     $scope.userStuff = AuthFactory.getUserInfo()
-    console.log($scope.userStuff, 'USERSTUFF TEST') //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     DbFactory.getComments()
     .then(function(data){
-      console.log(data, 'COMMENT DATA')
       $scope.userMessages = []
       if(data){
       let idArr = Object.keys(data)
@@ -114,14 +112,12 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
       })
       $scope.plays = []
       for(var key in plays){
-        console.log(AuthFactory.getUserInfo(), 'USERINFO TEST')
         $scope.plays.push(plays[key])
         $scope.comment.push({ text: "",
                               playId: "",
                               userId: $scope.currentUser,
                               userName: ""
                             })
-        console.log($scope.userStuff.name, 'USERSTUFF.NAME')
       }
       $scope.retrieveComments()
     })
@@ -131,13 +127,11 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     votes++
     var player1 = this.play.player1.name
     var player2 = this.play.player2.name
-    console.log(player)
     DbFactory.updateVotes(player, id, votes)
     .then(function(data){
       $scope.isEnabled = false
       $scope.loadTickets()
     })
-    console.log('PLAYERNAME', playerName)
     showToast(playerName)
   }
 

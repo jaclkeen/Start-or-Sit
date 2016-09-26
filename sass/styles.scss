@@ -58,6 +58,7 @@ nav{
   margin-bottom: .1%;
   margin-top: .4%;
   height: 91px;
+  white-space: nowrap;
   overflow: hidden;
   display: inline-block;
 
@@ -94,6 +95,9 @@ nav{
     display: inline-block;
     text-align: center;
     margin-right: -16.5%;
+    position: relative;
+    left: 1900px;
+    animation: scrollingScores 40s linear 2s infinite;
   }
 
   .scoreContainer{
@@ -1988,3 +1992,8 @@ body {
   }
 }
 // END 90% ZOOM STYLING//////
+
+@keyframes scrollingScores{
+  from { left: -2050px;}
+  to   { left: 1550px; }
+}

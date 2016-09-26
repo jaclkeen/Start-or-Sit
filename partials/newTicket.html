@@ -3,7 +3,7 @@
     <!-- PLAYER 1 SELECTION AREA -->
 <div class="p1SearchArea searchArea">
   <h2>Select your first player!</h2>
-  <input ng-model="p1Input" ng-change="p1Search()" type="text" id="p1Input" class="p1Input" placeholder="Enter first player">
+    <input ng-model="p1Input" ng-change="p1Search()" type="text" id="p1Input" class="p1Input" placeholder="Enter first player">
   <div class="p1SearchResults" ng-repeat="player in p1Players" ng-show='p1Results'>
     <span ng-click="buildP1Object(player.FirstName, player.LastName, player.Position)">
       <span>{{player.FirstName}}</span>
