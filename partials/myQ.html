@@ -41,8 +41,9 @@
             <div ng-repeat="message in userMessages">
               <div class="message.id">
                 <p ng-if="message.playId === play.id">
-                <!-- {{message[$index].text}} -->
-                {{message.text}}
+                  <span class="mine" ng-if="message.userName === userStuff">{{message.userName}}: </span>
+                  <span class="others" ng-if="message.userName !== userStuff">{{message.userName}}: </span>
+                  <span>{{message.text}}</span>
                 </p>
               </div>
             </div>

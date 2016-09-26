@@ -66,7 +66,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
       if(user){
         $scope.logoutUser = true
         AuthFactory.setUser(user)
-        console.log('user', user)
+        AuthFactory.setGoogleUserInfo(result.user.displayName)
         $window.location.href = '#home'
       }
     }).catch(function(error){
