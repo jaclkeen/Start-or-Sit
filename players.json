@@ -42695,6 +42695,270 @@
           "Name": "Ravens",
           "Abbreviation": "BAL"
         }
+      },
+      {
+        "player": {
+          "teamAbbr": "CIN",
+          "Position": "D",
+          "FirstName": "Bengals",
+          "LastName": "Cincinnati"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "BAL",
+          "Position": "D",
+          "FirstName": "Baltimore",
+          "LastName": "Ravens"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "CLE",
+          "Position": "D",
+          "FirstName": "Cleveland",
+          "LastName": "Browns"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "PIT",
+          "Position": "D",
+          "FirstName": "Pittsburgh",
+          "LastName": "Steelers"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "HOU",
+          "Position": "D",
+          "FirstName": "Houston",
+          "LastName": "Texans"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "IND",
+          "Position": "D",
+          "FirstName": "Indianapolis",
+          "LastName": "Colts"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "JAX",
+          "Position": "D",
+          "FirstName": "Jacksonville",
+          "LastName": "Jaguars"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "TEN",
+          "Position": "D",
+          "FirstName": "Tennessee",
+          "LastName": "Titans"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "BUF",
+          "Position": "D",
+          "FirstName": "Buffalo",
+          "LastName": "Bills"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "MIA",
+          "Position": "D",
+          "FirstName": "Miami",
+          "LastName": "Dolphins"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "NE",
+          "Position": "D",
+          "FirstName": "New England",
+          "LastName": "Patriots"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "NYJ",
+          "Position": "D",
+          "FirstName": "New York",
+          "LastName": "Jets"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "DEN",
+          "Position": "D",
+          "FirstName": "Denver",
+          "LastName": "Broncos"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "KC",
+          "Position": "D",
+          "FirstName": "Kansas City",
+          "LastName": "Chiefs"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "OAK",
+          "Position": "D",
+          "FirstName": "Oakland",
+          "LastName": "Raiders"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "SD",
+          "Position": "D",
+          "FirstName": "San Diego",
+          "LastName": "Chargers"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "CHI",
+          "Position": "D",
+          "FirstName": "Chicago",
+          "LastName": "Bears"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "DET",
+          "Position": "D",
+          "FirstName": "Detroit",
+          "LastName": "Lions"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "GB",
+          "Position": "D",
+          "FirstName": "Green Bay",
+          "LastName": "Packers"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "MIN",
+          "Position": "D",
+          "FirstName": "Minnesota",
+          "LastName": "Vikings"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "ATL",
+          "Position": "D",
+          "FirstName": "Atlanta",
+          "LastName": "Falcons"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "CAR",
+          "Position": "D",
+          "FirstName": "Carolina",
+          "LastName": "Panthers"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "NO",
+          "Position": "D",
+          "FirstName": "New Orleans",
+          "LastName": "Saints"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "TB",
+          "Position": "D",
+          "FirstName": "Tampa Bay",
+          "LastName": "Buccaneers"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "TEN",
+          "Position": "D",
+          "FirstName": "Tennessee",
+          "LastName": "Titans"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "DAL",
+          "Position": "D",
+          "FirstName": "Dallas",
+          "LastName": "Cowboys"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "NYG",
+          "Position": "D",
+          "FirstName": "New York",
+          "LastName": "Giants"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "PHI",
+          "Position": "D",
+          "FirstName": "Philadelphia",
+          "LastName": "Eagles"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "WAS",
+          "Position": "D",
+          "FirstName": "Washington",
+          "LastName": "Redskins"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "ARI",
+          "Position": "D",
+          "FirstName": "Arizona",
+          "LastName": "Cardinals"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "LA",
+          "Position": "D",
+          "FirstName": "Los Angeles",
+          "LastName": "Rams"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "SF",
+          "Position": "D",
+          "FirstName": "San Francisco",
+          "LastName": "49ers"
+        }
+      },
+      {
+        "player": {
+          "teamAbbr": "SEA",
+          "Position": "D",
+          "FirstName": "Seattle",
+          "LastName": "Seahawks"
+        }
       }
     ]
 }

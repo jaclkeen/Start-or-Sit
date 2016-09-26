@@ -47,7 +47,10 @@
       <!-- SHOWS CLICKED PLAYER AREA -->
       <div class="searchContainer">
         <div class="playerSearchResults" ng-show='showSearch'>
-          <img src='{{imgSrc}}'>
+          <img class="teamImg" ng-if="position === 'DEF'" src='{{imgSrc}}'>
+
+          <img ng-if="position !== 'DEF'" src='{{imgSrc}}'>
+
           <div class="resultsContainer">
             <p class="pName">{{pName}} <span class="dHead">{{position}}</span>
             <span class="details">{{teamAbbr}}</span></p>

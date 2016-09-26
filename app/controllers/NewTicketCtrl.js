@@ -2,8 +2,6 @@
 
 app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactory, AuthFactory, $mdToast){
 
-  var lastname = ""
-  var lastname2 = ""
   var allVals = false
   $scope.showLoader = false
   $scope.p1Input = ""
@@ -46,21 +44,30 @@ app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactor
     );
   };
 
-  $scope.buildP1Object = function(fName, lName){
+  $scope.buildP1Object = function(fName, lName, position){
     $scope.p1Players = []
     $scope.p2Players = []
     let playerName = fName + " " + lName
+    let dPlayerName = lName + " " + fName
+    console.log(playerName, 'PLAYERNAME')
     $scope.showLoader = true
     ApiFactory.getPlayerStats()
       .then(function(playerData){
         var playerCollections = playerData.players
         playerCollections.forEach(function(collection){
-          if(collection.name === playerName){
+          if(collection.name === playerName || collection.name === dPlayerName){
             $scope.p1Object.name = collection.name
             $scope.p1Object.position = collection.position
             $scope.p1Object.team = collection.teamAbbr
-            $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
-            selectedPlayers.player1 = $scope.p1Object
+            if(position !== 'D'){
+              $scope.p1Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+              console.log('position', position)
+            }
+            else if(position === 'D'){
+              $scope.p1Object.img = `http://i.nflcdn.com/static/site/7.4/img/teams/${collection.teamAbbr}/${collection.teamAbbr}_logo-80x90.gif`
+              console.log('D', collection)
+            }
+              selectedPlayers.player1 = $scope.p1Object
           }
         })
         console.log(selectedPlayers)
@@ -68,49 +75,47 @@ app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactor
       })
   }
 
-  $scope.buildP2Object = function(fName, lName){
+  $scope.buildP2Object = function(fName, lName, position){
     $scope.p1Players = []
     $scope.p2Players = []
     let playerName = fName + " " + lName
+    let dPlayerName = lName + " " + fName
     $scope.showLoader = true
     ApiFactory.getPlayerStats()
       .then(function(playerData){
         var playerCollections = playerData.players
         playerCollections.forEach(function(collection){
-          if(collection.name === playerName){
+          if(collection.name === playerName || collection.name === dPlayerName){
             $scope.p2Object.name = collection.name
             $scope.p2Object.position = collection.position
             $scope.p2Object.team = collection.teamAbbr
-            $scope.p2Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+            if(position !== 'D'){
+              $scope.p2Object.img = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+            }
+            else{
+              $scope.p2Object.img = `http://i.nflcdn.com/static/site/7.4/img/teams/${collection.teamAbbr}/${collection.teamAbbr}_logo-80x90.gif`
+            }
             selectedPlayers.player2 = $scope.p2Object
           }
         })
-        console.log(selectedPlayers)
         $scope.showLoader = false
       })
     }
 
   $scope.p1Search = function(){
-    console.log('loading.....')
     ApiFactory.getPlayers()
     .then(function(players){
       $scope.p1Players = []
-      if($scope.p1Input.includes(" ")){
-        lastname = $scope.p1Input.slice($scope.p1Input.indexOf(" ")+1, $scope.p1Input.length)
-      }else{
-        lastname = ""
-      }
       let count = 0
       let playerData = players.playerentry
       playerData.forEach(function(item){
-        var position = item.player.Position
-        if($scope.p1Input.toLowerCase() == item.player.FirstName.toLowerCase() || lastname.toLowerCase() === item.player.LastName.toLowerCase()){
-          if(position !== "DE" && position !== "OLB" && position !== "DT" && position !== "T" && position !== "LB" && position !== "P" && position !== "FS" && position !== "FB" && position !== "OT"){
-            if(position !== "SS" && position !== "G" && position !== "MLB" && position !== "C" && position !== "LS" && position !== "DB" && position !== "CB" && position !== "ILB"){
-              if(count < 5){
-                $scope.p1Players.push(item.player)
-                count++
-              }
+        let fullName = item.player.FirstName.toLowerCase() + " " + item.player.LastName.toLowerCase()
+        let position = item.player.Position
+        if($scope.p1Input.toLowerCase() == item.player.FirstName.toLowerCase() || $scope.p1Input.toLowerCase() == item.player.LastName.toLowerCase() || $scope.p1Input.toLowerCase() == fullName){
+          if(position === "WR" || position === "RB" || position === "TE" || position === "QB" || position === "K" || position === "D"){
+            if(count < 5){
+              $scope.p1Players.push(item.player)
+              count++
             }
           }
         }
@@ -119,26 +124,19 @@ app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactor
   }
 
   $scope.p2Search = function(){
-    console.log('loading.....')
     ApiFactory.getPlayers()
     .then(function(players){
       $scope.p2Players = []
-      if($scope.p2Input.includes(" ")){
-        lastname2 = $scope.p2Input.slice($scope.p2Input.indexOf(" ")+1, $scope.p2Input.length)
-      }else{
-        lastname2 = ""
-      }
       let count = 0
       let playerData = players.playerentry
       playerData.forEach(function(item){
-        var position = item.player.Position
-        if($scope.p2Input.toLowerCase() == item.player.FirstName.toLowerCase() || lastname2.toLowerCase() === item.player.LastName.toLowerCase()){
-          if(position !== "DE" && position !== "OLB" && position !== "DT" && position !== "T" && position !== "LB" && position !== "P" && position !== "FS" && position !== "FB" && position !== "OT"){
-            if(position !== "SS" && position !== "G" && position !== "MLB" && position !== "C" && position !== "LS" && position !== "DB" && position !== "CB" && position !== "ILB"){
-              if(count < 5){
-                $scope.p2Players.push(item.player)
-                count++
-              }
+        let fullName = item.player.FirstName.toLowerCase() + " " + item.player.LastName.toLowerCase()
+        let position = item.player.Position
+        if($scope.p2Input.toLowerCase() == item.player.FirstName.toLowerCase() || $scope.p2Input.toLowerCase() == item.player.LastName.toLowerCase() || $scope.p2Input.toLowerCase() == fullName){
+          if(position === "WR" || position === "RB" || position === "TE" || position === "QB" || position === "K" || position === "D"){
+            if(count < 5){
+              $scope.p2Players.push(item.player)
+              count++
             }
           }
         }
