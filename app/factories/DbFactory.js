@@ -100,14 +100,28 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
     })
   }
 
+  let getUserFromFB = function() {
+    return $q(function(resolve, reject){
+      $http.get(`${FirebaseURL}users.json`)
+      .success(function(obj){
+        resolve(obj)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   return {
     storeUser,
+    updateVotes,
     getComments,
     storeComment,
+    getUserFromFB,
     storeToFirebase,
-    getAllPlaysFromFirebase,
     deletePlayFromFirebase,
-    updateVotes
+    getAllPlaysFromFirebase
   }
 
 })

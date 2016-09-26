@@ -2,26 +2,31 @@
   <div class="scoreTicker">
     <marquee scrollamount="12" scrolldelay="120" truespeed direction="right">
     <div class="scoreBlocks" ng-repeat="game in gameInfo">
-    <div class="scoreContainer">
-      <div class="teams">
-        <p class="team1">{{game[4]}}</p>
-        <p class="team2">{{game[6]}}</p>
-      </div>
-      <div class="imgAndStatus">
-        <img class="team1Img" src="http://i.nflcdn.com/static/site/7.4/img/teams/{{game[4]}}/{{game[4]}}_logo-80x90.gif">
-        <p ng-if="game[2] == 1" class="{{game[2]}}">{{game[2]}}st</p>
-        <p ng-if="game[2] == 2" class="{{game[2]}}">{{game[2]}}nd</p>
-        <p ng-if="game[2] == 3" class="{{game[2]}}">{{game[2]}}rd</p>
-        <p ng-if="game[2] == 4" class="{{game[2]}}">{{game[2]}}th</p>
-        <p ng-if="game[2] === 'Final'" class="{{game[2]}}">{{game[2]}}</p>
-        <p ng-if="game[2] === 'Pregame'" class="{{game[2]}}">Pre</p>
-        <img class="team2Img" src="http://i.nflcdn.com/static/site/7.4/img/teams/{{game[6]}}/{{game[6]}}_logo-80x90.gif">
-      </div>
-      <div class="scores">
-        <p class="team1Score">{{game[5]}}</p>
-        <p class="team2Score">{{game[7]}}</p>
-        <p class="time" ng-if="game[2] === 'Pregame'">{{game[0]}} {{game[1]}}</p>
+      <div class="scoreContainer">
+        <div class="teams">
+          <p class="team1">{{game[4]}}</p>
+          <p class="team2">{{game[6]}}</p>
+        </div>
+        <div class="imgAndStatus">
+          <img class="team1Img" src="http://i.nflcdn.com/static/site/7.4/img/teams/{{game[4]}}/{{game[4]}}_logo-80x90.gif">
+          <p ng-if="game[2] == 1" class="{{game[2]}}">{{game[2]}}st</p>
+          <p ng-if="game[2] == 2" class="{{game[2]}}">{{game[2]}}nd</p>
+          <p ng-if="game[2] == 3" class="{{game[2]}}">{{game[2]}}rd</p>
+          <p ng-if="game[2] == 4" class="{{game[2]}}">{{game[2]}}th</p>
+          <p ng-if="game[2] === 'Final'" class="{{game[2]}}">{{game[2]}}</p>
+          <p ng-if="game[2] === 'Pregame'" class="{{game[2]}}">Pre</p>
+          <p ng-if="game[2] === 'Halftime'" class="half">Half</p>
+          <p ng-if="game[2] === 'final overtime'" class="ot">Final</p>
+          <img class="team2Img" src="http://i.nflcdn.com/static/site/7.4/img/teams/{{game[6]}}/{{game[6]}}_logo-80x90.gif">
+        </div>
+        <div class="scores">
+          <p class="team1Score">{{game[5]}}</p>
+          <span ng-if="game[3] !== ''" class="timeRem">{{game[3]}}</span>
+          <p class="team2Score">{{game[7]}}</p>
+          <p class="time" ng-if="game[2] === 'Pregame'">{{game[0]}} {{game[1]}}</p>
+        </div>
       </div>
     </div>
-  </marquee>
+    </marquee>
+  </div>
 </div>

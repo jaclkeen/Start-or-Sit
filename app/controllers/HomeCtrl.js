@@ -21,7 +21,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
   };
 
   $scope.currentUser = AuthFactory.getUser()
-  $scope.userInfo = AuthFactory.getUserInfo()
+  $scope.userStuff = ""
   $scope.showAllQ = true
   $scope.showMyQ = false
   $scope.showSearch = false
@@ -38,7 +38,7 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     text: "",
     playId: "",
     userId: $scope.currentUser,
-    userName: $scope.userInfo.name
+    userName: ""
   }]
 
   $scope.addQArea = function(){
@@ -86,6 +86,25 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     $scope.crumbs = 'Player Search'
   }
 
+  $scope.retrieveComments = function(){
+    $scope.userStuff = AuthFactory.getUserInfo()
+    console.log($scope.userStuff, 'USERSTUFF TEST') //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    DbFactory.getComments()
+    .then(function(data){
+      console.log(data, 'COMMENT DATA')
+      $scope.userMessages = []
+      if(data){
+      let idArr = Object.keys(data)
+      idArr.forEach(function(item){
+        data[item].id = item
+      })
+        for(var key in data){
+          $scope.userMessages.push(data[key])
+        }
+      }
+    })
+  }
+
   $scope.loadTickets = function(){
     DbFactory.getAllPlaysFromFirebase()
     .then(function(plays){
@@ -100,9 +119,11 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
         $scope.comment.push({ text: "",
                               playId: "",
                               userId: $scope.currentUser,
-                              userName: $scope.userInfo.name
+                              userName: ""
                             })
+        console.log($scope.userStuff.name, 'USERSTUFF.NAME')
       }
+      $scope.retrieveComments()
     })
   }
 
@@ -122,31 +143,16 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
 
   $scope.addComment = function(index, id){
       $scope.comment[index].playId = id
+      $scope.comment[index].userName = AuthFactory.getUserInfo()
       DbFactory.storeComment(id, $scope.comment[index])
       .then(function(data){
         $scope.comment[index].text = ""
-        $scope.retrieveComments(id)
+        $scope.retrieveComments()
         showCommentAddedToast()
       })
   }
 
-  $scope.retrieveComments = function(){
-    DbFactory.getComments()
-    .then(function(data){
-      $scope.userMessages = []
-      if(data){
-      let idArr = Object.keys(data)
-      idArr.forEach(function(item){
-        data[item].id = item
-      })
-        for(var key in data){
-          $scope.userMessages.push(data[key])
-        }
-      }
-    })
-  }
 
   $scope.loadTickets()
-  $scope.retrieveComments()
 
 })

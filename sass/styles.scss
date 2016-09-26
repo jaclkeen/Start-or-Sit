@@ -108,7 +108,7 @@ nav{
 
   .Final{
     position: relative;
-    top: -7px;
+    // top: -7px;
     left: -2px;
   }
   .Pregame{
@@ -132,6 +132,12 @@ nav{
     position: relative;
     top: -7px;
     left: -2px;
+  }
+  .timeRem{
+    position: relative;
+    bottom: 7px;
+    margin-right: -20px;
+    margin-left: -11px;
   }
 }
 
@@ -459,7 +465,6 @@ nav{
     overflow-y: scroll;
     padding: 1%;
     color: white;
-    border-radius: 20px;
     height: 145px;
     position: relative;
     top: 18px;
@@ -644,7 +649,6 @@ nav{
     overflow-y: scroll;
     padding: 1%;
     color: white;
-    border-radius: 20px;
     height: 150px;
     position: relative;
     top: 18px;
