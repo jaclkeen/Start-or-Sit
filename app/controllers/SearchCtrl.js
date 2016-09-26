@@ -91,19 +91,13 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
       $scope.fourtyFG = 0
       $scope.longFG = 0
 
-      if($scope.playerInput.includes(" ")){
-        lastname = $scope.playerInput.slice($scope.playerInput.indexOf(" ")+1, $scope.playerInput.length)
-      }else{
-        lastname = ""
-      }
       let playerData = players.playerentry
       playerData.forEach(function(item){
+        let fullName = item.player.FirstName.toLowerCase() + " " + item.player.LastName.toLowerCase()
         var position = item.player.Position
-        if($scope.playerInput.toLowerCase() == item.player.FirstName.toLowerCase() || lastname.toLowerCase() === item.player.LastName.toLowerCase()){
-          if(position !== "DE" && position !== "OLB" && position !== "DT" && position !== "T" && position !== "LB" && position !== "P" && position !== "FS" && position !== "FB" && position !== "OT"){
-            if(position !== "SS" && position !== "G" && position !== "MLB" && position !== "C" && position !== "LS" && position !== "DB" && position !== "CB" && position !== "ILB"){
+        if($scope.playerInput.toLowerCase() === item.player.FirstName.toLowerCase() || $scope.playerInput.toLowerCase() === item.player.LastName.toLowerCase() || $scope.playerInput.toLowerCase() == fullName){
+          if(position === "WR" || position === "RB" || position === "TE" || position === "QB" || position === "K" || position === "D"){
               $scope.players.push(item.player)
-            }
           }
         }
       })
@@ -113,13 +107,19 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.getPlayerInfo = function(fName, lName){
     $scope.loader = true
     var playerName = fName + " " + lName
+    let dPlayerName = lName + " " + fName
     $scope.showNews = false
     ApiFactory.getPlayerStats()
       .then(function(playerData){
         var playerCollections = playerData.players
         playerCollections.forEach(function(collection){
-          if(collection.name === playerName){
-            $scope.imgSrc = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+          if(collection.name === playerName || collection.name === dPlayerName){
+            if(collection.position === 'DEF'){
+              $scope.imgSrc = `http://i.nflcdn.com/static/site/7.4/img/teams/${collection.teamAbbr}/${collection.teamAbbr}_logo-80x90.gif`
+            }
+            else{
+              $scope.imgSrc = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
+            }
             $scope.pName = playerName
             $scope.teamAbbr = collection.teamAbbr
             $scope.position = collection.position

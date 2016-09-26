@@ -5,7 +5,7 @@
     <div ng-repeat="player in players">
       <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
         <span>{{player.FirstName}}</span>
-        <span>{{player.LastName}}</span>
+        <span ng-if="player.Position !== 'D'">{{player.LastName}}</span>
         <span>{{player.Position}}</span>
       </div>
     </div>

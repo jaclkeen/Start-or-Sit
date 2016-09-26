@@ -7,7 +7,7 @@
   <div class="p1SearchResults" ng-repeat="player in p1Players" ng-show='p1Results'>
     <span ng-click="buildP1Object(player.FirstName, player.LastName, player.Position)">
       <span>{{player.FirstName}}</span>
-      <span ng-if="player.Position !== 'D'">{{player.LastName}}</span>
+      <span>{{player.LastName}}</span>
       <span>{{player.Position}}</span>
     </span>
   </div>
@@ -25,7 +25,7 @@
   <div class="p2SearchResults" ng-repeat="player in p2Players" ng-show='p2Results'>
     <div ng-click="buildP2Object(player.FirstName, player.LastName, player.Position)">
       <span>{{player.FirstName}}</span>
-      <span ng-if="player.Position !== 'D'">{{player.LastName}}</span>
+      <span>{{player.LastName}}</span>
       <span>{{player.Position}}</span>
     </div>
   </div>
