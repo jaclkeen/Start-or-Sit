@@ -1,13 +1,224 @@
-<div class="searchResults" ng-show='showSearch'>
-  <p>Player Search Div</p>
-  <div class="playerSearchArea">
-    <input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
-    <div ng-repeat="player in players">
-      <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
-        <span>{{player.FirstName}}</span>
-        <span>{{player.LastName}}</span>
-        <span>{{player.Position}}</span>
+    <div ng-controller="SearchCtrl">
+      <div class="searchResults">
+        <div class="playerSearchArea">
+          <span class="searchLabel">Search by player name: </span><input type="text" placeholder="Player Search: " id="playerSearch" class="playerSearch" ng-model="playerInput" ng-change="playerSearch()">
+          <div class="holder" ng-repeat="player in players">
+            <div ng-click="getPlayerInfo(player.FirstName, player.LastName)" class="playerSelection">
+              <span>{{player.FirstName}}</span>
+              <span>{{player.LastName}}</span>
+              <span>{{player.Position}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOADER AREA -->
+      <div ng-show='loader'>
+        <div>
+          <div class="loader">Loading...</div>
+        </div>
+      </div>
+      <!-- END LOADER -->
+
+      <!-- SHOWS CLICKED PLAYER AREA -->
+      <div class="searchContainer">
+        <div class="playerSearchResults">
+          <img class="teamImg" ng-if="position === 'DEF'" src='{{imgSrc}}'>
+
+          <img ng-if="position !== 'DEF'" src='{{imgSrc}}'>
+
+          <div class="resultsContainer">
+            <p class="pName">{{pName}} <span class="dHead">{{position}}</span>
+            <span class="details">{{teamAbbr}}</span></p>
+          </div>
+          <div class="playerNav" ng-show='showPlayerNav'>
+            <ul>
+              <li><span ng-click="activateStats()">Stats</span>
+              <span><span ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</span><span></li>
+            </ul>
+          </div>
+          <!-- PLAYER NEWS AREA -->
+          <div class="news" ng-show='showNews'>
+            <div ng-repeat="news in playerNewsObj"><hr>
+              <p><span class="color">BODY: </span>{{news.body}}</p>
+              <p><span class="color">ANALYSIS: </span>{{news.analysis}}</p>
+              <p><span class="color">TIME: </span>{{news.timestamp}}</p>
+            </div>
+          </div>
+          <!-- END PLAYER NEWS AREA -->
+        <!-- SHOWS PLAYERS STATS AND INFO AREA -->
+        <!-- TABLE FOR QB'S -->
+        <thead ng-show="showSeasonStats">
+          <h3 class="head" ng-show="showSeasonStats"><strong>Season Stats:</strong></h3>
+        </thead>
+        <div ng-show='showPlayerInfo'>
+          <table class="table table-striped" ng-if="position === 'QB'">
+            <thead class="thead-inverse">
+              <tr>
+                <th class="cat">Games Played</th>
+                <th class="cat">Rush Yds</th>
+                <th class="cat">Rush TD</th>
+                <th class="cat">Fumbles Lost</th>
+                <th class="cat">Pass Attempts</th>
+                <th class="cat">Completions</th>
+                <th class="cat">Pass Yds</th>
+                <th class="cat">Pass TDs</th>
+                <th class="cat">Int</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <td>{{qbObject.gamesPlayed}}</td>
+                <td>{{qbObject.rushYards}}</td>
+                <td>{{qbObject.rushTD}}</td>
+                <td>{{qbObject.fumbles}}</td>
+                <td>{{qbObject.PassAttempts}}</td>
+                <td>{{qbObject.completions}}</td>
+                <td>{{qbObject.PassYards}}</td>
+                <td>{{qbObject.PassTd}}</td>
+                <td>{{qbObject.int}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- END TABLE FOR QB'S -->
+          <!-- TABLE FOR WR'S AND RB'S -->
+          <table class="table table-striped" ng-if="position === 'RB' || position === 'WR'">
+            <thead class="thead-inverse">
+              <tr>
+                <th class="cat">Games Played</th>
+                <th class="cat">Rush Attemps</th>
+                <th class="cat">Rush Yds</th>
+                <th class="cat">Rush TD</th>
+                <th class="cat">Receptions</th>
+                <th class="cat">Rec Yds</th>
+                <th class="cat">Rect TD</th>
+                <th class="cat">Fumbles Lost</th>
+                <th class="cat">2-PT</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <td>{{rbWrObject.gamesPlayed}}</td>
+                <td>{{rbWrObject.rushAttempts}}</td>
+                <td>{{rbWrObject.rushYards}}</td>
+                <td>{{rbWrObject.rushTD}}</td>
+                <td>{{rbWrObject.receptions}}</td>
+                <td>{{rbWrObject.recYards}}</td>
+                <td>{{rbWrObject.recTD}}</td>
+                <td>{{rbWrObject.fumbles}}</td>
+                <td>{{rbWrObject.twoPtMade}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- END TABLE FOR WR'S AND RB'S -->
+          <!-- BEGIN TABLE FOR TE'S -->
+          <table class="table table-striped" ng-if="position === 'TE'">
+            <thead class="thead-inverse">
+              <tr>
+                <th class="cat">Games Played</th>
+                <th class="cat">Receptions</th>
+                <th class="cat">Rec Yds</th>
+                <th class="cat">Rect TD</th>
+                <th class="cat">Fumbles Lost</th>
+                <th class="cat">2-PT</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <td>{{teObject.gamesPlayed}}</td>
+                <td>{{teObject.receptions}}</td>
+                <td>{{teObject.recYards}}</td>
+                <td>{{teObject.recTD}}</td>
+                <td>{{teObject.fumbles}}</td>
+                <td>{{teObject.twoPtMade}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- END TABLE FOR TE'S -->
+          <!-- BEGIN TABLE FOR K'S -->
+          <table class="table table-striped" ng-if="position === 'K'">
+            <thead class="thead-inverse">
+              <tr>
+                <th class="cat">Games Played</th>
+                <th class="cat">PAT Made</th>
+                <th class="cat">PAT Miss</th>
+                <th class="cat">FG Made 0-19</th>
+                <th class="cat">FG Made 20-29</th>
+                <th class="cat">FG Made 30-39</th>
+                <th class="cat">FG Made 40-49</th>
+                <th class="cat">FG Made 50+</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <td>{{kObject.gamesPlayed}}</td>
+                <td>{{kObject.patMade}}</td>
+                <td>{{kObject.patMiss}}</td>
+                <td>{{kObject.shortFG}}</td>
+                <td>{{kObject.twentyFG}}</td>
+                <td>{{kObject.thirtyFG}}</td>
+                <td>{{kObject.fourtyFG}}</td>
+                <td>{{kObject.fiftyFG}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- END TABLE FOR K'S -->
+          <!-- BEGIN TABLE FOR DEF'S -->
+          <table class="table table-striped" ng-if="position === 'DEF'">
+            <thead class="thead-inverse">
+              <tr>
+                <th class="cat">Sacks</th>
+                <th class="cat">Int</th>
+                <th class="cat">Fum Rec</th>
+                <th class="cat">Safeties</th>
+                <th class="cat">TD</th>
+                <th class="cat">Return TD</th>
+                <th class="cat">Pts Allow: 0</th>
+                <th class="cat">Pts Allow: 7-13</th>
+                <th class="cat">Pts Allow: 14-19</th>
+                <th class="cat">Pts Allow: 20-27</th>
+                <th class="cat">Pts Allow: 28-34</th>
+                <th class="cat">Pts Allow: 35+</th>
+              </tr>
+            </thead>
+            <tbody class="table-hover">
+              <tr>
+                <td>{{dObject.sacks}}</td>
+                <td>{{dObject.int}}</td>
+                <td>{{dObject.fumRec}}</td>
+                <td>{{dObject.safties}}</td>
+                <td>{{dObject.td}}</td>
+                <td>{{dObject.returnTD}}</td>
+                <td>{{dObject.zeroPts}}</td>
+                <td>{{dObject.sevenPts}}</td>
+                <td>{{dObject.fourteenPts}}</td>
+                <td>{{dObject.twentyPts}}</td>
+                <td>{{dObject.twentyEightPts}}</td>
+                <td>{{dObject.threeFivePlusPts}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- END TABLE FOR DEF'S -->
+          <table class="table table-striped">
+              <thead>
+                <h3 class="head"><strong>Season Fantasy Points:</strong></h3>
+              </thead class="table-hover">
+              <thead>
+                <th>Projected Season Points</th>
+                <th>Current Season Points</th>
+                <th>Projected Week Points</th>
+                <th>Current Week Points</th>
+              </thead>
+            <tr>
+              <td>{{seasonProjectedPts}}</td>
+              <td>{{seasonPts}}</td>
+              <td>{{weekProjectedPts}}</td>
+              <td>{{currentWeekPts}}</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  </div>
+

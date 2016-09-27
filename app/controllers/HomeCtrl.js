@@ -22,11 +22,6 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
 
   $scope.currentUser = AuthFactory.getUser()
   $scope.userStuff = ""
-  $scope.showAllQ = true
-  $scope.showMyQ = false
-  $scope.showSearch = false
-  $scope.showPlayerInfo = false
-  $scope.showResearch = false
   $scope.crumbs = "All Plays"
   $scope.plays = []
   $scope.showVotes = false
@@ -41,49 +36,32 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     userName: ""
   }]
 
+  $scope.showNav = function(){
+    return AuthFactory.isAuthenticated()
+  }
+
   $scope.addQArea = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = false
-    $scope.showSearch = false
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'Add New Play'
   }
 
   $scope.showResearchArea = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = false
-    $scope.showSearch = false
-    $scope.showResearch = true
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'Research'
   }
 
   $scope.showAllQs = function(){
-    $scope.showAllQ = true
-    $scope.showMyQ = false
-    $scope.showSearch = false
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'All Plays'
   }
 
   $scope.showMyQs = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = true
-    $scope.showSearch = false
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'My Plays'
   }
 
   $scope.showPlayerSearch = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = false
-    $scope.showSearch = true
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'Player Search'
+  }
+
+  $scope.newTicketArea = function(){
+    $scope.crumbs = 'Add New Ticket'
   }
 
   $scope.retrieveComments = function(){
@@ -136,16 +114,15 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
   }
 
   $scope.addComment = function(index, id){
-      $scope.comment[index].playId = id
-      $scope.comment[index].userName = AuthFactory.getUserInfo()
-      DbFactory.storeComment(id, $scope.comment[index])
+    $scope.comment[index].playId = id
+    $scope.comment[index].userName = AuthFactory.getUserInfo()
+    DbFactory.storeComment(id, $scope.comment[index])
       .then(function(data){
         $scope.comment[index].text = ""
         $scope.retrieveComments()
         showCommentAddedToast()
       })
   }
-
 
   $scope.loadTickets()
 

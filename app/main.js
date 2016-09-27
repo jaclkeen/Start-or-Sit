@@ -33,6 +33,18 @@ let app = angular.module("StartOrSit", ["ngRoute", "ngMaterial"])
         templateUrl: 'partials/researchAreaPartials/recentNews',
         controller: 'RecentNewsCtrl'
       })
+      .when('/research', {
+        templateUrl: 'partials/research.html',
+        controller: 'ResearchCtrl'
+      })
+      .when('/myPlays', {
+        templateUrl: 'partials/myQ.html',
+        controller: 'MyQCtrl'
+      })
+      .when('/playerSearch', {
+        templateUrl: 'partials/search.html',
+        controller: 'SearchCtrl'
+      })
       .otherwise('/login')
   })
 

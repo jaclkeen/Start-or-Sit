@@ -84,12 +84,14 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
     $scope.showPlayerInfo = false
     $scope.showVideos = false
     $scope.showNews = true
+    $scope.showSeasonStats = false
   }
 
   $scope.activateStats = function(){
     $scope.showPlayerInfo = true
     $scope.showVideos = false
     $scope.showNews = false
+    $scope.showSeasonStats = true
   }
 
   $scope.playerSearch = function(){

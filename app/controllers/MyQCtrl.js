@@ -2,8 +2,17 @@
 
 app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $mdToast){
 
+
+  $scope.currentUser = AuthFactory.getUser()
   $scope.plays = []
   $scope.userMessages = []
+  $scope.userStuff = ""
+  $scope.comment = [{
+    text: "",
+    playId: "",
+    userId: $scope.currentUser,
+    userName: ""
+  }]
 
   let showToast = function() {
     $mdToast.show(
@@ -14,7 +23,17 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
     );
   };
 
+    let showCommentAddedToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+        .hideDelay(4000)
+        .textContent("Comment posted!")
+        .theme("success-toast")
+    );
+  };
+
   $scope.retrieveComments = function(){
+    $scope.userStuff = AuthFactory.getUserInfo()
     DbFactory.getAllPlaysFromFirebase()
     .then(function(plays){
       DbFactory.getComments()
@@ -45,6 +64,11 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
         if(plays[key].uid === AuthFactory.getUser()){
           console.log('KEYYYY', key)
           $scope.plays.push(plays[key])
+          $scope.comment.push({ text: "",
+                              playId: "",
+                              userId: $scope.currentUser,
+                              userName: ""
+                            })
         }
       }
     })
@@ -70,6 +94,17 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
             }
             showToast()
           })
+      })
+  }
+
+  $scope.addComment = function(index, id){
+    $scope.comment[index].playId = id
+    $scope.comment[index].userName = AuthFactory.getUserInfo()
+    DbFactory.storeComment(id, $scope.comment[index])
+      .then(function(data){
+        $scope.comment[index].text = ""
+        $scope.retrieveComments()
+        showCommentAddedToast()
       })
   }
 

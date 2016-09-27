@@ -2,6 +2,8 @@
 
 app.factory('ApiFactory', function($q, $http){
 
+  let week = 4
+
   let getPlayers = function(){
     return $q(function(resolve, reject){
       $http.get('players.json')
@@ -43,7 +45,7 @@ app.factory('ApiFactory', function($q, $http){
 
   let getEditorWeekRanks = function(position){
     return $q(function(resolve, reject){
-      $http.get(`http://api.fantasy.nfl.com/v1/players/editorweekranks?&count=30&season=2016&week=2&position=${position}&format=json`)
+      $http.get(`http://api.fantasy.nfl.com/v1/players/editorweekranks?&count=30&season=2016&week=${week}&position=${position}&format=json`)
       .success(function(ranks){
         resolve(ranks)
       })
