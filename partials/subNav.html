@@ -6,14 +6,14 @@
     <li class="homeNavCrumbs">Start or Sit > <span>{{crumbs}}</span></li>
   <div class="ePositioning">
     <li class="addNewQ">Add New Play: </li>
-    <a href='#/newTicket'><span class="glyphicon glyphicon-plus-sign addEmblem"></span></a>
+    <a href='#/newTicket' ng-click="newTicketArea()"><span class="glyphicon glyphicon-plus-sign addEmblem"></span></a>
   </div>
   </ul>
 
   <div class="SubNavSelection">
     <span><a href="#/home" ng-click="showAllQs();loadTickets()">All Plays</a></span>
-    <span><a href="#/home" ng-click="showMyQs()">My Plays</a></span>
-    <span><a href="#/home" ng-click="showPlayerSearch()">Player Search</a></span>
-    <span><a href="#/home" ng-click="showResearchArea()">Research</a></span>
+    <span><a href="#/myPlays" ng-click="showMyQs()">My Plays</a></span>
+    <span><a href="#/playerSearch" ng-click="showPlayerSearch()">Player Search</a></span>
+    <span><a href="#/research" ng-click="showResearchArea()">Research</a></span>
   </div>
 </div>

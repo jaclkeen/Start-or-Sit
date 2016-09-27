@@ -22,11 +22,6 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
 
   $scope.currentUser = AuthFactory.getUser()
   $scope.userStuff = ""
-  $scope.showAllQ = true
-  $scope.showMyQ = false
-  $scope.showSearch = false
-  $scope.showPlayerInfo = false
-  $scope.showResearch = false
   $scope.crumbs = "All Plays"
   $scope.plays = []
   $scope.showVotes = false
@@ -41,57 +36,38 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     userName: ""
   }]
 
+  $scope.showNav = function(){
+    return AuthFactory.isAuthenticated()
+  }
+
   $scope.addQArea = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = false
-    $scope.showSearch = false
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'Add New Play'
   }
 
   $scope.showResearchArea = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = false
-    $scope.showSearch = false
-    $scope.showResearch = true
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'Research'
   }
 
   $scope.showAllQs = function(){
-    $scope.showAllQ = true
-    $scope.showMyQ = false
-    $scope.showSearch = false
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'All Plays'
   }
 
   $scope.showMyQs = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = true
-    $scope.showSearch = false
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'My Plays'
   }
 
   $scope.showPlayerSearch = function(){
-    $scope.showAllQ = false
-    $scope.showMyQ = false
-    $scope.showSearch = true
-    $scope.showResearch = false
-    $scope.showPlayerInfo = false
     $scope.crumbs = 'Player Search'
+  }
+
+  $scope.newTicketArea = function(){
+    $scope.crumbs = 'Add New Ticket'
   }
 
   $scope.retrieveComments = function(){
     $scope.userStuff = AuthFactory.getUserInfo()
-    console.log($scope.userStuff, 'USERSTUFF TEST') //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     DbFactory.getComments()
     .then(function(data){
-      console.log(data, 'COMMENT DATA')
       $scope.userMessages = []
       if(data){
       let idArr = Object.keys(data)
@@ -114,14 +90,12 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
       })
       $scope.plays = []
       for(var key in plays){
-        console.log(AuthFactory.getUserInfo(), 'USERINFO TEST')
         $scope.plays.push(plays[key])
         $scope.comment.push({ text: "",
                               playId: "",
                               userId: $scope.currentUser,
                               userName: ""
                             })
-        console.log($scope.userStuff.name, 'USERSTUFF.NAME')
       }
       $scope.retrieveComments()
     })
@@ -131,27 +105,24 @@ app.controller('HomeCtrl', function($scope, DbFactory, $mdToast, AuthFactory){
     votes++
     var player1 = this.play.player1.name
     var player2 = this.play.player2.name
-    console.log(player)
     DbFactory.updateVotes(player, id, votes)
     .then(function(data){
       $scope.isEnabled = false
       $scope.loadTickets()
     })
-    console.log('PLAYERNAME', playerName)
     showToast(playerName)
   }
 
   $scope.addComment = function(index, id){
-      $scope.comment[index].playId = id
-      $scope.comment[index].userName = AuthFactory.getUserInfo()
-      DbFactory.storeComment(id, $scope.comment[index])
+    $scope.comment[index].playId = id
+    $scope.comment[index].userName = AuthFactory.getUserInfo()
+    DbFactory.storeComment(id, $scope.comment[index])
       .then(function(data){
         $scope.comment[index].text = ""
         $scope.retrieveComments()
         showCommentAddedToast()
       })
   }
-
 
   $scope.loadTickets()
 

@@ -6,6 +6,10 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
   $scope.signUpPage = false
   $scope.logoutUser = true
 
+  $scope.logBtn = function(){
+    return AuthFactory.isAuthenticated()
+  }
+
   $scope.account = {
     email: "",
     password: "",

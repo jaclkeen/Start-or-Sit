@@ -55,9 +55,10 @@ nav{
 //////////////BEGIN SCORE TICKER//////////////
 .scoreTicker{
   color: white;
-  margin-bottom: .1%;
-  margin-top: .4%;
+  background-color: black;
+  padding-top: .35%;
   height: 91px;
+  white-space: nowrap;
   overflow: hidden;
   display: inline-block;
 
@@ -94,6 +95,9 @@ nav{
     display: inline-block;
     text-align: center;
     margin-right: -16.5%;
+    position: relative;
+    left: 1900px;
+    animation: scrollingScores 40s linear 2s infinite;
   }
 
   .scoreContainer{
@@ -487,7 +491,7 @@ nav{
 ///////END ALLQPAGE STYLING////////////
 ///////START MYQPAGE STYLING///////////
 .myQPage{
-  padding-bottom: 2%;
+  padding-bottom: 1%;
 
   .player1{
     display: inline-block;
@@ -501,6 +505,7 @@ nav{
     border-radius: 20px;
     width: 30%;
     height: 280px;
+    margin-bottom: 1%;
     margin-top: 1%;
     margin-left: 2.2%;
     color: white;
@@ -789,20 +794,20 @@ td{
         border-radius: 30px;
 
         span{
-          margin-left: 30%;
+          margin-left: 12%;
           padding-right: 0;
           margin-right: 0;
         }
 
       }
-      a{
+      span{
         margin-left: 6%;
         margin-right: -11%;
         color: black;
         background-color: $primary;
       }
 
-      a:hover{
+      span:hover{
         color: white;
       }
     }
@@ -1156,11 +1161,12 @@ h2{
 }
 
 .p2SearchArea{
-  position: fixed;
+  position: absolute;
   display: inline-block;
   text-align: center;
   border: 4px solid $primary;
   border-radius: 20px;
+  margin-top: 11.1%;
   top: 157px;
   padding: 1%;
   width: 30%;
@@ -1207,21 +1213,20 @@ h2{
     color: black;
   }
 }
-
+.allSearch{
+  padding-bottom: 13%;
+}
 .addPlay{
-  margin-top: 4.5%;
-  margin-left: 45.25%;
-  margin-bottom: 1%;
-  border: 3px solid $primary;
-  border-radius: 20px;
-  padding: .3%;
-  display: inline-block;
-  position: fixed;
-  border: 3px solid $primary;
-  font-family: $secondary;
-  top: 340px;
-  left: -17px;
-  font-size: 1.4em;
+    position: absolute;
+    top: 490px;
+    left: 680px;
+    border: 3px solid #1A5C21;
+    border-radius: 20px;
+    padding: .3%;
+    display: inline-block;
+    border: 3px solid #1A5C21;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 1.4em;
 }
 
 .back{
@@ -1497,6 +1502,10 @@ body {
   // END//////////
   // BEGIN ADD NEW TICKET AREA
   .p1SearchArea{
+    margin-top: 1%;
+    margin-left: 9%;
+    margin-right: 21%;
+
     h2{
       font-size: 1.6em;
     }
@@ -1513,7 +1522,7 @@ body {
   }
 
   .p2SearchArea{
-    top: 152px;
+    margin-top: 12.9%;
 
     h2{
       font-size: 1.6em;
@@ -1528,6 +1537,9 @@ body {
       background: darkgrey;
       height: 150px;
     }
+  }
+  .addPlay{
+    left: 564px;
   }
   .recentPlayerNews{
     .back{
@@ -1629,7 +1641,7 @@ body {
     }
   }
   .p2SearchArea{
-    top: 137px;
+    margin-top: 11%;
     .p2SearchResults{
       width: 45%;
       right: 7px;
@@ -1641,6 +1653,11 @@ body {
       width: 45%;
       right: 7px;
     }
+  }
+
+  .addPlay{
+    left: 487px;
+    top: 410px;
   }
 
   .recentPlayerNews{
@@ -1798,10 +1815,16 @@ body {
   }
 
   .p2SearchArea{
+    margin-top: 10.5%;
+
     .p2SearchResults{
       width: 39.4%;
       margin-left: 30.3%;
     }
+  }
+
+  .addPlay{
+    left: 775px;
   }
 }
 // END 110% STYLING////////
@@ -1988,3 +2011,8 @@ body {
   }
 }
 // END 90% ZOOM STYLING//////
+
+@keyframes scrollingScores{
+  from { left: -2050px;}
+  to   { left: 1550px; }
+}

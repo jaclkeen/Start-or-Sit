@@ -10,6 +10,13 @@
 </head>
 <body ng-app="StartOrSit">
   <div ng-include="'partials/nav.html'"></div>
+
+  <div ng-controller="HomeCtrl">
+    <div ng-if="showNav()">
+      <div ng-include="'partials/subNav.html'"></div>
+    </div>
+  </div>
+
   <div ng-view class="main"></div>
 
 

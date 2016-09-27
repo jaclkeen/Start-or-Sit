@@ -1,6 +1,6 @@
 <nav ng-controller="LoginCtrl">
   <div class="navTitle">
     <h3 class="brand">Start <span>or</span> Sit</h3>
-    <span ng-show="{{logoutUser}}" class="status" ng-click="logout()">Logout</span>
+    <span ng-if="logBtn()" class="status" ng-click="logout()">Logout</span>
   </div>
 </nav>
