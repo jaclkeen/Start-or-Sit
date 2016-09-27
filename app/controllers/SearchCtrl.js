@@ -11,7 +11,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.loader = false
   $scope.showSeasonStats = false
   $scope.playerId = ""
-  $scope.esbid = ""
+  let esbid = ""
   $scope.pName = ""
   $scope.imgSrc = ""
   $scope.teamAbbr = ""
@@ -20,6 +20,8 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.seasonProjectedPts = 0
   $scope.weekProjectedPts = 0
   $scope.seasonPts = 0
+  $scope.labels = ['Adds', 'Drops']
+  $scope.data = []
 
   $scope.qbObject = {
     gamesPlayed: 0,
@@ -105,9 +107,9 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
 
     ApiFactory.getPlayers()
     .then(function(players){
+      esbid = ""
       $scope.playerNewsObj = []
       $scope.players = []
-      $scope.esbid = ""
       $scope.pName = ""
       $scope.imgSrc = ""
       $scope.teamAbbr = ""
@@ -148,6 +150,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
             else{
               $scope.imgSrc = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
             }
+            esbid = collection.esbid
             $scope.pName = playerName
             $scope.teamAbbr = collection.teamAbbr
             $scope.position = collection.position
@@ -303,7 +306,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 }
             }
 
-
             $scope.weekProjectedPts = collection.weekProjectedPts
             $scope.currentWeekPts = collection.weekPts
             $scope.showPlayerInfo = true
@@ -315,6 +317,15 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
           }
         }
       })
+        ApiFactory.getFantasyResearchInfo()
+        .then(function(playerResearch){
+          playerResearch.players.forEach(function(player){
+            if(player.esbid === esbid){
+              $scope.data[0] = player.numAdds
+              $scope.data[1] = player.numDrops
+            }
+          })
+        })
     })
   }
 
