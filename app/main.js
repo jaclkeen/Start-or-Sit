@@ -4,7 +4,7 @@ let app = angular.module("StartOrSit", ["ngRoute", "ngMaterial", "chart.js"])
   .constant('FirebaseURL', "https://start-or-sit.firebaseio.com/")
 
   app.config(function($routeProvider, ChartJsProvider){
-    ChartJsProvider.setOptions({colors: ['#1A5C21','red','green']})
+    // ChartJsProvider.setOptions({colors: ['#1A5C21','red','green']})
     $routeProvider
       .when('/login', {
         templateUrl: 'partials/login',

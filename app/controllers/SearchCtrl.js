@@ -4,9 +4,21 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
 
   var lastname
   let pID = ""
-  let week = 4
+  $scope.week = 3
+  $scope.statLabels = []
+
+  // FOR LINE CHART
+  $scope.statType = ""
   $scope.playerWeekStats = []
   $scope.chartPlayerStats = ""
+  for(let i = 1; i <= $scope.week; i++){
+    $scope.statLabels.push('Week ' + i)
+  }
+  ////////////////
+  // FOR PIE CHART
+  $scope.labels = ['Adds', 'Drops']
+  $scope.data = []
+  ////////////////
   $scope.playerNewsObj = []
   $scope.players = []
   $scope.showPlayerNav = false
@@ -23,9 +35,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.seasonProjectedPts = 0
   $scope.weekProjectedPts = 0
   $scope.seasonPts = 0
-  $scope.labels = ['Adds', 'Drops']
-  $scope.statLabels = ['one', 'two', 'three', 'four', 'five']
-  $scope.data = []
 
   $scope.qbObject = {
     gamesPlayed: 0,
@@ -192,6 +201,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                   $scope.qbObject.fumbles = collection.stats[key]
                 }
                   $scope.chartPlayerStats = $scope.qbObject
+                  $scope.statType = 5
               }
 
               else if(collection.position === 'RB' || collection.position === 'WR'){
@@ -223,6 +233,9 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                   $scope.rbWrObject.twoPtMade = collection.stats[key]
                 }
                   $scope.chartPlayerStats = $scope.rbWrObject
+                  if(collection.position === 'RB'){
+                    $scope.statType = 14
+                  }else{$scope.statType = 21}
               }
 
             else if(collection.position === 'K'){
@@ -251,6 +264,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 $scope.kObject.fiftyFG = collection.stats[key]
               }
               $scope.chartPlayerStats = $scope.kObject
+              $scope.statType = 33
             }
 
             else if(collection.position === 'TE'){
@@ -272,6 +286,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 30){
                   $scope.teObject.fumbles = collection.stats[key]
                 }
+                $scope.statType = 21
                 $scope.chartPlayerStats = $scope.teObject
             }
 
@@ -312,6 +327,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 60){
                   $scope.dObject.threeFivePlusPts = collection.stats[key]
                 }
+                $scope.statType = 54
                 $scope.chartPlayerStats = $scope.dObject
             }
 
@@ -326,8 +342,9 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
           }
         }
       })
+          console.log($scope.statType, 'statstat')
           $scope.getResearchChartData()
-          $scope.getWeekChartData(2)
+          $scope.getWeekChartData($scope.week, $scope.statType)
     })
   }
 
@@ -343,19 +360,22 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
     })
   }
 
-  $scope.getWeekChartData = function(week){
-    ApiFactory.getWeekPlayerStats(week)
-    .then(function(stats){
-    for(var key in stats.playerStats){
-      if(key === pID){
-        for(var stat in stats.playerStats[key]){
-        $scope.playerWeekStats.push(stats.playerStats[key][stat]) //stats.playerStats[key]
-        console.log($scope.chartPlayerStats, 'CHART PLAYER STATS')
-        console.log($scope.playerWeekStats, 'PLAYERWEEKSTATS')
+  $scope.getWeekChartData = function(week, statTypeNum){
+    for(let game = 1; game <= week; game++){
+      ApiFactory.getWeekPlayerStats(game)
+      .then(function(stats){
+        for(let key in stats.playerStats){
+          if(key == pID){
+            $scope.playerWeekStats[game-1] = 0
+            for(var stat in stats.playerStats[key]){
+              if(stat == statTypeNum){
+                $scope.playerWeekStats[game-1] = stats.playerStats[key][stat]
+              }
+            }
+          }
         }
-      }
+      })
     }
-    })
   }
 
   $scope.getPlayerNews = function(playerId){
