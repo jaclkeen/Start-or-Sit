@@ -30,6 +30,19 @@ app.factory('ApiFactory', function($q, $http){
     })
   }
 
+  let getWeekPlayerStats = function(week){
+    return $q(function(resolve, reject){
+      $http.get(`http://api.fantasy.nfl.com/v1/players/weekstats?&week=${week}&format=json`)
+      .success(function(playerStats){
+        resolve(playerStats)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   let getNews = function(playerId){
     return $q(function(resolve, reject){
       $http.get(`http://api.fantasy.nfl.com/v1/players/details?playerId=${playerId}&statType=seasonStatsformat=json`)
@@ -100,6 +113,7 @@ app.factory('ApiFactory', function($q, $http){
     getNews,
     getPlayers,
     getPlayerStats,
+    getWeekPlayerStats,
     getEditorWeekRanks,
     getFantasyResearchInfo,
     getMostRecentPlayerNews,

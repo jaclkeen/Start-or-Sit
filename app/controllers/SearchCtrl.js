@@ -3,6 +3,10 @@
 app.controller("SearchCtrl", function($scope, ApiFactory){
 
   var lastname
+  let pID = ""
+  let week = 4
+  $scope.playerWeekStats = []
+  $scope.chartPlayerStats = ""
   $scope.playerNewsObj = []
   $scope.players = []
   $scope.showPlayerNav = false
@@ -11,7 +15,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.loader = false
   $scope.showSeasonStats = false
   $scope.playerId = ""
-  let esbid = ""
   $scope.pName = ""
   $scope.imgSrc = ""
   $scope.teamAbbr = ""
@@ -21,6 +24,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.weekProjectedPts = 0
   $scope.seasonPts = 0
   $scope.labels = ['Adds', 'Drops']
+  $scope.statLabels = ['one', 'two', 'three', 'four', 'five']
   $scope.data = []
 
   $scope.qbObject = {
@@ -107,7 +111,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
 
     ApiFactory.getPlayers()
     .then(function(players){
-      esbid = ""
+      pID = ""
       $scope.playerNewsObj = []
       $scope.players = []
       $scope.pName = ""
@@ -150,7 +154,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
             else{
               $scope.imgSrc = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
             }
-            esbid = collection.esbid
+            pID = collection.id
             $scope.pName = playerName
             $scope.teamAbbr = collection.teamAbbr
             $scope.position = collection.position
@@ -187,6 +191,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 30){
                   $scope.qbObject.fumbles = collection.stats[key]
                 }
+                  $scope.chartPlayerStats = $scope.qbObject
               }
 
               else if(collection.position === 'RB' || collection.position === 'WR'){
@@ -217,6 +222,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 32){
                   $scope.rbWrObject.twoPtMade = collection.stats[key]
                 }
+                  $scope.chartPlayerStats = $scope.rbWrObject
               }
 
             else if(collection.position === 'K'){
@@ -244,6 +250,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
               if(key == 39){
                 $scope.kObject.fiftyFG = collection.stats[key]
               }
+              $scope.chartPlayerStats = $scope.kObject
             }
 
             else if(collection.position === 'TE'){
@@ -265,6 +272,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 30){
                   $scope.teObject.fumbles = collection.stats[key]
                 }
+                $scope.chartPlayerStats = $scope.teObject
             }
 
             else if(collection.position === 'DEF'){
@@ -304,6 +312,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 60){
                   $scope.dObject.threeFivePlusPts = collection.stats[key]
                 }
+                $scope.chartPlayerStats = $scope.dObject
             }
 
             $scope.weekProjectedPts = collection.weekProjectedPts
@@ -317,15 +326,35 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
           }
         }
       })
-        ApiFactory.getFantasyResearchInfo()
-        .then(function(playerResearch){
-          playerResearch.players.forEach(function(player){
-            if(player.esbid === esbid){
-              $scope.data[0] = player.numAdds
-              $scope.data[1] = player.numDrops
-            }
-          })
-        })
+          $scope.getResearchChartData()
+          $scope.getWeekChartData(2)
+    })
+  }
+
+  $scope.getResearchChartData = function(){
+    ApiFactory.getFantasyResearchInfo()
+    .then(function(playerResearch){
+    playerResearch.players.forEach(function(player){
+      if(player.id === pID){
+        $scope.data[0] = player.numAdds
+        $scope.data[1] = player.numDrops
+      }
+    })
+    })
+  }
+
+  $scope.getWeekChartData = function(week){
+    ApiFactory.getWeekPlayerStats(week)
+    .then(function(stats){
+    for(var key in stats.playerStats){
+      if(key === pID){
+        for(var stat in stats.playerStats[key]){
+        $scope.playerWeekStats.push(stats.playerStats[key][stat]) //stats.playerStats[key]
+        console.log($scope.chartPlayerStats, 'CHART PLAYER STATS')
+        console.log($scope.playerWeekStats, 'PLAYERWEEKSTATS')
+        }
+      }
+    }
     })
   }
 
