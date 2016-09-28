@@ -4,16 +4,14 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
 
   var lastname
   let pID = ""
-  $scope.week = 3
+  let getTeamSchedule = []
+  $scope.week = 4
   $scope.statLabels = []
 
   // FOR LINE CHART
   $scope.statType = ""
-  $scope.playerWeekStats = []
+  $scope.playerWeekStats = [[]]
   $scope.chartPlayerStats = ""
-  for(let i = 1; i <= $scope.week; i++){
-    $scope.statLabels.push('Week ' + i)
-  }
   ////////////////
   // FOR PIE CHART
   $scope.labels = ['Adds', 'Drops']
@@ -340,6 +338,25 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
             $scope.showSeasonStats = true
             $scope.loader = false
           }
+          ApiFactory.getTeamSchedule()
+            .then(function(games){
+              let schedule = games.ss.gms
+              let team = collection.teamAbbr
+              schedule.forEach(function(game){
+                game.g.forEach(function(item){
+                  if(item.home === team){
+                    getTeamSchedule.push(item.away)
+                  }
+                  else if(item.away === team){
+                    getTeamSchedule.push("@"+item.home)
+                  }
+                })
+              })
+              console.log(getTeamSchedule)
+              for(let i = 1; i <= $scope.week; i++){
+                $scope.statLabels.push('Wk ' + i + ": " + getTeamSchedule[i-1])
+              }
+            })
         }
       })
           console.log($scope.statType, 'statstat')
@@ -366,10 +383,10 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
       .then(function(stats){
         for(let key in stats.playerStats){
           if(key == pID){
-            $scope.playerWeekStats[game-1] = 0
+            $scope.playerWeekStats[0][game-1] = 0
             for(var stat in stats.playerStats[key]){
               if(stat == statTypeNum){
-                $scope.playerWeekStats[game-1] = stats.playerStats[key][stat]
+                $scope.playerWeekStats[0][game-1] = stats.playerStats[key][stat]
               }
             }
           }

@@ -109,10 +109,25 @@ app.factory('ApiFactory', function($q, $http){
     })
   }
 
+  let getTeamSchedule = function(){
+    return $q(function(resolve, reject){
+      $http.get('gameSchedule.json')
+      .success(function(games){
+        console.log(games)
+        resolve(games)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   return {
     getNews,
     getPlayers,
     getPlayerStats,
+    getTeamSchedule,
     getWeekPlayerStats,
     getEditorWeekRanks,
     getFantasyResearchInfo,
