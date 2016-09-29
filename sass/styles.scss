@@ -89,6 +89,7 @@ $secondary: 'Titillium Web', sans-serif;
 
 //FOR NORMAL ZOOM
 html{
+  overflow-x: hidden;
   background-color: black;
 
   .main{
@@ -1555,9 +1556,14 @@ body {
     .playerNav{
       ul{
         li{
-          width: 51%;
+          width: 68%;
         }
       }
+    }
+  }
+  .statArea{
+    span{
+      font-size: 12px;
     }
   }
   // RESEARCH AREA STYLING
@@ -1754,6 +1760,11 @@ body {
     }
   }
 }
+.statArea{
+  span{
+    font-size: 12px;
+  }
+}
 // END ZOOM 175%/////////
 // BEGIN ZOOM 200%///////
 @media screen and (max-width: 960px){
@@ -1821,6 +1832,11 @@ body {
   .title{
     margin-left: 3%;
     margin-top: .5%;
+  }
+  .statArea{
+    span{
+      font-size: 11px;
+    }
   }
 }
 // END STYLING FOR 200%/////
