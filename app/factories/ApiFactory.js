@@ -123,6 +123,20 @@ app.factory('ApiFactory', function($q, $http){
     })
   }
 
+  let getStatExplanations = function(){
+    return $q(function(resolve, reject){
+      $http.get('explanations.json')
+      .success(function(expl){
+        console.log(expl)
+        resolve(expl)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   return {
     getNews,
     getPlayers,
@@ -130,6 +144,7 @@ app.factory('ApiFactory', function($q, $http){
     getTeamSchedule,
     getWeekPlayerStats,
     getEditorWeekRanks,
+    getStatExplanations,
     getFantasyResearchInfo,
     getMostRecentPlayerNews,
     getFantasyScoringLeaders

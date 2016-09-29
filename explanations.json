@@ -1,0 +1,250 @@
+{
+  "stats": [
+    {
+      "id": 2,
+      "abbr": "Att",
+      "name": "Passing Attempts",
+      "shortName": "Pass Att"
+    },
+    {
+      "id": 3,
+      "abbr": "Comp",
+      "name": "Passing Completions",
+      "shortName": "Pass Comp"
+    },
+    {
+      "id": 4,
+      "abbr": "Inc",
+      "name": "Incomplete Passes",
+      "shortName": "Pass Inc"
+    },
+    {
+      "id": 5,
+      "abbr": "Yds",
+      "name": "Passing Yards",
+      "shortName": "Pass Yds"
+    },
+    {
+      "id": 6,
+      "abbr": "TD",
+      "name": "Passing Touchdowns",
+      "shortName": "Pass TD"
+    },
+    {
+      "id": 7,
+      "abbr": "Int",
+      "name": "Interceptions Thrown",
+      "shortName": "Pass Int"
+    },
+    {
+      "id": 13,
+      "abbr": "Att",
+      "name": "Rushing Attempts",
+      "shortName": "Rush Att"
+    },
+    {
+      "id": 14,
+      "abbr": "Yds",
+      "name": "Rushing Yards",
+      "shortName": "Rush Yds"
+    },
+    {
+      "id": 15,
+      "abbr": "TD",
+      "name": "Rushing Touchdowns",
+      "shortName": "Rush TD"
+    },
+    {
+      "id": 20,
+      "abbr": "Rect",
+      "name": "Receptions",
+      "shortName": "Receptions"
+    },
+    {
+      "id": 21,
+      "abbr": "Yds",
+      "name": "Receiving Yards",
+      "shortName": "Rec Yds"
+    },
+    {
+      "id": 22,
+      "abbr": "TD",
+      "name": "Receiving Touchdowns",
+      "shortName": "Rec TD"
+    },
+    {
+      "id": 27,
+      "abbr": "Yds",
+      "name": "Kickoff and Punt Return Yards",
+      "shortName": "Return Yds"
+    },
+    {
+      "id": 28,
+      "abbr": "TD",
+      "name": "Kickoff and Punt Return Touchdowns",
+      "shortName": "Return TD"
+    },
+    {
+      "id": 29,
+      "abbr": "Fum TD",
+      "name": "Fumble Recovered for TD",
+      "shortName": "Fum TD"
+    },
+    {
+      "id": 30,
+      "abbr": "Lost",
+      "name": "Fumbles Lost",
+      "shortName": "Fum Lost"
+    },
+    {
+      "id": 32,
+      "abbr": "2PT",
+      "name": "2-Point Conversions",
+      "shortName": "2PT"
+    },
+    {
+      "id": 33,
+      "abbr": "Made",
+      "name": "PAT Made",
+      "shortName": "PAT Made"
+    },
+    {
+      "id": 34,
+      "abbr": "Miss",
+      "name": "PAT Missed",
+      "shortName": "PAT Miss"
+    },
+    {
+      "id": 35,
+      "abbr": "0-19",
+      "name": "FG Made 0-19",
+      "shortName": "FG 0-19"
+    },
+    {
+      "id": 36,
+      "abbr": "20-29",
+      "name": "FG Made 20-29",
+      "shortName": "FG 20-29"
+    },
+    {
+      "id": 37,
+      "abbr": "30-39",
+      "name": "FG Made 30-39",
+      "shortName": "FG 30-39"
+    },
+    {
+      "id": 38,
+      "abbr": "40-49",
+      "name": "FG Made 40-49",
+      "shortName": "FG 40-49"
+    },
+    {
+      "id": 39,
+      "abbr": "50+",
+      "name": "FG Made 50+",
+      "shortName": "FG 50+"
+    },
+    {
+      "id": 45,
+      "abbr": "Sack",
+      "name": "Sacks",
+      "shortName": "Sack"
+    },
+    {
+      "id": 46,
+      "abbr": "Int",
+      "name": "Interceptions",
+      "shortName": "Int"
+    },
+    {
+      "id": 47,
+      "abbr": "Fum Rec",
+      "name": "Fumbles Recovered",
+      "shortName": "Fum Rec"
+    },
+    {
+      "id": 49,
+      "abbr": "Saf",
+      "name": "Safeties",
+      "shortName": "Saf"
+    },
+    {
+      "id": 50,
+      "abbr": "TD",
+      "name": "Touchdowns",
+      "shortName": "TD"
+    },
+    {
+      "id": 51,
+      "abbr": "Block",
+      "name": "Blocked Kicks",
+      "shortName": "Block"
+    },
+    {
+      "id": 53,
+      "abbr": "TD",
+      "name": "Kickoff and Punt Return Touchdowns",
+      "shortName": "Return TD"
+    },
+    {
+      "id": 54,
+      "abbr": "Pts Allow",
+      "name": "Points Allowed",
+      "shortName": "Pts Allow"
+    },
+    {
+      "id": 62,
+      "abbr": "Yds Allow",
+      "name": "Yards Allowed",
+      "shortName": "Yds Allow"
+    },
+    {
+      "id": 72,
+      "abbr": "Sck",
+      "name": "Sack",
+      "shortName": "Sack"
+    },
+    {
+      "id": 73,
+      "abbr": "Int",
+      "name": "Defense Interception",
+      "shortName": "Int"
+    },
+    {
+      "id": 75,
+      "abbr": "Fum Rec",
+      "name": "Fumbles Recovery",
+      "shortName": "Fum Rec"
+    },
+    {
+      "id": 76,
+      "abbr": "Int TD",
+      "name": "Touchdown (Interception return)",
+      "shortName": "Int TD"
+    },
+    {
+      "id": 77,
+      "abbr": "Fum TD",
+      "name": "Touchdown (Fumble return)",
+      "shortName": "Fum TD"
+    },
+    {
+      "id": 78,
+      "abbr": "Blk TD",
+      "name": "Touchdown (Blocked kick)",
+      "shortName": "Blk TD"
+    },
+    {
+      "id": 79,
+      "abbr": "Blk",
+      "name": "Blocked Kick (punt, FG, PAT)",
+      "shortName": "Blk"
+    },
+    {
+      "id": 80,
+      "abbr": "Saf",
+      "name": "Safety",
+      "shortName": "Saf"
+    }
+  ]
+}

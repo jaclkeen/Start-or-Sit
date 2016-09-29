@@ -5,11 +5,13 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   var lastname
   let pID = ""
   let getTeamSchedule = []
-  $scope.week = 4
+  $scope.currentWeek = '1'
+  $scope.week = 16
   $scope.statLabels = []
+  $scope.nonChartPlayerWeekStats = []
 
   // FOR LINE CHART
-  $scope.statType = ""
+  $scope.statType = 'Pass Yds'
   $scope.playerWeekStats = [[]]
   $scope.chartPlayerStats = ""
   ////////////////
@@ -20,6 +22,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.playerNewsObj = []
   $scope.players = []
   $scope.showPlayerNav = false
+  $scope.graphs = false
   $scope.showPlayerInfo = false
   $scope.showNews = false
   $scope.loader = false
@@ -33,6 +36,68 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.seasonProjectedPts = 0
   $scope.weekProjectedPts = 0
   $scope.seasonPts = 0
+
+  $scope.weekQBObject = {
+    pYds: [0,5],
+    pAtt: [0,6],
+    comp: [0,2],
+    pTD: [0,3],
+    int: [0,7],
+    rYds: [0,14],
+    rTD: [0,15],
+    fum: [0,30]
+  }
+
+  $scope.weekRBObject = {
+    14: 0,
+    13: 0,
+    15: 0,
+    20: 0,
+    21: 0,
+    22: 0,
+    30: 0,
+    32: 0
+  }
+
+  $scope.weekWRObject = {
+    20: 0,
+    21: 0,
+    22: 0,
+    13: 0,
+    14: 0,
+    15: 0,
+    30: 0,
+    32: 0
+  }
+
+  $scope.weekTEObject = {
+    20: 0,
+    21: 0,
+    22: 0,
+    30: 0,
+    32: 0
+  }
+
+  $scope.weekKObject = {
+    33: 0,
+    34: 0,
+    35: 0,
+    36: 0,
+    37: 0,
+    38: 0,
+    39: 0
+  }
+
+  $scope.weekDObject = {
+    54: 0,
+    45: 0,
+    46: 0,
+    47: 0,
+    49: 0,
+    50: 0,
+    53: 0
+  }
+
 
   $scope.qbObject = {
     gamesPlayed: 0,
@@ -98,6 +163,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
     $scope.showVideos = false
     $scope.showNews = true
     $scope.showSeasonStats = false
+    $scope.graphs = false
   }
 
   $scope.activateStats = function(){
@@ -105,12 +171,22 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
     $scope.showVideos = false
     $scope.showNews = false
     $scope.showSeasonStats = true
+    $scope.graphs = false
+  }
+
+  $scope.activateGraphs = function(){
+    $scope.showPlayerInfo = false
+    $scope.showVideos = false
+    $scope.showNews = false
+    $scope.showSeasonStats = false
+    $scope.graphs = true
   }
 
   $scope.playerSearch = function(){
     $scope.showPlayerInfo = false
     $scope.showPlayerNav = false
     $scope.showSeasonStats = false
+    $scope.graphs = false
     // USED TO CLEAR RESULTS WHEN RB OR WR IS LOADED
     for(var key in $scope.rbWrObject){
       $scope.rbWrObject[key] = 0
@@ -340,6 +416,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
           }
           ApiFactory.getTeamSchedule()
             .then(function(games){
+              $scope.statLabels = []
               let schedule = games.ss.gms
               let team = collection.teamAbbr
               schedule.forEach(function(game){
@@ -362,6 +439,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
           console.log($scope.statType, 'statstat')
           $scope.getResearchChartData()
           $scope.getWeekChartData($scope.week, $scope.statType)
+          $scope.getPlayerWeekStats(1)
     })
   }
 
@@ -384,7 +462,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
         for(let key in stats.playerStats){
           if(key == pID){
             $scope.playerWeekStats[0][game-1] = 0
-            for(var stat in stats.playerStats[key]){
+            for(let stat in stats.playerStats[key]){
               if(stat == statTypeNum){
                 $scope.playerWeekStats[0][game-1] = stats.playerStats[key][stat]
               }
@@ -393,6 +471,36 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
         }
       })
     }
+  }
+
+  $scope.weekStats = []
+
+  $scope.getPlayerWeekStats = function(week){
+    ApiFactory.getWeekPlayerStats(week)
+      .then(function(weekStats){
+        ApiFactory.getStatExplanations()
+        .then(function(explanations){
+          $scope.weekStats = []
+          let x = explanations.stats
+          for(let key in weekStats.playerStats){
+            for(var stat in weekStats.playerStats[key]){
+              for(var expla in x){
+                if(key == pID){
+                  if(stat == x[expla].id){
+                    $scope.weekStats.push({
+                      id: x[expla].id,
+                      name: x[expla].shortName,
+                      stat: weekStats.playerStats[key][stat]
+                    })
+                  }
+                }
+              }
+            }
+          }
+          // console.log(x[expla])
+          // console.log($scope.qbStats)
+        })
+      })
   }
 
   $scope.getPlayerNews = function(playerId){
