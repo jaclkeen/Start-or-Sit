@@ -34,7 +34,7 @@
           <div class="playerNav" ng-show='showPlayerNav'>
             <ul>
               <li><span ng-click="activateStats()">Stats</span>
-              <span ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</span><span ng-click="activateGraphs()">In Depth</span></li>
+              <span ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</span><span ng-click="activateGraphs()">Breakdown</span></li>
             </ul>
           </div>
           <!-- PLAYER NEWS AREA -->
@@ -91,7 +91,7 @@
                 <th class="cat">Rush TD</th>
                 <th class="cat">Receptions</th>
                 <th class="cat">Rec Yds</th>
-                <th class="cat">Rect TD</th>
+                <th class="cat">Rec TD</th>
                 <th class="cat">Fumbles Lost</th>
                 <th class="cat">2-PT</th>
               </tr>
@@ -258,65 +258,8 @@
         </div><br>
 
       <span class="statFilter">Stat filter: </span>
-        <select ng-init="statType='Pass Yds'" class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)" ng-if="position === 'QB'">
-          <option value="5">Pass Yds</option>
-          <option value="6">Pass TDs</option>
-          <option value="2">Pass Attempts</option>
-          <option value="3">Completions</option>
-          <option value="7">Int</option>
-          <option value="14">Rush Yds</option>
-          <option value="15">Rush TD</option>
-          <option value="30">Fumbles Lost</option>
-        </select>
-
-        <select class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)" ng-if="position === 'RB'">
-          <option selected value="14">Rush Yds</option>
-          <option value="13">Rush Attempts</option>
-          <option value="15">Rush TD</option>
-          <option value="20">Receptions</option>
-          <option value="21">Rec Yds</option>
-          <option value="22">Rec TD</option>
-          <option value="30">Fumbles Lost</option>
-          <option value="32">2-PT</option>
-        </select>
-
-        <select class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)" ng-if="position === 'WR'">
-          <option selected='true' value="20">Receptions</option>
-          <option value="21">Rec Yds</option>
-          <option value="22">Rec TD</option>
-          <option value="13">Rush Attempts</option>
-          <option value="14">Rush Yds</option>
-          <option value="15">Rush TD</option>
-          <option value="30">Fumbles Lost</option>
-          <option value="32">2-PT</option>
-        </select>
-
-        <select class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)" ng-if="position === 'TE'">
-          <option selected value="21">Rec Yds</option>
-          <option value="20">Receptions</option>
-          <option value="22">Rec TD</option>
-          <option value="30">Fumbles Lost</option>
-          <option value="32">2-PT</option>
-        </select>
-
-        <select class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)" ng-if="position === 'K'">
-          <option selected value="33">PAT Made</option>
-          <option value="34">PAT Miss</option>
-          <option value="35">FG Made 0-19</option>
-          <option value="36">FG Made 20-29</option>
-          <option value="37">FG Made 30-39</option>
-          <option value="38">FG Made 40-49</option>
-          <option value="39">FG Made 50+</option>
-        </select>
-
-        <select class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)" ng-if="position === 'DEF'">
-          <option selected value="54">Pts Allowed</option>
-          <option value="45">Sacks</option>
-          <option value="46">Int</option>
-          <option value="47">Fum Rec</option>
-          <option value="49">Safeties</option>
-          <option value="50">TD</option>
-          <option value="53">Return TD</option>
+        <select ng-init="statType='Pass Yds'" class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)">
+          <option ng-repeat="stat in weekStats" value="{{stat.id}}">{{stat.name}}</option>
         </select>
 
         <div class="lineGraphDiv">

@@ -13,7 +13,7 @@ $secondary: 'Titillium Web', sans-serif;
 
 .graphs{
     margin-top: 2%;
-    border-top: 3px solid white;
+    border-top: 3px solid $primary;
   .week{
     margin-top: 2%;
   }
@@ -66,7 +66,7 @@ $secondary: 'Titillium Web', sans-serif;
   background-color: #FFAC67;
 }
 
-._6, ._3, ._47, ._22, ._37, ._39{
+._6, ._3, ._47, ._22, ._37, ._39, ._15{
   background-color: #87ED89;
 }
 
@@ -83,6 +83,7 @@ $secondary: 'Titillium Web', sans-serif;
 }
 
 .lineGraphDiv{
+  border-top: 3px solid $primary;
   width: 100%;
   margin-top: 2%;
 }

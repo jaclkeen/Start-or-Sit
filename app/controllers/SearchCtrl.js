@@ -16,6 +16,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.statType = 'Pass Yds'
   $scope.playerWeekStats = [[]]
   $scope.chartPlayerStats = ""
+
   ////////////////
   // FOR PIE CHART
   $scope.labels = ['Adds', 'Drops']
@@ -215,7 +216,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                   $scope.qbObject.fumbles = collection.stats[key]
                 }
                   $scope.chartPlayerStats = $scope.qbObject
-                  $scope.statType = 5
+                  $scope.statType = 2
               }
 
               else if(collection.position === 'RB' || collection.position === 'WR'){
@@ -248,7 +249,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 }
                   $scope.chartPlayerStats = $scope.rbWrObject
                   if(collection.position === 'RB'){
-                    $scope.statType = 14
+                    $scope.statType = 13
                   }else{$scope.statType = 21}
               }
 
@@ -300,7 +301,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 30){
                   $scope.teObject.fumbles = collection.stats[key]
                 }
-                $scope.statType = 21
+                $scope.statType = 20
                 $scope.chartPlayerStats = $scope.teObject
             }
 
@@ -341,7 +342,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 60){
                   $scope.dObject.threeFivePlusPts = collection.stats[key]
                 }
-                $scope.statType = 54
+                $scope.statType = 45
                 $scope.chartPlayerStats = $scope.dObject
             }
 
