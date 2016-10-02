@@ -34,7 +34,7 @@
           <div class="playerNav" ng-show='showPlayerNav'>
             <ul>
               <li><span ng-click="activateStats()">Stats</span>
-              <span><span ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</span><span></li>
+              <span ng-click="activatePlayerNews(); getPlayerNews(playerId)">News</span><span ng-click="activateGraphs()">Breakdown</span></li>
             </ul>
           </div>
           <!-- PLAYER NEWS AREA -->
@@ -91,7 +91,7 @@
                 <th class="cat">Rush TD</th>
                 <th class="cat">Receptions</th>
                 <th class="cat">Rec Yds</th>
-                <th class="cat">Rect TD</th>
+                <th class="cat">Rec TD</th>
                 <th class="cat">Fumbles Lost</th>
                 <th class="cat">2-PT</th>
               </tr>
@@ -217,8 +217,57 @@
             </tr>
           </table>
         </div>
+        <!-- IN DEPTH AREA -->
+      <div class="graphs" ng-show="graphs">
+        <div class="week">
+          <span class="wkFilterSpan">Week: </span>
+            <select ng-model="currentWeek" ng-change="getPlayerWeekStats(currentWeek)">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+<!--               <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option> -->
+            </select><br>
+        </div>
+
+        <div class="weekStats">
+          <div class="statArea _stat.id" ng-repeat="stat in weekStats">
+            <div class="_{{stat.id}} block">
+              <h3>{{stat.stat}}</h3>
+              <span>{{stat.name}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="width: 20%;" class="myPie">
+          <h3>Adds/Drops</h3>
+          <canvas id="pie" class="pieChart chart chart-pie" chart-data="data" chart-labels="labels" width="640" height="400">
+          </canvas>
+        </div><br>
+
+      <span class="statFilter">Stat filter: </span>
+        <select ng-init="statType='Pass Yds'" class="filter" ng-model="statType" ng-change="getWeekChartData(week, statType)">
+          <option ng-repeat="stat in weekStats" value="{{stat.id}}">{{stat.name}}</option>
+        </select>
+
+        <div class="lineGraphDiv">
+          <canvas id="line" class="lineChart chart chart-line" chart-data="playerWeekStats" chart-labels="statLabels" chart-options="options">
+        </canvas>
+      </div>
       </div>
     </div>
   </div>
   </div>
-
+</div>

@@ -3,15 +3,34 @@
 app.controller("SearchCtrl", function($scope, ApiFactory){
 
   var lastname
+  let pID = ""
+  let getTeamSchedule = []
+  $scope.currentWeek = '1'
+  $scope.weekStats = []
+  //CHANGE THIS TO SHOW MORE WEEKS IN LINE GRAPH EX: 16 FOR ENTIRE SEASON
+  $scope.week = 4
+  $scope.statLabels = []
+  $scope.nonChartPlayerWeekStats = []
+
+  // FOR LINE CHART
+  $scope.statType = 'Pass Yds'
+  $scope.playerWeekStats = [[]]
+  $scope.chartPlayerStats = ""
+
+  ////////////////
+  // FOR PIE CHART
+  $scope.labels = ['Adds', 'Drops']
+  $scope.data = []
+  ////////////////
   $scope.playerNewsObj = []
   $scope.players = []
   $scope.showPlayerNav = false
+  $scope.graphs = false
   $scope.showPlayerInfo = false
   $scope.showNews = false
   $scope.loader = false
   $scope.showSeasonStats = false
   $scope.playerId = ""
-  $scope.esbid = ""
   $scope.pName = ""
   $scope.imgSrc = ""
   $scope.teamAbbr = ""
@@ -85,6 +104,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
     $scope.showVideos = false
     $scope.showNews = true
     $scope.showSeasonStats = false
+    $scope.graphs = false
   }
 
   $scope.activateStats = function(){
@@ -92,12 +112,22 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
     $scope.showVideos = false
     $scope.showNews = false
     $scope.showSeasonStats = true
+    $scope.graphs = false
+  }
+
+  $scope.activateGraphs = function(){
+    $scope.showPlayerInfo = false
+    $scope.showVideos = false
+    $scope.showNews = false
+    $scope.showSeasonStats = false
+    $scope.graphs = true
   }
 
   $scope.playerSearch = function(){
     $scope.showPlayerInfo = false
     $scope.showPlayerNav = false
     $scope.showSeasonStats = false
+    $scope.graphs = false
     // USED TO CLEAR RESULTS WHEN RB OR WR IS LOADED
     for(var key in $scope.rbWrObject){
       $scope.rbWrObject[key] = 0
@@ -105,9 +135,9 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
 
     ApiFactory.getPlayers()
     .then(function(players){
+      pID = ""
       $scope.playerNewsObj = []
       $scope.players = []
-      $scope.esbid = ""
       $scope.pName = ""
       $scope.imgSrc = ""
       $scope.teamAbbr = ""
@@ -148,6 +178,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
             else{
               $scope.imgSrc = `http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/${collection.esbid}.png`
             }
+            pID = collection.id
             $scope.pName = playerName
             $scope.teamAbbr = collection.teamAbbr
             $scope.position = collection.position
@@ -184,6 +215,8 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 30){
                   $scope.qbObject.fumbles = collection.stats[key]
                 }
+                  $scope.chartPlayerStats = $scope.qbObject
+                  $scope.statType = 2
               }
 
               else if(collection.position === 'RB' || collection.position === 'WR'){
@@ -214,6 +247,10 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 32){
                   $scope.rbWrObject.twoPtMade = collection.stats[key]
                 }
+                  $scope.chartPlayerStats = $scope.rbWrObject
+                  if(collection.position === 'RB'){
+                    $scope.statType = 13
+                  }else{$scope.statType = 21}
               }
 
             else if(collection.position === 'K'){
@@ -241,6 +278,8 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
               if(key == 39){
                 $scope.kObject.fiftyFG = collection.stats[key]
               }
+              $scope.chartPlayerStats = $scope.kObject
+              $scope.statType = 33
             }
 
             else if(collection.position === 'TE'){
@@ -262,6 +301,8 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 30){
                   $scope.teObject.fumbles = collection.stats[key]
                 }
+                $scope.statType = 20
+                $scope.chartPlayerStats = $scope.teObject
             }
 
             else if(collection.position === 'DEF'){
@@ -301,8 +342,9 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
                 if(key == 60){
                   $scope.dObject.threeFivePlusPts = collection.stats[key]
                 }
+                $scope.statType = 45
+                $scope.chartPlayerStats = $scope.dObject
             }
-
 
             $scope.weekProjectedPts = collection.weekProjectedPts
             $scope.currentWeekPts = collection.weekPts
@@ -312,10 +354,90 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
             $scope.players = []
             $scope.showSeasonStats = true
             $scope.loader = false
+            getTeamSchedule = []
           }
+          ApiFactory.getTeamSchedule()
+            .then(function(games){
+              $scope.statLabels = []
+              let schedule = games.ss.gms
+              let team = collection.teamAbbr
+              schedule.forEach(function(game){
+                game.g.forEach(function(item){
+                  if(item.home == team){
+                    getTeamSchedule.push(item.away)
+                  }
+                  else if(item.away == team){
+                    getTeamSchedule.push("@"+item.home)
+                  }
+                })
+              })
+            let schedWithByes = calcByeWeeks(getTeamSchedule, team)
+            for(let i = 1; i <= $scope.week; i++){
+              $scope.statLabels.push('Wk ' + i + ": " + schedWithByes[i-1])//getTeamSchedule[i-1])
+            }
+          })
+        }
+      })
+        $scope.getResearchChartData()
+        $scope.getWeekChartData($scope.week, $scope.statType)
+        $scope.getPlayerWeekStats(1)
+    })
+  }
+
+  $scope.getResearchChartData = function(){
+    ApiFactory.getFantasyResearchInfo()
+    .then(function(playerResearch){
+      playerResearch.players.forEach(function(player){
+        if(player.id === pID){
+          $scope.data[0] = player.numAdds
+          $scope.data[1] = player.numDrops
         }
       })
     })
+  }
+
+  $scope.getWeekChartData = function(week, statTypeNum){
+    for(let game = 1; game <= week; game++){
+      ApiFactory.getWeekPlayerStats(game)
+      .then(function(stats){
+        for(let key in stats.playerStats){
+          if(key == pID){
+            $scope.playerWeekStats[0][game-1] = 0
+            for(let stat in stats.playerStats[key]){
+              if(stat == statTypeNum){
+                $scope.playerWeekStats[0][game-1] = stats.playerStats[key][stat]
+              }
+            }
+          }
+        }
+      })
+    }
+  }
+
+  $scope.getPlayerWeekStats = function(week){
+    ApiFactory.getWeekPlayerStats(week)
+      .then(function(weekStats){
+        ApiFactory.getStatExplanations()
+        .then(function(explanations){
+          $scope.weekStats = []
+          let x = explanations.stats
+          for(let key in weekStats.playerStats){
+            for(var stat in weekStats.playerStats[key]){
+              for(var expla in x){
+                if(key == pID){
+                  if(stat == x[expla].id){
+                    $scope.weekStats.push({
+                      id: x[expla].id,
+                      name: x[expla].shortName,
+                      stat: weekStats.playerStats[key][stat]
+                    })
+                  }
+                }
+              }
+            }
+          }
+        })
+      })
   }
 
   $scope.getPlayerNews = function(playerId){
@@ -331,6 +453,37 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
           }
         }
       })
+  }
+
+  let calcByeWeeks = function(array, tmAbbr){
+    if(tmAbbr === 'GB' || tmAbbr === 'PHI'){
+      array.splice(3, 0, 'Bye')
+    }
+    else if(tmAbbr === 'JAX' || tmAbbr === 'KC' || tmAbbr === 'NO' || tmAbbr === 'SEA'){
+      array.splice(4,0,'Bye')
+    }
+    else if(tmAbbr === 'MIN' || tmAbbr === 'TB'){
+      array.splice(5,0,'Bye')
+    }
+    else if(tmAbbr === 'CAR' || tmAbbr === 'DAL'){
+      array.splice(6,0,'Bye')
+    }
+    else if(tmAbbr === 'BAL' || tmAbbr === 'LA' || tmAbbr === 'MIA' || tmAbbr === 'NYG' || tmAbbr === 'PIT' || tmAbbr === 'SF'){
+      array.splice(7, 0, 'Bye')
+    }
+    else if(tmAbbr === 'ARI' || tmAbbr === 'CHI' || tmAbbr === 'CIN' || tmAbbr === 'HOU' || tmAbbr === 'NE' || tmAbbr === 'WAS'){
+      array.splice(8,0, 'Bye')
+    }
+    else if(tmAbbr === 'BUF' || tmAbbr === 'DET' || tmAbbr === 'IND' || tmAbbr === 'OAK'){
+      array.splice(9,0, 'Bye')
+    }
+    else if(tmAbbr === 'ATL' || tmAbbr === 'DEN' || tmAbbr === 'NYJ' || tmAbbr === 'SD'){
+      array.splice(10,0,'Bye')
+    }
+    else if(tmAbbr === 'CLE' || tmAbbr === 'TEN'){
+      array.splice(12,0,'Bye')
+    }
+    return array
   }
 
 })

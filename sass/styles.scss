@@ -1,8 +1,96 @@
 $primary: #1A5C21;
 $secondary: 'Titillium Web', sans-serif;
 
+.myPie{
+  float: right;
+  display: inline-block;
+  margin-top: -4%;
+  h3{
+    margin-left: 23%;
+    color: $primary;
+  }
+}
+
+.graphs{
+    margin-top: 2%;
+    border-top: 3px solid $primary;
+  .week{
+    margin-top: 2%;
+  }
+
+  span{
+    color: white;
+    margin-right: 1%;
+  }
+}
+
+.weekStats{
+  display: inline-block;
+  width: 75%;
+  margin-bottom: 3%;
+  h3{
+    color: $primary;
+    padding-top: 14%;
+  }
+}
+
+.statArea{
+  display: inline-block;
+  display: inline-block;
+  width: 11%;
+  text-align: center;
+}
+
+.block{
+  margin-left: 2%;
+  animation: fontAnimation 1s;
+
+  h3{
+    color: black;
+    animation: headerAnimation 1s;
+  }
+  span{
+    color: black;
+  }
+}
+
+.block:hover{
+  opacity: .5;
+}
+
+._5, ._14, ._45, ._51, ._21, ._36{
+  background-color: #5DDFFF;
+}
+
+._2, ._13, ._46, ._20, ._33, ._38{
+  background-color: #FFAC67;
+}
+
+._6, ._3, ._47, ._22, ._37, ._39, ._15{
+  background-color: #87ED89;
+}
+
+._7, ._4, ._30, ._62, ._54{
+  background-color: salmon;
+}
+
+
+
+.lineChart{
+    margin-top: 2% !important;
+    display: block !important;
+    padding: .5% !important;
+}
+
+.lineGraphDiv{
+  border-top: 3px solid $primary;
+  width: 100%;
+  margin-top: 2%;
+}
+
 //FOR NORMAL ZOOM
 html{
+  overflow-x: hidden;
   background-color: black;
 
   .main{
@@ -787,14 +875,14 @@ td{
       li{
         display: inline-block;
         margin-right: 0%;
-        width: 42%;
+        width: 60%;
         padding: 1%;
         padding-left: 4%;
         background-color: $primary;
         border-radius: 30px;
 
         span{
-          margin-left: 12%;
+          margin-left: 9%;
           padding-right: 0;
           margin-right: 0;
         }
@@ -1469,9 +1557,14 @@ body {
     .playerNav{
       ul{
         li{
-          width: 51%;
+          width: 68%;
         }
       }
+    }
+  }
+  .statArea{
+    span{
+      font-size: 12px;
     }
   }
   // RESEARCH AREA STYLING
@@ -1668,6 +1761,11 @@ body {
     }
   }
 }
+.statArea{
+  span{
+    font-size: 12px;
+  }
+}
 // END ZOOM 175%/////////
 // BEGIN ZOOM 200%///////
 @media screen and (max-width: 960px){
@@ -1735,6 +1833,11 @@ body {
   .title{
     margin-left: 3%;
     margin-top: .5%;
+  }
+  .statArea{
+    span{
+      font-size: 11px;
+    }
   }
 }
 // END STYLING FOR 200%/////
@@ -2015,4 +2118,14 @@ body {
 @keyframes scrollingScores{
   from { left: -2050px;}
   to   { left: 1550px; }
+}
+
+@keyframes fontAnimation{
+  from{font-size: 1px;}
+  to{font-size: 15px;}
+}
+
+@keyframes headerAnimation{
+  from{font-size: 1px;}
+  to{font-size: 24px;}
 }

@@ -30,6 +30,19 @@ app.factory('ApiFactory', function($q, $http){
     })
   }
 
+  let getWeekPlayerStats = function(week){
+    return $q(function(resolve, reject){
+      $http.get(`http://api.fantasy.nfl.com/v1/players/weekstats?&week=${week}&format=json`)
+      .success(function(playerStats){
+        resolve(playerStats)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   let getNews = function(playerId){
     return $q(function(resolve, reject){
       $http.get(`http://api.fantasy.nfl.com/v1/players/details?playerId=${playerId}&statType=seasonStatsformat=json`)
@@ -96,11 +109,42 @@ app.factory('ApiFactory', function($q, $http){
     })
   }
 
+  let getTeamSchedule = function(){
+    return $q(function(resolve, reject){
+      $http.get('gameSchedule.json')
+      .success(function(games){
+        console.log(games)
+        resolve(games)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
+  let getStatExplanations = function(){
+    return $q(function(resolve, reject){
+      $http.get('explanations.json')
+      .success(function(expl){
+        console.log(expl)
+        resolve(expl)
+      })
+      .error(function(error){
+        console.log(error)
+        reject(error)
+      })
+    })
+  }
+
   return {
     getNews,
     getPlayers,
     getPlayerStats,
+    getTeamSchedule,
+    getWeekPlayerStats,
     getEditorWeekRanks,
+    getStatExplanations,
     getFantasyResearchInfo,
     getMostRecentPlayerNews,
     getFantasyScoringLeaders
