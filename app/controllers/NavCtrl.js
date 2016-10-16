@@ -12,5 +12,4 @@ app.controller('NavCtrl', function($scope, AuthFactory){
   }
 
   $scope.userData = AuthFactory.getUserInfo()
-  console.log('USER DATA', $scope.userData)
 })

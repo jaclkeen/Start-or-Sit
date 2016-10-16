@@ -51,7 +51,6 @@ let app = angular.module("StartOrSit", ["ngRoute", "ngMaterial", "chart.js"])
 
   app.run(function(FBCreds){
     let creds = FBCreds
-    console.log(creds)
     let authConfig = {
       apiKey: creds.apiKey,
       authDomain: creds.authDomain

@@ -57,7 +57,6 @@ app.factory('AuthFactory', function($window){
 
   let setUserInfo = function(name){
     userInfo = name.name
-    console.log(userInfo, 'USERINFO.NAME')
   }
 
   let setGoogleUserInfo = function(name){

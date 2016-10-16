@@ -158,7 +158,6 @@ app.controller("NewTicketCtrl", function($location, $scope, ApiFactory, DbFactor
     if(allVals){
       DbFactory.storeToFirebase(selectedPlayers)
         .then(function(data){
-          console.log(data)
           selectedPlayers.player1 = {}
           selectedPlayers.player2 = {}
           $location.url('home')

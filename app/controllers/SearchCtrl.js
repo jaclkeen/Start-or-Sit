@@ -185,7 +185,6 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
             $scope.seasonProjectedPts = collection.seasonProjectedPts
             $scope.seasonPts = collection.seasonPts
             $scope.playerId = collection.id
-            console.log(collection)
             for(var key in collection.stats){
               if(collection.position === 'QB'){
                 if(key == 1){

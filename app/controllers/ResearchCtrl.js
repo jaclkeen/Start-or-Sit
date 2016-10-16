@@ -21,7 +21,6 @@ app.controller('ResearchCtrl', function($scope, ApiFactory){
   ApiFactory.getFantasyScoringLeaders('QB')
   .then(function(leaders){
     let count = 0
-    console.log('LEADERS', leaders)
     let playerLeaders = leaders.positions.QB
     for(var key in playerLeaders){
       if(count < 5){
@@ -46,11 +45,9 @@ app.controller('ResearchCtrl', function($scope, ApiFactory){
   ApiFactory.getMostRecentPlayerNews()
   .then(function(news){
     let count = 0
-    console.log('NEWS', news)
     let playerNews = news.news
     for(var key in playerNews){
       if(count < 5){
-        console.log(playerNews[key].position, 'POSITION')
         if(playerNews[key].position !== "DE" && playerNews[key].position !== "OLB" && playerNews[key].position !== "DT" && playerNews[key].position !== "T" && playerNews[key].position !== "LB" && playerNews[key].position !== "P" && playerNews[key].position !== "FS" && playerNews[key].position !== "FB" && playerNews[key].position !== "OT"){
           if(playerNews[key].position !== "SS" && playerNews[key].position !== "G" && playerNews[key].position !== "MLB" && playerNews[key].position !== "C" && playerNews[key].position !== "LS" && playerNews[key].position !== "DB" && playerNews[key].position !== "CB" && playerNews[key].position !== "ILB" && playerNews[key].position !== "DL"){
             $scope.recentNews.push(playerNews[key])

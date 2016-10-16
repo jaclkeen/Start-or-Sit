@@ -40,7 +40,6 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
       .then(function(data){
         $scope.userMessages = []
         if(data){
-          console.log('THIS DATA', data)
           let idArr = Object.keys(data)
           idArr.forEach(function(item){
             data[item].id = item
@@ -62,7 +61,6 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
       })
       for(var key in plays){
         if(plays[key].uid === AuthFactory.getUser()){
-          console.log('KEYYYY', key)
           $scope.plays.push(plays[key])
           $scope.comment.push({ text: "",
                               playId: "",
@@ -88,7 +86,6 @@ app.controller('MyQCtrl', function($scope, ApiFactory, AuthFactory, DbFactory, $
             $scope.plays = []
             for(var key in plays){
               if(plays[key].uid === AuthFactory.getUser()){
-                console.log('KEYYYY', key)
                 $scope.plays.push(plays[key])
               }
             }

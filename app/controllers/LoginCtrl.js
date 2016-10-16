@@ -17,20 +17,16 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
   }
 
   $scope.register = function(){
-    console.log('register clicked')
     AuthFactory.createUser({
       email: $scope.account.email,
       password: $scope.account.password,
       name: $scope.account.name
     })
     .then(function(userInfo){
-      console.log($scope.account)
-      console.log('userInfo', userInfo)
       if(userInfo){
         $scope.login()
         DbFactory.storeUser($scope.account)
         .then(function(firebaseObj){
-          console.log(firebaseObj)
         })
       }
     })
@@ -49,7 +45,6 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
         .then(function(users){
           for(var key in users){
             if(users[key].email === email){
-              console.log(users[key], 'USERSKEY')
               AuthFactory.setUserInfo(users[key])
             }
           }
