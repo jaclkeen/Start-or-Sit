@@ -8,7 +8,7 @@ app.controller("SearchCtrl", function($scope, ApiFactory){
   $scope.currentWeek = '1'
   $scope.weekStats = []
   //CHANGE THIS TO SHOW MORE WEEKS IN LINE GRAPH EX: 16 FOR ENTIRE SEASON
-  $scope.week = 4
+  $scope.week = 6
   $scope.statLabels = []
   $scope.nonChartPlayerWeekStats = []
 
