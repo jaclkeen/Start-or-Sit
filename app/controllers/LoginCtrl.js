@@ -2,12 +2,24 @@
 
 app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, DbFactory){
 
+  AuthFactory.logoutUser()
+  $scope.showHam = true;
+  $scope.showMobileMenu = false;
   $scope.loginPage = true
   $scope.signUpPage = false
   $scope.logoutUser = true
 
+  $('.menu li').on('click', function(){
+    $('.menu_container').addClass('hidden')
+  })
+
   $scope.logBtn = function(){
     return AuthFactory.isAuthenticated()
+  }
+
+  $scope.showMobile = function(){
+    $scope.showMobileMenu = true;
+    $('.menu_container').toggleClass('hidden')
   }
 
   $scope.account = {
@@ -39,6 +51,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
     AuthFactory.loginUser($scope.account)
     .then(function(data){
       if(data){
+        $('.hamburger').removeClass('hidden')
         let email = data.email
         AuthFactory.setUser(data.uid)
         DbFactory.getUserFromFB()
@@ -81,6 +94,7 @@ app.controller('LoginCtrl', function($scope, $location, $window, AuthFactory, Db
       console.log('logout')
       $window.location.href = '#login'
     })
+    $('.hamburger').toggleClass('hidden')
     $scope.logoutUser = false
   }
 

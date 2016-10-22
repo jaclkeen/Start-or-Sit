@@ -8,7 +8,6 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
       JSON.stringify(userObj))
       .success(function(objFromFirebase){
         resolve(objFromFirebase)
-        console.log('FIREBASE OBJ', objFromFirebase)
       })
       .error(function(error){
         reject(error)
@@ -21,7 +20,6 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
       $http.post(`${FirebaseURL}/comments.json`,
       JSON.stringify(comments))
       .success(function(obj){
-        console.log(obj)
         resolve(obj)
       })
       .error(function(error){
@@ -34,7 +32,6 @@ app.factory("DbFactory", function($q, $http, FirebaseURL){
     return $q(function(resolve, reject){
       $http.get(`${FirebaseURL}comments.json`)
       .success(function(data){
-        console.log(data)
         resolve(data)
       })
       .error(function(error){

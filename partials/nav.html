@@ -1,6 +1,17 @@
 <nav ng-controller="LoginCtrl">
   <div class="navTitle">
     <h3 class="brand">Start <span>or</span> Sit</h3>
+    <span class="glyphicon glyphicon-menu-hamburger hamburger hidden" id="hamburger" ng-show="showHam" ng-click="showMobile()"></span>
+      <section class="menu_container hidden" id="menu_container" ng-show="showMobileMenu"><hr class="no_margin">
+      <ul class="menu" id="menu">
+        <a href="#/newTicket" id="aboutLink"><li>Add New Play</li></a>
+        <a href="#/playerSearch" id="contactLink"><li>Player Search</li></a>
+        <a href="#/research" id="aboutLink"><li>Research</li></a>
+        <a href="#/myPlays" id="projectLink"><li>My Plays</li></a>
+        <a href="#/home" id="techLink"><li>All Plays</li></a>
+        <a href="" ng-click="logout()" id="aboutLink"><li>Logout</li></a>
+      </ul>
+    </section>
     <span ng-if="logBtn()" class="status" ng-click="logout()">Logout</span>
   </div>
 </nav>

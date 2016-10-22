@@ -1,6 +1,9 @@
 $primary: #1A5C21;
 $secondary: 'Titillium Web', sans-serif;
 
+.hamburger{
+  display: none;
+}
 .myPie{
   float: right;
   display: inline-block;
@@ -2114,6 +2117,234 @@ body {
   }
 }
 // END 90% ZOOM STYLING//////
+
+@media only screen and (max-device-width: 768px){
+  nav h3{
+    font-size: 7.7em;
+  }
+  // login styling/////
+  .image img{
+    height: 970px;
+  }
+  .splash{
+    opacity: 0.9;
+    border: 3px solid #1A5C21;
+    width: 84%;
+    background-color: #E9E9E9;
+    margin-left: 7%;
+    font-size: 2em;
+    margin-top: -115%;
+  
+    .loginNav h2{
+      font-size: 2.5em;
+    }
+
+    a{
+      font-size: 1.3em;
+    }
+  }
+  .login{
+    width: 102%;
+  }
+  .login h4{
+    font-size: 1.8em;
+    padding-bottom: 6%;
+  }
+  .login label{
+    margin-left: 3%;
+    font-size: 1.4em;
+    width: 29%;
+  }
+  .login input{
+    font-size: 1.4em;
+  }
+  .splash{
+    padding-bottom: 4%;
+  }
+  .splash button{
+    margin-top: 8%;
+    padding: 2%;
+    font-size: 1.2em;
+  }
+  .splash register{
+    font-size: 1.5em;
+  }
+  .signUp{
+    width: 90%;
+  }
+  .signUp h4{
+    margin-left: -5%;
+    font-size: 1.5em;
+  }
+  .signUp{
+    font-size: 1.4em;
+  }
+  .signUp label{
+    width: 12%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .signUp input{
+    width: 60%;
+    font-size: 1.3em;
+    padding: 1%;
+    margin-left: 24%;
+  }
+  //////////////////////////
+  // all q page/////////////
+  .myQPage h3, .allQPage h3 {
+    width: 135%;
+    font-size: 3em;
+  }
+  .allQPage .playerCard, .myQPage .playerCard{
+    width: 96%;
+    height: 420px;
+  }
+  .allQPage .player1, .allQPage .player2, .myQPage .player1, .myQPage .player2{
+    width: 33%;
+  }
+  .allQPage img{
+    width: 110%;
+  }
+  .myQPage img{
+    width: 110%;
+    margin-top: -24%;
+  }
+  .playerCard span{
+    font-size: 3em;
+    margin-left: 5%;
+  }
+  .playerCard .votes{
+    font-size: 3.6em;
+  }
+  .comment, .myQPage .cContainer .comment{
+    font-size: 2.5em;
+  }
+  .playerCard .comment{
+    position: relative;
+    font-size: 3.8em;
+    left: -30px;
+  }
+
+  .allQPage .backPlayerArea{
+    top: 34.5px;
+    height: 115px;
+    right: 11.5px;
+    width: 104.5%;
+  }
+  .myQPage .backPlayerArea{
+    top: 27.5px;
+    height: 115px;
+    right: 13.5px;
+    width: 104.5%;
+  }
+  .allQPage img, .myQPage img{
+    background: none;
+  }
+  .allQPage .backPlayerArea .secondPlayer .commentPlayerName2, .myQPage .backPlayerArea .secondPlayer .commentPlayerName2{
+    font-size: 2.7em;
+  }
+  .allQPage .backPlayerArea .firstPlayer .commentPlayerName1, .myQPage .backPlayerArea .firstPlayer .commentPlayerName1{
+    font-size: 2.7em;
+  }
+  .allQPage .backPlayerArea .secondPlayer{
+    top: 26px;
+  }
+  .myQPage .backPlayerArea .secondPlayer{
+    top: 26px;
+    left: 55px;
+  }
+  .allQPage .backPlayerArea .firstPlayer, .myQPage .backPlayerArea .firstPlayer {
+    top: 70px;
+  }
+  .allQPage .backPlayerArea .backArrow, .myQPage .backPlayerArea .backArrow {
+    font-size: 5em;
+    left: -25px;
+  }
+  .allQPage .inputArea .inputBtn, .myQPage .inputArea .inputBtn {
+    top: -28px;
+    left: 18px;
+    font-size: 2.5em;
+  }
+  .allQPage .inputArea .textInput, .myQPage .inputArea .textInput {
+    top: 6px;
+    font-size: 2.5em;
+  }
+  .allQPage .inputArea, .myQPage .inputArea {
+    top: 358px;
+    width: 101%;
+    left: -3px;
+    height: 100px;
+  }
+  .allQPage .commentArea, .myQPage .commentArea {
+    height: 200px;
+    top: 35.5px;
+  }
+  .comment, .myQPage .cContainer .comment {
+    font-size: 4em;
+    top: 0;
+  }
+  .myQPage .delete{
+    font-size: 3em;
+    left: -25px;
+  }
+  // scoreticker styling
+  .scoreTicker{
+    width: 100%;
+    height: 150px;
+  }
+  .scoreTicker .scoreContainer{
+    width: 120%;
+    height: 145px;
+  }
+  .scoreTicker p{
+    font-size: 3em;
+  }
+  .scoreTicker .scoreBlocks{
+    margin-right: 6.1%;
+  }
+  .homeNav{
+    display: none;
+  }
+  .ticker{
+    background: black;
+  }
+  .hamburger{
+    top: 20px;
+    left: 160px;
+    background: $primary;
+    display: inline-block;
+    color: white; 
+    font-size: 5em; 
+    border: 3px solid white; 
+    border-radius: 10px;
+  }
+  .menu_container{
+    padding-bottom: 1%;
+    background: $primary;
+    font-size: 3.5em;
+  }
+  .menu li{
+    list-style-type: none;
+    color: white;
+    padding-top: 1%;
+  }
+  .hidden{
+    display: none;
+  }
+  .status{
+    display: none;
+  }
+  .scoreBlocks{
+    left: -2913px!important;
+    animation: mobileScrollingScores 70s linear 2s infinite!important;
+  }
+}
+
+@keyframes mobileScrollingScores{
+  from {left: -3000px;}
+  to {left: 700px;}
+}
 
 @keyframes scrollingScores{
   from { left: -1981px;}

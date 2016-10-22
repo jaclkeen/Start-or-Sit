@@ -1,7 +1,6 @@
 "use strict"
 
 app.controller('NavCtrl', function($scope, AuthFactory){
-
   $scope.loginBtn = "Login"
 
   if(AuthFactory.getUser()){
